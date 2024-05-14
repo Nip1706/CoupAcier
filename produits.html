@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style-produits.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap">
+    <title>Menus Déroulants</title>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1>COUP'ACIER</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="#">Produits</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Configuration</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container-block">
+        <form action="#" method="POST">
+            <div class="dropdown">
+                <label for="menu1">Matériaux</label>
+                <select id="menu1" name="menu1">
+                    <option value="acier">Acier</option>
+                    <option value="alu">Alu</option>
+                    <option value="inox">Inox</option>
+                    <option value="galva">Galva</option>
+                    <option value="corten">Corten</option>
+                </select>
+            </div>
+            <div class="dropdown">
+                <label for="menu2">Épaisseur</label>
+                <select id="menu2" name="menu2">
+                    <option value="1">1</option>
+                    <option value="1.5">1.5</option>
+                    <option value="2">2</option>
+                    <!-- Ajoutez les autres options ici -->
+                </select>
+            </div>
+            <div class="dropdown">
+                <label for="menu3">Menu 3</label>
+                <select id="menu3" name="menu3">
+                    <option value="choixX">Choix X</option>
+                    <option value="choixY">Choix Y</option>
+                    <option value="choixZ">Choix Z</option>
+                </select>
+            </div>
+            <button type="submit">Envoyer</button>
+        </form>
+        <div class="images-container">
+            <img class="acier" src="Acier.jpg" alt="Image Acier">
+            <img class="alu" src="alu.jpg" alt="Image Alu">
+            <img class="corten" src="corten.webp" alt="Image Corten">
+            <img class="galva" src="fer.jpg" alt="Image Galva">
+            <img class="inox" src="inox.jpg" alt="Image Inox">
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-left">
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="#">Produits</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="config.html">Configuration</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="footer-center">
+                <h2>Contact :</h2>
+                <p>Email: contact@coupacier.com</p>
+                <p>Téléphone: +33 123 456 789</p>
+            </div>
+            <div class="footer-right">
+                <h2>Réclamation :</h2>
+                <button class="button send">Envoyer</button>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Récupérer le menu déroulant pour les matériaux
+            const menu1 = document.getElementById("menu1");
+            // Récupérer toutes les images
+            const images = document.querySelectorAll(".images-container img");
+
+            // Ajouter un écouteur d'événements pour le changement dans le menu déroulant
+            menu1.addEventListener("change", function() {
+                // Récupérer la valeur sélectionnée dans le menu déroulant
+                const selectedMaterial = menu1.value;
+                // Parcourir toutes les images
+                images.forEach(function(image) {
+                    // Vérifier si la classe de l'image correspond à la valeur sélectionnée dans le menu déroulant
+                    if (image.classList.contains(selectedMaterial)) {
+                        // Afficher l'image correspondante
+                        image.style.display = "block";
+                    } else {
+                        // Masquer les autres images
+                        image.style.display = "none";
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,218 @@
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Styles généraux */
+body {
+    font-family: 'Roboto', sans-serif;
+    font-weight: lighter;
+    background-image: url('Bandeau Fil Rouge.jpg');
+    background-size: cover; /* La taille de l'image est ajustée pour couvrir l'ensemble du conteneur */
+    background-position: center;
+    overflow-y: scroll;
+    height: 120vh; /* Ajustez la hauteur du corps pour qu'elle soit égale à la hauteur de la fenêtre du navigateur */
+    
+}
+
+h1 {
+    font-size: 24px;
+}
+
+h2{
+    color: white;
+}
+
+p{
+    color: white;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin-right: 20px;
+}
+
+nav ul li:last-child {
+    margin-right: 0;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #ffd700;
+}
+
+.images-container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px; /* Ajouter de l'espace au-dessus des images */
+}
+
+.images-container img {
+    width: 100px; /* Définir la largeur des images */
+    height: auto; /* Garder les proportions */
+}
+
+.images-container .acier {
+    display: none;
+}
+
+
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(2, 2, 54, 0.8);
+    height: 100%; /* Ajoutez ceci pour que le conteneur prenne toute la hauteur du corps */
+    
+
+}
+
+.container-block {
+    max-width: 800px;
+    margin: 0 auto; /* Pour centrer horizontalement */
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8); /* Fond blanc opaque */
+    border-radius: 10px; /* Coins arrondis */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Ombre légère */
+    margin-top: 30px;
+}
+
+
+header {
+    background-color: rgb(2, 2, 54);
+    color: #fff;
+    padding: 10px 0;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5); /* Ombre de texte */
+
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin-right: 20px;
+}
+
+nav ul li:last-child {
+    margin-right: 0;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #ffd700;
+}
+
+
+footer {
+    display: flex;
+    bottom: 0; /* Fixer le footer au bas de la fenêtre */
+    width: 100%; /* Pour étendre le footer sur toute la largeur */
+    background-color: #343a40;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
+
+footer .container{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.footer-left nav ul{
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-left nav ul li {
+    text-align: left;
+}
+
+
+.footer-center{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer-right{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+footer .button{
+    padding: 10px 15px; /* Ajuster la taille des boutons */
+    font-size: 14px;
+    border: 2px solid white;
+    border-radius: 10px;
+}
+
+.send{
+    background-image: linear-gradient(to right, #28a745, #218838); /* Dégradé vert pour le bouton Créer un compte */
+    color: white;
+}
+/* Dropdown */
+.dropdown {
+    position: relative;
+    margin-bottom: 20px; /* Ajout d'espace entre les éléments */
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropbtn {
+    background-color: #333;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+    background-color: #555;
+}

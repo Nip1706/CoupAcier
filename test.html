@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choix de matériaux</title>
+    <style>
+
+        .info-material{
+            border: 2px solid black;
+            width: 50%;
+        }
+
+
+        .material-choice {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 20px;
+        }
+        .material-choice label {
+            cursor: pointer;
+            text-align: center;
+            transition: border-color 0.3s ease;
+            width: 100px; /* Taille du cadre ajustée pour accueillir l'image */
+            height: 100px; /* Hauteur du cadre ajustée pour accueillir l'image */
+            align-content: center;
+            font-weight: bold;
+            font-family: 'roboto';
+        }
+
+        .material-choice-ep {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 20px;
+        }
+        .material-choice-ep label {
+            cursor: pointer;
+            text-align: center;
+            transition: background-color 0.3s ease;
+            width: 80px; /* Taille du cadre ajustée pour accueillir l'image */
+            height: 80px; /* Hauteur du cadre ajustée pour accueillir l'image */
+            align-content: center;
+            font-weight: bold;
+            font-family: 'roboto';
+            border: 2px solid black;
+            border-radius: 20px;
+        }
+
+        .material-choice-ep label:hover {
+            background-color: lightgreen;
+        }
+
+        .material-choice img:hover {
+            border: 3px solid lightgreen;
+        }
+
+        .material-choice input[type="radio"] {
+            display: none;
+        }
+        .material-choice img {
+            width: 80%; /* Pour que l'image occupe toute la taille du cadre */
+            height: 80%; /* Pour que l'image occupe toute la taille du cadre */
+            border: 3px solid transparent;
+            border-radius: 20px;
+            transition: border-color 0.3s ease;
+            border: 3px solid white;
+        }
+        .material-choice input[type="radio"]:checked + label img {
+            border-color: blue;
+        }
+
+        .material-choice-ep input[type="radio"]:checked + label img {
+            border-color: blue;
+        }
+
+        .density-input {
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.density-input label {
+    margin-bottom: 5px;
+}
+
+@media screen and (max-width: 768px) {
+    .density-input {
+        margin: 10px;
+    }
+}
+
+    </style>
+</head>
+<body>
+<div class="info-material">
+    <div class="material-choice">
+        <h1>Choisir Matériaux</h1>
+        <input type="radio" id="material-1" name="material" value="material-1">
+        <label for="material-1">
+            <img src="Acier.jpg" alt="Matériau 1">
+            <div class="overlay-text">ACIER</div>
+        </label>
+        
+        <input type="radio" id="material-2" name="material" value="material-2">
+        <label for="material-2">
+            <img src="alu.jpg" alt="Matériau 2">
+            <div class="overlay-text">ALU</div>
+        </label>
+        
+        <input type="radio" id="material-3" name="material" value="material-3">
+        <label for="material-3">
+            <img src="fer.jpg" alt="Matériau 3">
+            <div class="overlay-text">FER</div>
+        </label>
+        <input type="radio" id="material-4" name="material" value="material-4">
+        <label for="material-4">
+            <img src="corten.webp" alt="Matériau 4">
+            <div class="overlay-text">CORTEN</div>
+        </label>
+    </div>
+    <div class="material-choice-ep">
+        <h1>Choisir Épaisseur</h1>
+        <label>
+            <div class="overlay-text">1mm</div>
+        </label>
+        
+        <label>
+            <div class="overlay-text">1,5mm</div>
+        </label>
+        
+        <label>
+            <div class="overlay-text">2mm</div>
+        </label>
+        <label>
+            <div class="overlay-text">2,5</div>
+        </label>
+    </div>
+    <div class="density-input">
+        <label for="density">Densité (kg/m³): </label>
+        <input type="number" id="density" name="density" required>
+    </div>
+</div>
+</body>
+</html>

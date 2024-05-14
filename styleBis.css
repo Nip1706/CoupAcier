@@ -1,0 +1,153 @@
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Styles généraux */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f8f9fa;
+    color: #212529;
+    line-height: 1.6;
+    margin: 0; /* Ajout pour annuler la marge par défaut du corps */
+    padding-bottom: 50px; /* Ajout pour éviter que le footer ne chevauche le contenu */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+header {
+    background-color: #343a40;
+    color: #fff;
+    padding: 20px 0;
+}
+
+header h1 {
+    font-size: 24px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin-right: 20px;
+}
+
+nav ul li:last-child {
+    margin-right: 0;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #ffd700;
+}
+
+.content {
+    padding: 50px 0;
+}
+
+.block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.image-block {
+    width: 300px;
+    height: 200px;
+    border: 2px solid #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+}
+
+.image-block img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.overlay-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 25px;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+    transition: color 0.3s ease;
+}
+
+.image-block:hover .overlay-text {
+    color: #ffd700;
+}
+
+.block-text {
+    width: calc(100% - 350px);
+    padding: 20px;
+    background-color: #343a40;
+    border-radius: 10px;
+}
+
+.block-text h2 {
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.block-text p {
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+}
+
+.button {
+    padding: 15px 30px;
+    margin: 0 10px;
+    background-color: #3498db;
+    border: none;
+    border-radius: 15px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button.create {
+    background-color: green;
+}
+
+.button:hover {
+    background-color: #2980b9;
+}
+
+.button.create:hover {
+    background-color: rgb(5, 103, 5);
+}
+
+footer {
+    background-color: #343a40;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}

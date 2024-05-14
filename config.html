@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="config.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <!-- Inclure Font Awesome via CDN -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Page d'Accueil</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="container">
+        <a href="index.html">
+          <h1>COUP'ACIER</h1>
+        </a>
+        <nav>
+          <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="#">Produits</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="config.html">Configuration</a></li>
+          </ul>
+        </nav>
+        <div class="icon-container">
+          <a href="#" class="cart-link"><i class="fas fa-shopping-cart"></i></a>
+          <a href="#" class="connect-link"><i class="fas fa-user"></i></a>
+        </div>
+      </div>
+    </header>
+    <div class="container-block">
+      <div class="block-text">
+        <h1>Bienvenue chez COUP'ACIER, vous êtes un client :</h1>
+      </div>
+      <div class="config">
+        <form action="#" method="POST">
+          <div class="form-group">
+            <label>Choix du Matériau :</label>
+            <div class="material-images">
+              <label for="material-1"
+                ><img src="Acier.jpg" alt="Acier" /><span>Acier</span></label
+              >
+              <label for="material-2"
+                ><img src="alu.jpg" alt="Alu" /><span>Alu</span></label
+              >
+              <label for="material-3"
+                ><img src="fer.jpg" alt="Fer" /><span>Fer</span></label
+              >
+              <label for="material-4"
+                ><img src="corten.webp" alt="Corten" /><span
+                  >Corten</span
+                ></label
+              >
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="thickness">Épaisseur :</label>
+            <select name="thickness" id="thickness">
+              <option value="1">1 mm</option>
+              <option value="1.5">1.5 mm</option>
+              <option value="2">2 mm</option>
+              <option value="2.5">2.5 mm</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="density">Densité (kg/m³):</label>
+            <input type="number" id="density" name="density" required />
+          </div>
+          <div class="button-container">
+            <input type="submit" value="Validation" />
+          </div>
+            </form>
+      </div>
+    </div>
+
+    <footer>
+      <div class="container">
+          <div class="footer-left">
+              <nav>
+                  <ul>
+                      <li><a href="index.html">Accueil</a></li>
+                      <li><a href="#">Produits</a></li>
+                      <li><a href="#">Contact</a></li>
+                      <li><a href="config.html">Configuration</a></li>
+                  </ul>
+              </nav>
+          </div>
+          <div class="footer-center">
+              <h2>Contact :</h2>
+              <p>Email: contact@coupacier.com</p>
+              <p>Téléphone: +33 123 456 789</p>
+          </div>
+          <div class="footer-right">
+              <h2>Réclamation :</h2>
+              <button class="button send">Envoyer</button>
+          </div>
+      </div>
+  </footer>
+  </body>
+</html>
