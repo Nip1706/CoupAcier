@@ -90,7 +90,7 @@
         <div class="ristourne-block">
             <table border="1">
                 <thead>
-                    <tr>
+                    <tr class="tab-title">
                         <th>Produit</th>
                         <th>Quantité</th>
                         <th>Prix HT (€)</th>
@@ -123,61 +123,14 @@
                         <td><input type="number" min="0" max="100" step="1">%</td>
                         <td><input type="checkbox"></td>
                     </tr>
-                    <tr>
-                        <!-- Les autres lignes similaires -->
-                        <td>Ligne 3, Colonne 1</td>
-                        <td>Ligne 3, Colonne 2</td>
-                        <td>Ligne 3, Colonne 3</td>
-                        <td>Ligne 3, Colonne 4</td>
-                        <td>Ligne 3, Colonne 5</td>
-                        <td><input type="number" min="0" max="100" step="1">%</td>
-                        <td><input type="checkbox"></td>
-                    </tr>
-                    <tr>
-                        <!-- Les autres lignes similaires -->
-                        <td>Ligne 4, Colonne 2</td>
-                        <td>Ligne 4, Colonne 3</td>
-                        <td>Ligne 4, Colonne 4</td>
-                        <td>Ligne 4, Colonne 5</td>
-                        <td>Ligne 4, Colonne 5</td>
-                        <td><input type="number" min="0" max="100" step="1">%</td>
-                        <td><input type="checkbox"></td>
-                    </tr>
-                    <tr>
-                        <!-- Les autres lignes similaires -->
-                        <td>Ligne 5, Colonne 1</td>
-                        <td>Ligne 5, Colonne 2</td>
-                        <td>Ligne 5, Colonne 3</td>
-                        <td>Ligne 5, Colonne 4</td>
-                        <td>Ligne 5, Colonne 5</td>
-                        <td><input type="number" min="0" max="100" step="1">%</td>
-                        <td><input type="checkbox"></td>
-                    </tr>
-                    <tr>
-                        <!-- Les autres lignes similaires -->
-                        <td>Ligne 6, Colonne 1</td>
-                        <td>Ligne 6, Colonne 2</td>
-                        <td>Ligne 6, Colonne 3</td>
-                        <td>Ligne 6, Colonne 4</td>
-                        <td>Ligne 6, Colonne 5</td>
-                        <td><input type="number" min="0" max="100" step="1">%</td>
-                        <td><input type="checkbox"></td>
-                    </tr>
-                    <tr>
-                        <!-- Les autres lignes similaires -->
-                        <td>Ligne 7, Colonne 1</td>
-                        <td>Ligne 7, Colonne 2</td>
-                        <td>Ligne 7, Colonne 3</td>
-                        <td>Ligne 7, Colonne 4</td>
-                        <td>Ligne 7, Colonne 5</td>
-                        <td><input type="number" min="0" max="100" step="1">%</td>
-                        <td><input type="checkbox"></td>
-                    </tr>
-                    <!-- Lignes 3 à 10 à insérer de manière similaire -->
+                    <!-- Les autres lignes similaires -->
                 </tbody>
             </table>
+            <div class="btn-ristourne">
+                <button class="validate">Valider</button>
+                <button class="quit">Quitter</button>
+            </div>
         </div>
-
     </div>
 
     <footer>
@@ -186,35 +139,72 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            // Sélection des boutons "Oui"
-            var btnYes = document.querySelectorAll(".btn-yes");
+    var ristourneBlock = document.querySelector(".ristourne-block");
+    var p = document.createElement("p");
+    var p2;
 
-            // Ajout d'un écouteur d'événements à chaque bouton "Oui"
-            btnYes.forEach(function (btn) {
-                btn.addEventListener("click", function () {
-                    // Sélection de la classe "ristourne-block"
-                    var ristourneBlock = document.querySelector(".ristourne-block");
+    // Ajout d'un écouteur d'événements à chaque bouton "Oui"
+    document.querySelectorAll(".btn-yes").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+            p.textContent = "";
+            var commande = this.dataset.commande;
+            p.textContent = "Numéro de commande : " + commande;
+            p.style.color = "white";
+            p.style.fontWeight = "bold";
+            p.style.marginTop = "10px";
+            p.style.marginBottom = "10px";
 
-                    // Basculement de la classe "visible"
-                    ristourneBlock.classList.toggle("visible");
+            if (!ristourneBlock.classList.contains("visible")) {
+                ristourneBlock.classList.toggle("visible");
+                ristourneBlock.scrollIntoView({ behavior: 'smooth' });
+            }
 
-                    // Récupération du numéro de commande
-                    var commande = this.dataset.commande;
-
-                    // Création d'un élément de paragraphe pour afficher le numéro de commande sous le tableau
-                    var p = document.createElement("p");
-                    p.textContent = "Numéro de commande : " + commande;
-
-                    var p2 = document.createElement("p2");
-                    p2.textContent = "Total : " + commande;
-
-                    // Insertion de l'élément de paragraphe sous le tableau
-                    var table = document.querySelector("table");
-                    table.parentNode.insertBefore(p, table.nextSibling);
-                    table.parentNode.insertBefore(p2, p.nextSibling);
-                });
-            });
+            // Mettre à jour la commande associée au bouton "Valider"
+            validateBtn.dataset.commande = commande;
         });
+    });
+
+    // Insertion de l'élément de paragraphe sous le tableau une seule fois
+    var table = document.querySelector("table");
+    table.parentNode.insertBefore(p, table.nextSibling);
+
+    // Gestionnaire d'événements pour le bouton "Quitter"
+    var quitBtn = document.querySelector(".quit");
+    quitBtn.addEventListener("click", function () {
+        p.textContent = "";
+        if (ristourneBlock.classList.contains("visible")) {
+            ristourneBlock.classList.remove("visible");
+        }
+        // Réinitialiser le bouton "validate"
+        validateBtn.disabled = false;
+        // Réinitialiser le contenu de p2
+        if (p2) {
+            p2.remove();
+            p2 = null;
+        }
+    });
+
+    // Gestionnaire d'événements pour le bouton "Valider"
+    var validateBtn = document.querySelector(".validate");
+    validateBtn.addEventListener("click", function () {
+        var commande = this.dataset.commande;
+        if (p2) {
+            p2.remove();
+            p2 = null;
+        }
+        p2 = document.createElement("p");
+        p2.textContent = "Total : " + commande;
+        p2.style.color = "white";
+        p2.style.fontWeight = "bold";
+
+        var btnRistourne = document.querySelector(".btn-ristourne");
+        btnRistourne.parentNode.insertBefore(p2, btnRistourne.nextSibling);
+
+        // Désactiver le bouton "validate" après avoir cliqué une fois
+        validateBtn.disabled = true;
+    });
+});
+
 
         document.addEventListener("DOMContentLoaded", function () {
             var checkAll = document.getElementById("check-all");

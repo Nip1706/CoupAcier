@@ -33,8 +33,12 @@ header {
     color: red;
 }
 
+a {
+    text-decoration: none;
+}
+
 .container-block {
-    background-image: linear-gradient(to right, #ab1313, #d45050); /* Dégradé de rouge pour le bouton Config */
+    background-image: linear-gradient(to right, #007bff, #0056b3); /* Dégradé bleu pour les boutons */
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     min-height: 1800px;
@@ -193,12 +197,14 @@ footer {
     font-size: 12px;
     font-weight: bold;
     color: white;
+    cursor: pointer;
 }
 
 .ristourne-block {
-    margin-top: 20PX;
+    margin-top: 20px;
     width: 50%;
-    border: 2px solid yellow;
+    padding: 20px;
+    border-radius: 15px;
     visibility: hidden;
 }
 
@@ -207,10 +213,42 @@ footer {
     visibility: visible;
 }
 
+table {
+    border-radius: 10px;
+    background-color: white;
+    color: red;
+    padding: 10px;
+}
+
+.tab-title{
+    background-color: red;
+    color: white;
+}
+
+tr{
+    border-radius: 10px;
+}
+
 
 td {
     text-align: center;
     vertical-align: middle;
+}
+
+.btn-ristourne button{
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid white;
+    color: white;
+}
+
+.validate {
+    background-color: green;
+}
+
+.quit{
+    background-color: red;
 }
 
 .custom-checkbox {
