@@ -6,12 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="commercial.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <!-- Inclure Font Awesome via CDN -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <title>Page d'Accueil</title>
 </head>
 
@@ -28,8 +25,7 @@
     </header>
     <div class="container-block">
         <div class="block-text">
-            <h1>Bienvenue sur la page ADMINISTRATEUR, vous pouvez vous connecter et serez redirigé vers votre plateforme
-                :</h1>
+            <h1>Bienvenue sur la page ADMINISTRATEUR, vous pouvez vous connecter et serez redirigé vers votre plateforme :</h1>
         </div>
         <div class="fct-commercial">
             <div class="container-jauge">
@@ -43,42 +39,34 @@
             <div class="container-jauge-historique">
                 <div class="demande-historique">
                     <h2>Historique de commandes</h2>
-                    <div class="color-bar" style="background-color: rgb(26, 125, 217);">Commande #PA123456 / Total :
-                        3456 € / R : 5% </div>
-                    <div class="color-bar" style="background-color: rgb(26, 125, 217);">Commande #PA378654 / Total :
-                        2543 € / R : 0% </div>
-                    <div class="color-bar" style="background-color: rgb(26, 125, 217);">Commande #PR098456 / Total :
-                        9087 € / R : 25% </div>
-                    <div class="color-bar" style="background-color: rgb(26, 125, 217);">Commande #PR789876 / Total :
-                        7604 € / R : 15% </div>
+                    <div class="color-bar" style="background-color: rgb(26, 125, 217);">Commande #PA123456 / Total : 3456 € / R : 5% </div>
+                    <div class="color-bar" style="background-color: rgb(26, 125, 217);">Commande #PA378654 / Total : 2543 € / R : 0% </div>
+                    <div class="color-bar" style="background-color: rgb(26, 125, 217);">Commande #PR098456 / Total : 9087 € / R : 25% </div>
+                    <div class="color-bar" style="background-color: rgb(26, 125, 217);">Commande #PR789876 / Total : 7604 € / R : 15% </div>
                 </div>
             </div>
             <div class="container-jauge-ristourne">
                 <div class="demande-ristourne">
                     <h2>Accord Ristourne</h2>
-                    <div class="color-bar-ristourne" style="background-color: rgb(26, 125, 217);">Commande #PA123456 /
-                        Total : 3456 €
+                    <div class="color-bar-ristourne" style="background-color: rgb(26, 125, 217);">Commande #PA123456 / Total : 3456 €
                         <div class="btn-yes-no">
                             <button class="btn-yes" style="background-color: green;" data-commande="PA123456">O</button>
                             <button class="btn-no" style="background-color: red;">N</button>
                         </div>
                     </div>
-                    <div class="color-bar-ristourne" style="background-color: rgb(26, 125, 217);">Commande #PA378654 /
-                        Total : 2543 €
+                    <div class="color-bar-ristourne" style="background-color: rgb(26, 125, 217);">Commande #PA378654 / Total : 2543 €
                         <div class="btn-yes-no">
                             <button class="btn-yes" style="background-color: green;" data-commande="PA378654">O</button>
                             <button class="btn-no" style="background-color: red;">N</button>
                         </div>
                     </div>
-                    <div class="color-bar-ristourne" style="background-color: rgb(26, 125, 217);">Commande #PR098456 /
-                        Total : 9087 €
+                    <div class="color-bar-ristourne" style="background-color: rgb(26, 125, 217);">Commande #PR098456 / Total : 9087 €
                         <div class="btn-yes-no">
                             <button class="btn-yes" style="background-color: green;" data-commande="PR098456">O</button>
                             <button class="btn-no" style="background-color: red;">N</button>
                         </div>
                     </div>
-                    <div class="color-bar-ristourne" style="background-color: rgb(26, 125, 217);">Commande #PR789876 /
-                        Total : 7604 €
+                    <div class="color-bar-ristourne" style="background-color: rgb(26, 125, 217);">Commande #PR789876 / Total : 7604 €
                         <div class="btn-yes-no">
                             <button class="btn-yes" style="background-color: green;" data-commande="PR789876">O</button>
                             <button class="btn-no" style="background-color: red;">N</button>
@@ -95,7 +83,8 @@
                         <th>Quantité</th>
                         <th>Prix HT (€)</th>
                         <th>Prix TTC (€)</th>
-                        <th>Total (€)</th>
+                        <th>Total HT (€)</th>
+                        <th>Total TTC (€)</th>
                         <th>Ristourne (%)</th>
                         <td>
                             Tout
@@ -103,117 +92,161 @@
                         </td>
                     </tr>
                 </thead>
-                <tbody>
-                    <!-- 10 lignes -->
-                    <tr>
-                        <td>Ligne 1, Colonne 1</td>
-                        <td>Ligne 1, Colonne 2</td>
-                        <td>Ligne 1, Colonne 3</td>
-                        <td>Ligne 1, Colonne 4</td>
-                        <td>Ligne 1, Colonne 5</td>
-                        <td><input type="number" min="0" max="100" step="1">%</td>
-                        <td><input type="checkbox"></td>
-                    </tr>
-                    <tr>
-                        <td>Ligne 2, Colonne 1</td>
-                        <td>Ligne 2, Colonne 2</td>
-                        <td>Ligne 2, Colonne 3</td>
-                        <td>Ligne 2, Colonne 4</td>
-                        <td>Ligne 2, Colonne 5</td>
-                        <td><input type="number" min="0" max="100" step="1">%</td>
-                        <td><input type="checkbox"></td>
-                    </tr>
-                    <!-- Les autres lignes similaires -->
+                <tbody id="table-body">
+                    <!-- Les lignes de produits seront insérées ici par JavaScript -->
                 </tbody>
             </table>
             <div class="btn-ristourne">
                 <button class="validate">Valider</button>
                 <button class="quit">Quitter</button>
             </div>
+            <div id="results-container"></div>
         </div>
     </div>
-
     <footer>
         <p>Ceci est le pied de page.</p>
     </footer>
-
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-    var ristourneBlock = document.querySelector(".ristourne-block");
-    var p = document.createElement("p");
-    var p2;
+        var data = [
+            { produit: "Produit 1", quantite: 10, prixHT: 5, prixTTC: 6, totalHT: 50, totalTTC: 60 },
+            { produit: "Produit 2", quantite: 20, prixHT: 3, prixTTC: 3.6, totalHT: 60, totalTTC: 72 },
+            // Ajoutez autant d'objets JSON que nécessaire
+        ];
 
-    // Ajout d'un écouteur d'événements à chaque bouton "Oui"
-    document.querySelectorAll(".btn-yes").forEach(function (btn) {
-        btn.addEventListener("click", function () {
-            p.textContent = "";
-            var commande = this.dataset.commande;
-            p.textContent = "Numéro de commande : " + commande;
-            p.style.color = "white";
-            p.style.fontWeight = "bold";
-            p.style.marginTop = "10px";
-            p.style.marginBottom = "10px";
+        var tbody = document.getElementById("table-body");
 
-            if (!ristourneBlock.classList.contains("visible")) {
-                ristourneBlock.classList.toggle("visible");
-                ristourneBlock.scrollIntoView({ behavior: 'smooth' });
-            }
+        data.forEach(function (item) {
+            var tr = document.createElement("tr");
 
-            // Mettre à jour la commande associée au bouton "Valider"
-            validateBtn.dataset.commande = commande;
+            var produitTd = document.createElement("td");
+            produitTd.textContent = item.produit;
+            tr.appendChild(produitTd);
+
+            var quantiteTd = document.createElement("td");
+            quantiteTd.textContent = item.quantite;
+            tr.appendChild(quantiteTd);
+
+            var prixHTTd = document.createElement("td");
+            prixHTTd.textContent = item.prixHT;
+            tr.appendChild(prixHTTd);
+
+            var prixTTCTd = document.createElement("td");
+            prixTTCTd.textContent = item.prixTTC;
+            tr.appendChild(prixTTCTd);
+
+            var totalHTTd = document.createElement("td");
+            totalHTTd.textContent = item.totalHT;
+            tr.appendChild(totalHTTd);
+
+            var totalTTCTd = document.createElement("td");
+            totalTTCTd.textContent = item.totalTTC;
+            tr.appendChild(totalTTCTd);
+
+            var ristourneTd = document.createElement("td");
+            var inputRistourne = document.createElement("input");
+            inputRistourne.type = "number";
+            inputRistourne.min = "0";
+            inputRistourne.max = "100";
+            inputRistourne.step = "1";
+            ristourneTd.appendChild(inputRistourne);
+            tr.appendChild(ristourneTd);
+
+            var checkboxTd = document.createElement("td");
+            var checkbox = document.createElement("input");
+            checkbox.type = "checkbox";
+            checkboxTd.appendChild(checkbox);
+            tr.appendChild(checkboxTd);
+
+            tbody.appendChild(tr);
         });
+
+        document.addEventListener("DOMContentLoaded", function () {
+            var ristourneBlock = document.querySelector(".ristourne-block");
+            var p = document.createElement("p");
+
+            document.querySelectorAll(".btn-yes").forEach(function (btn) {
+                btn.addEventListener("click", function () {
+                    p.textContent = "";
+                    var commande = this.dataset.commande;
+                    p.textContent = "Numéro de commande : " + commande;
+                    p.style.color = "white";
+                    p.style.fontWeight = "bold";
+                    p.style.marginTop = "10px";
+                    p.style.marginBottom = "10px";
+
+                    if (!ristourneBlock.classList.contains("visible")) {
+                        ristourneBlock.classList.toggle("visible");
+                        ristourneBlock.scrollIntoView({ behavior: 'smooth' });
+                    }
+
+                    validateBtn.dataset.commande = commande;
+                });
+            });
+
+            var table = document.querySelector("table");
+            table.parentNode.insertBefore(p, table.nextSibling);
+
+            var quitBtn = document.querySelector(".quit");
+quitBtn.addEventListener("click", function () {
+    var resultsContainer = document.getElementById("results-container");
+    resultsContainer.innerHTML = ""; // Supprimer les résultats affichés
+
+    var ristourneBlock = document.querySelector(".ristourne-block");
+    ristourneBlock.classList.remove("visible"); // Masquer le bloc ristourne
+
+    // Réinitialiser les inputs de ristourne
+    var inputRistournes = document.querySelectorAll('input[type="number"]');
+    inputRistournes.forEach(function (input) {
+        input.value = "";
     });
 
-    // Insertion de l'élément de paragraphe sous le tableau une seule fois
-    var table = document.querySelector("table");
-    table.parentNode.insertBefore(p, table.nextSibling);
-
-    // Gestionnaire d'événements pour le bouton "Quitter"
-    var quitBtn = document.querySelector(".quit");
-    quitBtn.addEventListener("click", function () {
-        p.textContent = "";
-        if (ristourneBlock.classList.contains("visible")) {
-            ristourneBlock.classList.remove("visible");
-        }
-        // Réinitialiser le bouton "validate"
-        validateBtn.disabled = false;
-        // Réinitialiser le contenu de p2
-        if (p2) {
-            p2.remove();
-            p2 = null;
-        }
-    });
-
-    // Gestionnaire d'événements pour le bouton "Valider"
-    var validateBtn = document.querySelector(".validate");
-    validateBtn.addEventListener("click", function () {
-        var commande = this.dataset.commande;
-        if (p2) {
-            p2.remove();
-            p2 = null;
-        }
-        p2 = document.createElement("p");
-        p2.textContent = "Total : " + commande;
-        p2.style.color = "white";
-        p2.style.fontWeight = "bold";
-
-        var btnRistourne = document.querySelector(".btn-ristourne");
-        btnRistourne.parentNode.insertBefore(p2, btnRistourne.nextSibling);
-
-        // Désactiver le bouton "validate" après avoir cliqué une fois
-        validateBtn.disabled = true;
+    // Désélectionner toutes les cases à cocher
+    var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+    checkboxes.forEach(function (checkbox) {
+        checkbox.checked = false;
     });
 });
 
-
-        document.addEventListener("DOMContentLoaded", function () {
             var checkAll = document.getElementById("check-all");
-            var checkboxes = document.querySelectorAll("tbody input[type='checkbox']");
-
             checkAll.addEventListener("change", function () {
+                var checkboxes = document.querySelectorAll('input[type="checkbox"]');
                 checkboxes.forEach(function (checkbox) {
                     checkbox.checked = checkAll.checked;
                 });
+            });
+
+            var validateBtn = document.querySelector(".validate");
+            validateBtn.addEventListener("click", function () {
+                var selectedProducts = [];
+                var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+                checkboxes.forEach(function (checkbox) {
+                    var row = checkbox.closest("tr");
+                    var produit = row.cells[0].textContent;
+                    var quantite = row.cells[1].textContent;
+                    var prixHT = row.cells[2].textContent;
+                    var prixTTC = row.cells[3].textContent;
+                    var totalHT = row.cells[4].textContent;
+                    var totalTTC = row.cells[5].textContent;
+                    var ristourne = row.cells[6].querySelector("input").value;
+
+                    var nouveauTotalTTC = totalTTC - (totalTTC * (ristourne / 100));
+
+                    selectedProducts.push({ produit, quantite, prixHT, prixTTC, totalHT, totalTTC, ristourne, nouveauTotalTTC });
+                });
+
+                var resultsContainer = document.getElementById("results-container");
+                resultsContainer.innerHTML = ""; // Clear previous results
+                if (selectedProducts.length > 0) {
+                    selectedProducts.forEach(function (product) {
+                        var p = document.createElement("p");
+                        p.textContent = " Nouveau Total TTC: " + product.nouveauTotalTTC.toFixed(2);
+                        resultsContainer.appendChild(p);
+                    });
+                } else {
+                    var p = document.createElement("p");
+                    p.textContent = "Aucun produit sélectionné ou numéro de commande manquant.";
+                    resultsContainer.appendChild(p);
+                }
             });
         });
     </script>
