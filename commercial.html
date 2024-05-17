@@ -35,50 +35,147 @@
             <div class="container-jauge">
                 <div class="demande-devis">
                     <h2>Demande de devis</h2>
-                    <div class="color-bar" style="background-color: #FF5733;">En attente</div>
-                    <div class="color-bar" style="background-color: orange;">En cours</div>
-                    <div class="color-bar" style="background-color: green;">Traités</div>
+                    <div class="color-bar" style="background-color: #FF5733;">Commande en attente</div>
+                    <div class="color-bar" style="background-color: orange;">Commande en cours</div>
+                    <div class="color-bar" style="background-color: green;">Commande Traités</div>
                 </div>
             </div>
             <div class="container-jauge-historique">
                 <div class="demande-historique">
                     <h2>Historique de commandes</h2>
-                    <div class="color-bar" style="background-color: rgb(26, 125, 217);">Commande #PA123456 / Total : 3456 € / R : 5% </div>
-                    <div class="color-bar" style="background-color: rgb(26, 125, 217);">Commande #PA378654 / Total : 2543 € / R : 0% </div>
-                    <div class="color-bar" style="background-color: rgb(26, 125, 217);">Commande #PR098456 / Total : 9087 € / R : 25% </div>
-                    <div class="color-bar" style="background-color: rgb(26, 125, 217);">Commande #PR789876 / Total : 7604 € / R : 15% </div>
+                    <div class="color-bar" style="background-color: rgb(26, 125, 217);">Commande #PA123456 / Total :
+                        3456 € / R : 5% </div>
+                    <div class="color-bar" style="background-color: rgb(26, 125, 217);">Commande #PA378654 / Total :
+                        2543 € / R : 0% </div>
+                    <div class="color-bar" style="background-color: rgb(26, 125, 217);">Commande #PR098456 / Total :
+                        9087 € / R : 25% </div>
+                    <div class="color-bar" style="background-color: rgb(26, 125, 217);">Commande #PR789876 / Total :
+                        7604 € / R : 15% </div>
                 </div>
             </div>
             <div class="container-jauge-ristourne">
                 <div class="demande-ristourne">
                     <h2>Accord Ristourne</h2>
-                    <div class="color-bar-ristourne" style="background-color: rgb(26, 125, 217);">Commande #PA123456 / Total : 3456 € 
+                    <div class="color-bar-ristourne" style="background-color: rgb(26, 125, 217);">Commande #PA123456 /
+                        Total : 3456 €
                         <div class="btn-yes-no">
-                            <button style="background-color: green;">O</button>
-                            <button style="background-color: red;">N</button>
+                            <button class="btn-yes" style="background-color: green;" data-commande="PA123456">O</button>
+                            <button class="btn-no" style="background-color: red;">N</button>
                         </div>
-                    </div>       
-                    <div class="color-bar-ristourne" style="background-color: rgb(26, 125, 217);">Commande #PA378654 / Total : 2543 € 
+                    </div>
+                    <div class="color-bar-ristourne" style="background-color: rgb(26, 125, 217);">Commande #PA378654 /
+                        Total : 2543 €
                         <div class="btn-yes-no">
-                            <button style="background-color: green;">O</button>
-                            <button style="background-color: red;">N</button>
+                            <button class="btn-yes" style="background-color: green;" data-commande="PA378654">O</button>
+                            <button class="btn-no" style="background-color: red;">N</button>
                         </div>
-                    </div>       
-                    <div class="color-bar-ristourne" style="background-color: rgb(26, 125, 217);">Commande #PR098456 / Total : 9087 € 
+                    </div>
+                    <div class="color-bar-ristourne" style="background-color: rgb(26, 125, 217);">Commande #PR098456 /
+                        Total : 9087 €
                         <div class="btn-yes-no">
-                            <button style="background-color: green;">O</button>
-                            <button style="background-color: red;">N</button>
+                            <button class="btn-yes" style="background-color: green;" data-commande="PR098456">O</button>
+                            <button class="btn-no" style="background-color: red;">N</button>
                         </div>
-                    </div>       
-                    <div class="color-bar-ristourne" style="background-color: rgb(26, 125, 217);">Commande #PR789876 / Total : 7604 € 
+                    </div>
+                    <div class="color-bar-ristourne" style="background-color: rgb(26, 125, 217);">Commande #PR789876 /
+                        Total : 7604 €
                         <div class="btn-yes-no">
-                            <button style="background-color: green;">O</button>
-                            <button style="background-color: red;">N</button>
+                            <button class="btn-yes" style="background-color: green;" data-commande="PR789876">O</button>
+                            <button class="btn-no" style="background-color: red;">N</button>
                         </div>
-                    </div>       
+                    </div>
                 </div>
             </div>
-
+        </div>
+        <div class="ristourne-block">
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Produit</th>
+                        <th>Quantité</th>
+                        <th>Prix HT (€)</th>
+                        <th>Prix TTC (€)</th>
+                        <th>Total (€)</th>
+                        <th>Ristourne (%)</th>
+                        <td>
+                            Tout
+                            <input type="checkbox" id="check-all">
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- 10 lignes -->
+                    <tr>
+                        <td>Ligne 1, Colonne 1</td>
+                        <td>Ligne 1, Colonne 2</td>
+                        <td>Ligne 1, Colonne 3</td>
+                        <td>Ligne 1, Colonne 4</td>
+                        <td>Ligne 1, Colonne 5</td>
+                        <td><input type="number" min="0" max="100" step="1">%</td>
+                        <td><input type="checkbox"></td>
+                    </tr>
+                    <tr>
+                        <td>Ligne 2, Colonne 1</td>
+                        <td>Ligne 2, Colonne 2</td>
+                        <td>Ligne 2, Colonne 3</td>
+                        <td>Ligne 2, Colonne 4</td>
+                        <td>Ligne 2, Colonne 5</td>
+                        <td><input type="number" min="0" max="100" step="1">%</td>
+                        <td><input type="checkbox"></td>
+                    </tr>
+                    <tr>
+                        <!-- Les autres lignes similaires -->
+                        <td>Ligne 3, Colonne 1</td>
+                        <td>Ligne 3, Colonne 2</td>
+                        <td>Ligne 3, Colonne 3</td>
+                        <td>Ligne 3, Colonne 4</td>
+                        <td>Ligne 3, Colonne 5</td>
+                        <td><input type="number" min="0" max="100" step="1">%</td>
+                        <td><input type="checkbox"></td>
+                    </tr>
+                    <tr>
+                        <!-- Les autres lignes similaires -->
+                        <td>Ligne 4, Colonne 2</td>
+                        <td>Ligne 4, Colonne 3</td>
+                        <td>Ligne 4, Colonne 4</td>
+                        <td>Ligne 4, Colonne 5</td>
+                        <td>Ligne 4, Colonne 5</td>
+                        <td><input type="number" min="0" max="100" step="1">%</td>
+                        <td><input type="checkbox"></td>
+                    </tr>
+                    <tr>
+                        <!-- Les autres lignes similaires -->
+                        <td>Ligne 5, Colonne 1</td>
+                        <td>Ligne 5, Colonne 2</td>
+                        <td>Ligne 5, Colonne 3</td>
+                        <td>Ligne 5, Colonne 4</td>
+                        <td>Ligne 5, Colonne 5</td>
+                        <td><input type="number" min="0" max="100" step="1">%</td>
+                        <td><input type="checkbox"></td>
+                    </tr>
+                    <tr>
+                        <!-- Les autres lignes similaires -->
+                        <td>Ligne 6, Colonne 1</td>
+                        <td>Ligne 6, Colonne 2</td>
+                        <td>Ligne 6, Colonne 3</td>
+                        <td>Ligne 6, Colonne 4</td>
+                        <td>Ligne 6, Colonne 5</td>
+                        <td><input type="number" min="0" max="100" step="1">%</td>
+                        <td><input type="checkbox"></td>
+                    </tr>
+                    <tr>
+                        <!-- Les autres lignes similaires -->
+                        <td>Ligne 7, Colonne 1</td>
+                        <td>Ligne 7, Colonne 2</td>
+                        <td>Ligne 7, Colonne 3</td>
+                        <td>Ligne 7, Colonne 4</td>
+                        <td>Ligne 7, Colonne 5</td>
+                        <td><input type="number" min="0" max="100" step="1">%</td>
+                        <td><input type="checkbox"></td>
+                    </tr>
+                    <!-- Lignes 3 à 10 à insérer de manière similaire -->
+                </tbody>
+            </table>
         </div>
 
     </div>
@@ -87,6 +184,49 @@
         <p>Ceci est le pied de page.</p>
     </footer>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Sélection des boutons "Oui"
+            var btnYes = document.querySelectorAll(".btn-yes");
+
+            // Ajout d'un écouteur d'événements à chaque bouton "Oui"
+            btnYes.forEach(function (btn) {
+                btn.addEventListener("click", function () {
+                    // Sélection de la classe "ristourne-block"
+                    var ristourneBlock = document.querySelector(".ristourne-block");
+
+                    // Basculement de la classe "visible"
+                    ristourneBlock.classList.toggle("visible");
+
+                    // Récupération du numéro de commande
+                    var commande = this.dataset.commande;
+
+                    // Création d'un élément de paragraphe pour afficher le numéro de commande sous le tableau
+                    var p = document.createElement("p");
+                    p.textContent = "Numéro de commande : " + commande;
+
+                    var p2 = document.createElement("p2");
+                    p2.textContent = "Total : " + commande;
+
+                    // Insertion de l'élément de paragraphe sous le tableau
+                    var table = document.querySelector("table");
+                    table.parentNode.insertBefore(p, table.nextSibling);
+                    table.parentNode.insertBefore(p2, p.nextSibling);
+                });
+            });
+        });
+
+        document.addEventListener("DOMContentLoaded", function () {
+            var checkAll = document.getElementById("check-all");
+            var checkboxes = document.querySelectorAll("tbody input[type='checkbox']");
+
+            checkAll.addEventListener("change", function () {
+                checkboxes.forEach(function (checkbox) {
+                    checkbox.checked = checkAll.checked;
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>
