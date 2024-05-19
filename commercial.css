@@ -33,6 +33,30 @@ header {
     color: rgb(38, 109, 223);
 }
 
+
+.search-bar input {
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid white;
+}
+
+/* Styles pour le bouton de recherche */
+.search-bar button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-left: 10px;
+}
+
+.search-bar button:hover {
+    background-color: #0056b3;
+}
+
+
 a {
     text-decoration: none;
 }

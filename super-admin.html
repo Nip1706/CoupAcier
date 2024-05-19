@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="super-admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;700&display=swap"
+        rel="stylesheet">
+    <title>Page d'Accueil</title>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html">
+                <h1>COUP'ACIER</h1>
+            </a>
+            <div>
+                <h1>ADMINISTRATEUR</h1>
+            </div>
+        </div>
+    </header>
+    <div class="container-block">
+        <div class="block-text">
+            <h1>Bienvenue sur la page ADMINISTRATEUR, vous pouvez vous connecter et serez redirigé vers votre plateforme
+                :</h1>
+            <div class="button">
+                <button id="createUserButton" class="create">Créer un utilisateur</button>
+                <button id="deleteUserButton" class="delete">Supprimer un utilisateur</button>
+                <button id="modifyUserButton" class="modify">Modifier utilisateur</button>
+            </div>
+        </div>
+        <div id="formContainer" class="form-container">
+            <h2>Ajouter un utilisateur</h2>
+            <form>
+                <div class="form-group">
+                    <label for="nom">Nom</label>
+                    <input type="text" id="nom" name="nom" required>
+                </div>
+                <div class="form-group">
+                    <label for="prenom">Prénom</label>
+                    <input type="text" id="prenom" name="prenom" required>
+                </div>
+                <div class="form-group">
+                    <label for="date-naissance">Date de naissance</label>
+                    <input type="date" id="date-naissance" name="date-naissance" required>
+                </div>
+                <div class="form-group">
+                    <label for="service">Service</label>
+                    <select id="service" name="service" class="custom-select" required>
+                        <option value="">Sélectionnez un service</option>
+                        <option value="service1">Commercial</option>
+                        <option value="service2">Approvisionnement</option>
+                        <option value="service3">Réception Matériaux</option>
+                        <option value="service4">Réception Commandes</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="email">Adresse email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="mot-de-passe">Mot de passe provisoire</label>
+                    <input type="password" id="mot-de-passe" name="mot-de-passe" required>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="S'inscrire">
+                </div>
+                <button id="back">Retour</button>
+            </form>
+        </div>
+        <div id="deleteContainer">
+            <h1>Choisissez le service de l'utilisateur : </h1>
+            <div class="btn-deleteContainer">
+                <button id="commercial">Commercial</button>
+                <button class="appro">Approvisionnement</button>
+                <button class="rCom">Récéption commandes</button>
+                <button class="rMat">Récéption matériaux</button>
+            </div>
+            <div class="btn-back">
+                <button id="back-deleteContainer">Retour</button>
+            </div>
+            <div id="deleteContainerCommercial">
+                <div class="search-bar">
+                    <input type="text" placeholder="Rechercher...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+        </div>
+       
+    </div>
+    <footer>
+        <p>Ceci est le pied de page.</p>
+    </footer>
+
+    <script>
+        document.getElementById('createUserButton').addEventListener('click', function () {
+            document.getElementById('formContainer').style.visibility = 'visible';
+        });
+        document.getElementById('deleteUserButton').addEventListener('click', function () {
+            document.getElementById('deleteContainer').style.visibility = 'visible';
+        });
+        document.getElementById('back').addEventListener('click', function () {
+            document.getElementById('formContainer').style.visibility = 'hidden';
+        });
+        document.getElementById('back-deleteContainer').addEventListener('click', function () {
+            document.getElementById('deleteContainer').style.visibility = 'hidden';
+            document.getElementById('deleteContainerCommercial').style.visibility = 'hidden';
+        });
+        document.getElementById('commercial').addEventListener('click', function () {
+            document.getElementById('deleteContainerCommercial').style.visibility = 'visible';
+        });
+
+    </script>
+</body>
+
+</html>
