@@ -30,7 +30,7 @@ header {
 
 .container h1 {
     font-size: 24px; /* Taille de la police */
-    color: red;
+    color: rgb(38, 109, 223);
 }
 
 a {
@@ -86,7 +86,6 @@ footer {
 .fct-commercial{
     display: flex;
     width: 90%;
-    border: 1px solid white;
 }
 
 .container-jauge {
@@ -116,10 +115,9 @@ footer {
     width: 480px;
     border-radius: 20px;
     text-align: center;
-    height: 250px;
+    height: 300px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre douce */
     border: 5px solid rgb(234, 223, 223);
-
 }
 
 .container-jauge-ristourne {
@@ -130,13 +128,28 @@ footer {
     margin: 20px auto;
     padding: 0 20px;
     background-color: white;
-    width: 480px;
+    width: 500px;
+    height: 300px;
     border-radius: 20px;
     text-align: center;
+    overflow: hidden; /* Ensures the scroll doesn't overflow the container */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre douce */
     border: 5px solid rgb(234, 223, 223);
 }
 
+.demande-historique {
+    overflow-y: auto;
+    height: 100%; /* Make it fill the container height */
+    position: relative; /* Required for the sticky positioning to work */
+}
+
+.demande-historique h2 {
+    position: sticky;
+    top: 0;
+    background-color: white; /* Background to prevent overlap with content */
+    z-index: 1; /* Ensure it stays above other content */
+    padding: 10px 0; /* Optional: to give some spacing */
+}
 
 .demande-devis {
     display: flex;
@@ -149,8 +162,19 @@ footer {
     display: flex;
     flex-direction: column;
     margin-bottom: 20px;
+    overflow-y: auto;
+    height: calc(100% - 40px); /* Adjust the height considering the h2 element height */
+    position: relative; /* Required for the sticky positioning to work */
 }
 
+.demande-ristourne h2 {
+    position: sticky;
+    top: 0;
+    background-color: white; /* Background to prevent overlap with content */
+    z-index: 1; /* Ensure it stays above other content */
+    padding: 10px 0; /* Optional: to give some spacing */
+    margin: 0; /* Optional: to remove default margin */
+}
 
 .color-bar {
     display: flex;
@@ -251,6 +275,10 @@ td {
     background-color: red;
 }
 
+.apply-ristourne {
+    background-color: orange;
+}
+
 .custom-checkbox {
     display: inline-block;
     width: 20px;
@@ -268,4 +296,8 @@ td {
     position: absolute;
     top: 2px;
     left: 4px;
+  }
+
+  button {
+    cursor: pointer;
   }
