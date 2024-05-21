@@ -110,6 +110,7 @@ footer {
 .fct-commercial{
     display: flex;
     width: 90%;
+    gap: 20px;
 }
 
 .container-jauge {

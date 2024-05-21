@@ -203,15 +203,15 @@ button {
     background-image: linear-gradient(to right, #007bff, #0056b3); 
 }
 
-.appro {
+#appro {
     background-image: linear-gradient(to right, #28a745, #218838);
 }
 
-.rCom {
+#rCom {
     background: linear-gradient(to bottom right, #ff7f00, #eebb23);
 }
 
-.rMat {
+#rMat {
     background: linear-gradient(to bottom right, #33056b, #d008f3);
 }
 
@@ -243,3 +243,28 @@ button {
     background-color: #0056b3;
 }
 
+#employeeTable {
+    width: 100%;
+    border-collapse: collapse;
+    visibility: hidden;
+}
+th, td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+th {
+    background-color: #f2f2f2;
+}
+.checkbox {
+    text-align: center;
+}
+
+.filter-container {
+    display: none;
+    margin-top: 10px;
+}
+
+.filterButton{
+    background-color: #28a745;
+}
