@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="appro.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;700&display=swap"
+        rel="stylesheet">
+    <title>Page d'Accueil</title>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html">
+                <h1>COUP'ACIER</h1>
+            </a>
+            <div>
+                <h1>ADMINISTRATEUR</h1>
+            </div>
+        </div>
+    </header>
+    <div class="container-block">
+        <div class="block-text">
+            <h1>Bienvenue sur la page ADMINISTRATEUR, vous pouvez vous connecter et serez redirigé vers votre plateforme
+                :</h1>
+            <div class="button">
+                <a href=""><button>Ajout Fournisseur</button></a>
+                <a href=""><button>Enregistrement</button></a>
+                <a href=""><button>Commander</button></a>
+                <a href=""><button>Etat Commandes</button></a>
+            </div>
+        </div>
+        <!-- Formulaire pour ajouter un fournisseur -->
+        <div id="ajoutFournisseur">
+            <form id="addSupplierForm">
+                <h2>Ajouter un Fournisseur</h2>
+                <input type="text" id="supplierName" placeholder="Nom du fournisseur" required>
+                <button type="submit">Ajouter Fournisseur</button>
+            </form>
+        </div>
+        <!-- Affichage de l'état des stocks par entrepôt -->
+        <div id="stockStatus">
+            <h2>État des Stocks par Entrepôt</h2>
+            <ul id="warehouseList">
+                <!-- Les entrepôts seront ajoutés ici par JavaScript -->
+            </ul>
+        </div>
+        <!-- Formulaire pour passer une commande -->
+        <form id="orderForm">
+            <h2>Passer une Commande</h2>
+            <select id="supplierSelect" required>
+                <option value="" disabled selected>Choisir un fournisseur</option>
+                <!-- Les fournisseurs seront ajoutés ici par JavaScript -->
+            </select>
+            <div id="supplyTypes">
+                <!-- Les types de fourniture seront ajoutés ici par JavaScript -->
+            </div>
+            <button type="submit">Passer Commande</button>
+        </form>
+        <!-- Affichage de l'état des commandes -->
+        <div id="orderStatus">
+            <h2>État des Commandes</h2>
+            <!-- Les commandes seront affichées ici par JavaScript -->
+        </div>
+    </div>
+    <footer>
+        <p>Ceci est le pied de page.</p>
+    </footer>
+
+    <script>
+        // Données simulées pour les fournisseurs, les types de fourniture et les commandes
+        let suppliers = ["Fournisseur 1", "Fournisseur 2", "Fournisseur 3"];
+        let supplyTypes = {
+            "Fournisseur 1": ["Fer Plat", "Tube"],
+            "Fournisseur 2": ["Cornière", "Rond"],
+            "Fournisseur 3": ["Poutre en I", "Tôle"]
+        };
+        let orders = [];
+
+        // Données sur l'état des stocks par entrepôt
+        let stockStatus = [
+            {
+                warehouse: "Entrepôt A",
+                supplies: {
+                    "Fers Plats": 100,
+                    "Cornières a Ailes Égales": 150,
+                    "Cornières a Ailes Inégales": 200,
+                    "Fer en T": 120,
+                    "Poutrelle IPE Normale": 80,
+                    "Poutrelles UPE": 100,
+                    "Poutrelles HEA/HEB": 150,
+                    "Poutrelles UPN/UAC": 120,
+                    "Tubes Ronds": 180,
+                    "Tubes Carrés": 100,
+                    "Tubes Carrés (100cm)": 150,
+                    "Tubes Rectangulaires": 200,
+                    "Barres Rondes (Pleine)": 90,
+                    "Barres Carrées (Pleine)": 110
+                }
+            },
+            {
+                warehouse: "Entrepôt B",
+                supplies: {
+                    "Fers Plats": 120,
+                    "Cornières a Ailes Égales": 180,
+                    "Cornières a Ailes Inégales": 220,
+                    "Fer en T": 100,
+                    "Poutrelle IPE Normale": 90,
+                    "Poutrelles UPE": 110,
+                    "Poutrelles HEA/HEB": 160,
+                    "Poutrelles UPN/UAC": 130,
+                    "Tubes Ronds": 200,
+                    "Tubes Carrés": 120,
+                    "Tubes Carrés (100cm)": 160,
+                    "Tubes Rectangulaires": 180,
+                    "Barres Rondes (Pleine)": 100,
+                    "Barres Carrées (Pleine)": 120
+                }
+            },
+            {
+                warehouse: "Entrepôt C",
+                supplies: {
+                    "Fers Plats": 150,
+                    "Cornières a Ailes Égales": 200,
+                    "Cornières a Ailes Inégales": 250,
+                    "Fer en T": 110,
+                    "Poutrelle IPE Normale": 100,
+                    "Poutrelles UPE": 130,
+                    "Poutrelles HEA/HEB": 180,
+                    "Poutrelles UPN/UAC": 140,
+                    "Tubes Ronds": 220,
+                    "Tubes Carrés": 140,
+                    "Tubes Carrés (100cm)": 180,
+                    "Tubes Rectangulaires": 160,
+                    "Barres Rondes (Pleine)": 120,
+                    "Barres Carrées (Pleine)": 140
+                }
+            }
+        ];
+
+        // Sélection des éléments du DOM
+        const addSupplierForm = document.getElementById("addSupplierForm");
+        const orderForm = document.getElementById("orderForm");
+        const warehouseList = document.getElementById("warehouseList");
+        const supplierSelect = document.getElementById("supplierSelect");
+        const supplyTypesDiv = document.getElementById("supplyTypes");
+        const orderStatus = document.getElementById("orderStatus");
+
+        // Écouteurs d'événements
+        addSupplierForm.addEventListener("submit", addSupplier);
+        orderForm.addEventListener("submit", placeOrder);
+
+        // Fonction pour ajouter un fournisseur
+        function addSupplier(event) {
+            event.preventDefault();
+            const supplierName = document.getElementById("supplierName").value;
+            suppliers.push(supplierName);
+            populateSuppliers();
+            addSupplierForm.reset();
+        }
+
+        // Fonction pour remplir la liste des fournisseurs
+        function populateSuppliers() {
+            supplierSelect.innerHTML = "<option value='' disabled selected>Choisir un fournisseur</option>";
+            suppliers.forEach(supplier => {
+                const option = document.createElement("option");
+                option.textContent = supplier;
+                option.value = supplier;
+                supplierSelect.appendChild(option);
+            });
+        }
+
+        // Fonction pour remplir la liste des types de fourniture en fonction du fournisseur sélectionné
+        supplierSelect.addEventListener("change", populateSupplyTypes);
+        function populateSupplyTypes() {
+            const selectedSupplier = supplierSelect.value;
+            supplyTypesDiv.innerHTML = "";
+            if (selectedSupplier) {
+                supplyTypes[selectedSupplier].forEach(supplyType => {
+                    const checkbox = document.createElement("input");
+                    checkbox.type = "checkbox";
+                    checkbox.name = "supplyType";
+                    checkbox.value = supplyType;
+                    const label = document.createElement("label");
+                    label.textContent = supplyType;
+                    supplyTypesDiv.appendChild(checkbox);
+                    supplyTypesDiv.appendChild(label);
+                    supplyTypesDiv.appendChild(document.createElement("br"));
+                });
+            }
+        }
+
+        // Fonction pour passer une commande
+        function placeOrder(event) {
+            event.preventDefault();
+            const selectedSupplier = supplierSelect.value;
+            const selectedTypes = Array.from(document.querySelectorAll('input[name="supplyType"]:checked')).map(checkbox => checkbox.value);
+            const order = {
+                supplier: selectedSupplier,
+                types: selectedTypes
+            };
+            orders.push(order);
+            displayOrders();
+            orderForm.reset();
+        }
+
+        // Fonction pour afficher l'état des commandes
+        function displayOrders() {
+            orderStatus.innerHTML = "";
+            orders.forEach((order, index) => {
+                const orderDiv = document.createElement("div");
+                orderDiv.textContent = `Commande ${index + 1}: Fournisseur - ${order.supplier}, Types - ${order.types.join(", ")}`;
+                orderStatus.appendChild(orderDiv);
+            });
+        }
+
+        // Fonction pour afficher l'état des stocks par entrepôt
+        function displayStockStatus() {
+            warehouseList.innerHTML = "";
+            stockStatus.forEach(warehouse => {
+                const warehouseDiv = document.createElement("div");
+                warehouseDiv.classList.add("warehouse"); // Ajoute la classe 'warehouse' pour chaque entrepôt
+
+                const warehouseName = document.createElement("h3");
+                warehouseName.textContent = warehouse.warehouse;
+                warehouseDiv.appendChild(warehouseName);
+
+                const supplyList = document.createElement("ul");
+                for (let supply in warehouse.supplies) {
+                    const supplyItem = document.createElement("li");
+                    supplyItem.textContent = `${supply}: ${warehouse.supplies[supply]}`;
+                    supplyList.appendChild(supplyItem);
+                }
+                warehouseDiv.appendChild(supplyList);
+                warehouseList.appendChild(warehouseDiv);
+            });
+        }
+
+
+        // Initialisation de l'application
+        populateSuppliers();
+        displayStockStatus();
+    </script>
+</body>
+
+</html>

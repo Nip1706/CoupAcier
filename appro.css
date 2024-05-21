@@ -1,0 +1,179 @@
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* General Styles */
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f8f9fa;
+    color: #212529;
+    margin: 0;
+    /* Pour supprimer les marges par défaut du corps */
+    overflow-y: auto;
+    /* Activer le défilement vertical lorsque nécessaire */
+}
+
+/* Ajoutez ces styles CSS pour la barre de navigation */
+header {
+    background-color: white;
+    /* Couleur de fond */
+    color: orange;
+    /* Couleur du texte */
+    padding: 20px 0;
+    /* Espacement intérieur */
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    /* Ajoutez un padding sur les côtés */
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+input[type="text"],
+select {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 8px;
+}
+
+button {
+    padding: 10px 20px;
+    background-image: linear-gradient(to right, #28a745, #218838);
+    border-radius: 10px;
+    color: #fff;
+    border: 2px solid white;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#stockStatus,
+#orderStatus {
+    margin-top: 40px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+
+.container h1 {
+    font-size: 24px;
+    /* Taille de la police */
+    color: red;
+}
+
+
+
+
+.container-block {
+    background-image: linear-gradient(to right, #ab1313, #d45050);
+    /* Dégradé de rouge pour le bouton Config */
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    min-height: 1200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+}
+
+.block-text {
+    background-image: url(Bandeau\ Fil\ rouge.jpg);
+    padding: 20px;
+    width: 100%;
+    margin-bottom: 50px;
+    color: white;
+    height: 290px;
+    background-size: cover;
+    border-bottom-left-radius: 35%;
+    border-bottom-right-radius: 35%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Ajoutez ces styles pour moderniser et rendre le formulaire de connexion plus responsive */
+
+/* Modifier le style du formulaire */
+
+/* Ajoutez ces styles pour styliser la section "block co-cre" */
+
+
+/* Styling pour le formulaire à l'intérieur de la section */
+
+footer {
+    display: flex;
+    bottom: 0;
+    /* Fixer le footer au bas de la fenêtre */
+    width: 100%;
+    /* Pour étendre le footer sur toute la largeur */
+    background-color: #343a40;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
+
+
+
+.buttons .button:hover {
+    background-color: #0056b3;
+}
+
+#ajoutFournisseur{
+    border: 2px solid white;
+    padding: 15px;
+    border-radius: 15px;
+    background-color: #007bff;
+}
+
+form, .warehouse-container, .order-status-container {
+    margin-bottom: 20px;
+}
+.warehouse-container {
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+.order-status-container {
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+/* Styles pour les entrepôts */
+#warehouseList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Espace entre les entrepôts */
+}
+
+.warehouse {
+    flex: 1 1 30%; /* Répartit l'espace disponible entre les entrepôts */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px; /* Espacement entre les entrepôts */
+}
+
