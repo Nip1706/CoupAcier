@@ -1,0 +1,101 @@
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* General Styles */
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f8f9fa;
+    color: #212529;
+    margin: 0;
+    overflow-y: auto;
+}
+
+header {
+    background-color: white;
+    color: orange;
+    padding: 20px 0;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+footer {
+    display: flex;
+    bottom: 0;
+    width: 100%;
+    background-color: #343a40;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
+
+/* Styles pour l'état des stocks */
+#stockStatus {
+    margin-top: 40px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+.container h1 {
+    font-size: 24px;
+    color: red;
+}
+
+.container-block {
+    background-image: linear-gradient(to right, #ab1313, #d45050);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    min-height: 1900px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+}
+
+.block-text {
+    background-image: url(Bandeau\ Fil\ rouge.jpg);
+    padding: 20px;
+    width: 100%;
+    margin-bottom: 50px;
+    color: white;
+    height: 290px;
+    background-size: cover;
+    border-bottom-left-radius: 35%;
+    border-bottom-right-radius: 35%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+
+/* Ajoutez ces styles pour moderniser et rendre le formulaire de connexion plus responsive */
+
+footer {
+    display: flex;
+    bottom: 0;
+    width: 100%;
+    background-color: #343a40;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}

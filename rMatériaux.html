@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="rMatériaux.css">
+    <title>Page d'Accueil</title>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html">
+                <h1>COUP'ACIER</h1>
+            </a>
+        </div>
+    </header>
+    <div class="container-block">
+        <div class="block-text">
+        </div>
+        <div id="stockStatus">
+            <h2>État des Stocks par Entrepôt</h2>
+            <ul id="warehouseList">
+                <!-- Les entrepôts seront ajoutés ici par JavaScript -->
+            </ul>
+        </div>
+    </div>
+    <footer>
+        <p>Ceci est le pied de page.</p>
+    </footer>
+
+    <script>
+        // JavaScript pour afficher les stocks sera ajouté ici
+        // Données sur l'état des stocks par entrepôt
+let stockStatus = [
+    {
+        warehouse: "Entrepôt A",
+        supplies: {
+            "Fer Plats": 100,
+            "Cornières a Ailes Égales": 150,
+            "Cornières a Ailes Inégales": 200,
+            "Fer en T": 120,
+            "Poutrelle IPE Normale": 80,
+            "Poutrelles UPE": 100,
+            "Poutrelles HEA/HEB": 150,
+            "Poutrelles UPN/UAC": 120,
+            "Tubes Ronds": 180,
+            "Tubes Carrés": 100,
+            "Tubes Carrés (100cm)": 150,
+            "Tubes Rectangulaires": 200,
+            "Barres Rondes (Pleine)": 90,
+            "Barres Carrées (Pleine)": 110
+        }
+    },
+    {
+        warehouse: "Entrepôt B",
+        supplies: {
+            "Fer Plats": 120,
+            "Cornières a Ailes Égales": 180,
+            "Cornières a Ailes Inégales": 220,
+            "Fer en T": 100,
+            "Poutrelle IPE Normale": 90,
+            "Poutrelles UPE": 110,
+            "Poutrelles HEA/HEB": 160,
+            "Poutrelles UPN/UAC": 130,
+            "Tubes Ronds": 200,
+            "Tubes Carrés": 120,
+            "Tubes Carrés (100cm)": 160,
+            "Tubes Rectangulaires": 180,
+            "Barres Rondes (Pleine)": 100,
+            "Barres Carrées (Pleine)": 120
+        }
+    },
+    {
+        warehouse: "Entrepôt C",
+        supplies: {
+            "Fer Plats": 150,
+            "Cornières a Ailes Égales": 200,
+            "Cornières a Ailes Inégales": 250,
+            "Fer en T": 110,
+            "Poutrelle IPE Normale": 100,
+            "Poutrelles UPE": 130,
+            "Poutrelles HEA/HEB": 180,
+            "Poutrelles UPN/UAC": 140,
+            "Tubes Ronds": 220,
+            "Tubes Carrés": 140,
+            "Tubes Carrés (100cm)": 180,
+            "Tubes Rectangulaires": 160,
+            "Barres Rondes (Pleine)": 120,
+            "Barres Carrées (Pleine)": 140
+        }
+    }
+];
+
+// Sélection des éléments du DOM
+const warehouseList = document.getElementById("warehouseList");
+
+// Fonction pour afficher l'état des stocks par entrepôt
+function displayStockStatus() {
+    warehouseList.innerHTML = "";
+    stockStatus.forEach(warehouse => {
+        const warehouseDiv = document.createElement("div");
+        warehouseDiv.classList.add("warehouse");
+
+        const warehouseName = document.createElement("h3");
+        warehouseName.textContent = warehouse.warehouse;
+        warehouseDiv.appendChild(warehouseName);
+
+        const supplyList = document.createElement("ul");
+        for (let supply in warehouse.supplies) {
+            const supplyItem = document.createElement("li");
+            supplyItem.textContent = `${supply}: ${warehouse.supplies[supply]}`;
+            supplyList.appendChild(supplyItem);
+        }
+        warehouseDiv.appendChild(supplyList);
+        warehouseList.appendChild(warehouseDiv);
+    });
+}
+
+// Initialisation de l'affichage des stocks
+displayStockStatus();
+
+    </script>
+</body>
+
+</html>

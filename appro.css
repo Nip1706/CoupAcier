@@ -47,12 +47,51 @@ select {
 
 button {
     padding: 10px 20px;
-    background-image: linear-gradient(to right, #28a745, #218838);
     border-radius: 10px;
     color: #fff;
     border: 2px solid white;
     cursor: pointer;
 }
+
+.ajout{
+    background-image: linear-gradient(to right, #28a745, #218838) !important;
+}
+
+.save{
+    background-image: linear-gradient(to right, #28a745, #218838) !important;
+}
+
+.order{
+    background-image: linear-gradient(to right, #28a745, #218838) !important;
+}
+
+.state{
+    background-image: linear-gradient(to right, #28a745, #218838) !important;
+}
+
+.orderPassed{
+    background-image: linear-gradient(to right, #28a745, #218838) !important;
+}
+
+#retour {
+    /* Autres styles */
+    margin-top: 20px;
+    background-color: #dc3545 !important;
+}
+
+
+
+.valider-btn {
+    /* Autres styles */
+    background-image: linear-gradient(to right, #28a745, #218838) !important;
+}
+
+.annuler-btn {
+    /* Autres styles */
+    background-color: #dc3545 !important;
+}
+
+
 
 button:hover {
     background-color: #0056b3;
@@ -84,14 +123,12 @@ h2 {
 }
 
 
-
-
 .container-block {
     background-image: linear-gradient(to right, #ab1313, #d45050);
     /* Dégradé de rouge pour le bouton Config */
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
-    min-height: 1200px;
+    min-height: 1900px;
     display: flex;
     flex-direction: column;
     justify-content: start;
@@ -146,7 +183,61 @@ footer {
     padding: 15px;
     border-radius: 15px;
     background-color: #007bff;
+    visibility: hidden;
 }
+
+#orderForm {
+    position: absolute;
+    top: 950px;
+    visibility: hidden;
+}
+
+#stockStatus {
+    position: absolute;
+    top: 350px;
+    visibility: hidden;
+}
+
+#orderStatus {
+    position: absolute;
+    top: 350px;
+    visibility: hidden;
+}
+
+/* Style pour le tableau */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* Style pour les cellules du tableau */
+th, td {
+    border: 1px solid #dddddd;
+    padding: 8px;
+    text-align: left;
+}
+
+/* Style pour l'en-tête du tableau */
+th {
+    background-color: #f2f2f2;
+}
+
+/* Style pour les lignes impaires */
+tbody tr:nth-child(odd) {
+    background-color: #f9f9f9;
+}
+
+/* Style pour les lignes au survol */
+tbody tr:hover {
+    background-color: #f5f5f5;
+}
+
+
+.updated-number {
+    color: orange;
+}
+
+
 
 form, .warehouse-container, .order-status-container {
     margin-bottom: 20px;
@@ -168,7 +259,6 @@ form, .warehouse-container, .order-status-container {
 }
 
 .warehouse {
-    flex: 1 1 30%; /* Répartit l'espace disponible entre les entrepôts */
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;

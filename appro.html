@@ -30,10 +30,10 @@
             <h1>Bienvenue sur la page ADMINISTRATEUR, vous pouvez vous connecter et serez redirigé vers votre plateforme
                 :</h1>
             <div class="button">
-                <a href=""><button>Ajout Fournisseur</button></a>
-                <a href=""><button>Enregistrement</button></a>
-                <a href=""><button>Commander</button></a>
-                <a href=""><button>Etat Commandes</button></a>
+                <a id="btnAjout"><button class="ajout">Ajout Fournisseur</button></a>
+                <a id="btnAjout"><button class="save">Enregistrement</button></a>
+                <a id="btnOrder"><button class="order">Commander</button></a>
+                <a id="btnStateOrder"><button class="state">Etat Commandes</button></a>
             </div>
         </div>
         <!-- Formulaire pour ajouter un fournisseur -->
@@ -58,10 +58,14 @@
                 <option value="" disabled selected>Choisir un fournisseur</option>
                 <!-- Les fournisseurs seront ajoutés ici par JavaScript -->
             </select>
+            <select id="warehouseSelect" required>
+                <option value="" disabled selected>Choisir un entrepôt</option>
+                <!-- Les entrepôts seront ajoutés ici par JavaScript -->
+            </select>
             <div id="supplyTypes">
                 <!-- Les types de fourniture seront ajoutés ici par JavaScript -->
             </div>
-            <button type="submit">Passer Commande</button>
+            <button class="orderPassed" type="submit">Passer Commande</button>
         </form>
         <!-- Affichage de l'état des commandes -->
         <div id="orderStatus">
@@ -74,12 +78,68 @@
     </footer>
 
     <script>
+        document.getElementById('btnAjout').addEventListener('click', function () {
+            document.getElementById('ajoutFournisseur').style.visibility = 'visible';
+        });
+        document.getElementById('btnOrder').addEventListener('click', function () {
+            document.getElementById('stockStatus').style.visibility = 'visible';
+        });
+        document.getElementById('btnOrder').addEventListener('click', function () {
+            document.getElementById('orderForm').style.visibility = 'visible';
+        });
+        document.getElementById('btnStateOrder').addEventListener('click', function () {
+            document.getElementById('orderStatus').style.visibility = 'visible';
+        });
+        document.getElementById('btnStateOrder').addEventListener('click', function () {
+            document.getElementById('stockStatus').style.visibility = 'hidden';
+            document.getElementById('orderForm').style.visibility = 'hidden';
+        });
+
         // Données simulées pour les fournisseurs, les types de fourniture et les commandes
         let suppliers = ["Fournisseur 1", "Fournisseur 2", "Fournisseur 3"];
         let supplyTypes = {
-            "Fournisseur 1": ["Fer Plat", "Tube"],
-            "Fournisseur 2": ["Cornière", "Rond"],
-            "Fournisseur 3": ["Poutre en I", "Tôle"]
+            "Fournisseur 1": ["Fer Plats",
+                "Cornières a Ailes Égales",
+                "Cornières a Ailes Inégales",
+                "Fer en T",
+                "Poutrelle IPE Normale",
+                "Poutrelles UPE",
+                "Poutrelles HEA/HEB",
+                "Poutrelles UPN/UAC",
+                "Tubes Ronds",
+                "Tubes Carrés",
+                "Tubes Carrés (100cm)",
+                "Tubes Rectangulaires",
+                "Barres Rondes (Pleine)",
+                "Barres Carrées (Pleine)"],
+            "Fournisseur 2": ["Fer Plats",
+                "Cornières a Ailes Égales",
+                "Cornières a Ailes Inégales",
+                "Fer en T",
+                "Poutrelle IPE Normale",
+                "Poutrelles UPE",
+                "Poutrelles HEA/HEB",
+                "Poutrelles UPN/UAC",
+                "Tubes Ronds",
+                "Tubes Carrés",
+                "Tubes Carrés (100cm)",
+                "Tubes Rectangulaires",
+                "Barres Rondes (Pleine)",
+                "Barres Carrées (Pleine)"],
+            "Fournisseur 3": ["Fer Plats",
+                "Cornières a Ailes Égales",
+                "Cornières a Ailes Inégales",
+                "Fer en T",
+                "Poutrelle IPE Normale",
+                "Poutrelles UPE",
+                "Poutrelles HEA/HEB",
+                "Poutrelles UPN/UAC",
+                "Tubes Ronds",
+                "Tubes Carrés",
+                "Tubes Carrés (100cm)",
+                "Tubes Rectangulaires",
+                "Barres Rondes (Pleine)",
+                "Barres Carrées (Pleine)"],
         };
         let orders = [];
 
@@ -88,7 +148,7 @@
             {
                 warehouse: "Entrepôt A",
                 supplies: {
-                    "Fers Plats": 100,
+                    "Fer Plats": 100,
                     "Cornières a Ailes Égales": 150,
                     "Cornières a Ailes Inégales": 200,
                     "Fer en T": 120,
@@ -107,7 +167,7 @@
             {
                 warehouse: "Entrepôt B",
                 supplies: {
-                    "Fers Plats": 120,
+                    "Fer Plats": 120,
                     "Cornières a Ailes Égales": 180,
                     "Cornières a Ailes Inégales": 220,
                     "Fer en T": 100,
@@ -126,7 +186,7 @@
             {
                 warehouse: "Entrepôt C",
                 supplies: {
-                    "Fers Plats": 150,
+                    "Fer Plats": 150,
                     "Cornières a Ailes Égales": 200,
                     "Cornières a Ailes Inégales": 250,
                     "Fer en T": 110,
@@ -149,6 +209,7 @@
         const orderForm = document.getElementById("orderForm");
         const warehouseList = document.getElementById("warehouseList");
         const supplierSelect = document.getElementById("supplierSelect");
+        const warehouseSelect = document.getElementById("warehouseSelect");
         const supplyTypesDiv = document.getElementById("supplyTypes");
         const orderStatus = document.getElementById("orderStatus");
 
@@ -174,6 +235,18 @@
                 option.value = supplier;
                 supplierSelect.appendChild(option);
             });
+            populateWarehouses();
+        }
+
+        // Fonction pour remplir la liste des entrepôts
+        function populateWarehouses() {
+            warehouseSelect.innerHTML = "<option value='' disabled selected>Choisir un entrepôt</option>";
+            stockStatus.forEach(warehouse => {
+                const option = document.createElement("option");
+                option.textContent = warehouse.warehouse;
+                option.value = warehouse.warehouse;
+                warehouseSelect.appendChild(option);
+            });
         }
 
         // Fonction pour remplir la liste des types de fourniture en fonction du fournisseur sélectionné
@@ -187,66 +260,191 @@
                     checkbox.type = "checkbox";
                     checkbox.name = "supplyType";
                     checkbox.value = supplyType;
+
+                    const quantityInput = document.createElement("input");
+                    quantityInput.type = "number";
+                    quantityInput.name = "quantity";
+                    quantityInput.min = "1";
+                    quantityInput.placeholder = "Quantité";
+
                     const label = document.createElement("label");
                     label.textContent = supplyType;
+
                     supplyTypesDiv.appendChild(checkbox);
                     supplyTypesDiv.appendChild(label);
+                    supplyTypesDiv.appendChild(quantityInput);
                     supplyTypesDiv.appendChild(document.createElement("br"));
                 });
             }
         }
 
-        // Fonction pour passer une commande
         function placeOrder(event) {
             event.preventDefault();
             const selectedSupplier = supplierSelect.value;
-            const selectedTypes = Array.from(document.querySelectorAll('input[name="supplyType"]:checked')).map(checkbox => checkbox.value);
+            const selectedWarehouse = warehouseSelect.value;
+            const selectedTypes = Array.from(document.querySelectorAll('input[name="supplyType"]:checked'));
             const order = {
                 supplier: selectedSupplier,
-                types: selectedTypes
+                warehouse: selectedWarehouse,
+                types: []
             };
+
+            // Mise à jour des stocks et enregistrement de la commande
+            selectedTypes.forEach(checkbox => {
+                const type = checkbox.value;
+                const quantityInput = checkbox.nextElementSibling.nextElementSibling;
+                const quantity = parseInt(quantityInput.value, 10);
+
+                if (quantity && quantity > 0) {
+                    order.types.push({ type, quantity });
+
+                    // Recherche du type de fourniture dans l'entrepôt
+                    const warehouse = stockStatus.find(wh => wh.warehouse === selectedWarehouse);
+                    if (warehouse && warehouse.supplies[type] !== undefined) {
+                        // Le type de fourniture existe déjà, donc nous ajoutons simplement la quantité
+                        warehouse.supplies[type] += quantity;
+                    } else {
+                        // Le type de fourniture n'existe pas encore, nous créons une nouvelle entrée
+                        if (warehouse) {
+                            warehouse.supplies[type] = quantity;
+                        }
+                    }
+                }
+            });
+
             orders.push(order);
             displayOrders();
+            displayStockStatus();
+            updateStockStatus();
             orderForm.reset();
         }
 
-        // Fonction pour afficher l'état des commandes
-        function displayOrders() {
-            orderStatus.innerHTML = "";
-            orders.forEach((order, index) => {
-                const orderDiv = document.createElement("div");
-                orderDiv.textContent = `Commande ${index + 1}: Fournisseur - ${order.supplier}, Types - ${order.types.join(", ")}`;
-                orderStatus.appendChild(orderDiv);
-            });
-        }
 
-        // Fonction pour afficher l'état des stocks par entrepôt
-        function displayStockStatus() {
-            warehouseList.innerHTML = "";
-            stockStatus.forEach(warehouse => {
-                const warehouseDiv = document.createElement("div");
-                warehouseDiv.classList.add("warehouse"); // Ajoute la classe 'warehouse' pour chaque entrepôt
+// Fonction pour afficher l'état des commandes
+function displayOrders() {
+    orderStatus.innerHTML = `
+        <table>
+            <thead>
+                <tr>
+                    <th>Commande</th>
+                    <th>Fournisseur</th>
+                    <th>Entrepôt</th>
+                    <th>Matériaux</th>
+                    <th>Quantité</th>
+                    <th>Statut</th>
+                    <th>Mise à jour statut</th>
+                </tr>
+            </thead>
+            <tbody>
+                ${orders.map((order, index) => `
+                    <tr>
+                        <td>${index + 1}</td>
+                        <td>${order.supplier}</td>
+                        <td>${order.warehouse}</td>
+                        <td>${order.types.map(item => `${item.type}`).join(", ")}</td>
+                        <td>${order.types.map(item => `${item.quantity}`).join(", ")}</td>
+                        <td id="status${index}" style="color: orange;">En cours</td>
+                        <td>
+                            <button class="valider-btn" onclick="validerCommande(${index})">Arrivée</button>
+                            <button class="annuler-btn" onclick="annulerCommande(${index})">Retardée</button>
+                        </td>
+                    </tr>
+                `).join("")}
+            </tbody>
+        </table>
+        <button id="retour">Retour</button>
+    `;
+    // Ajout de l'écouteur d'événements pour le bouton "Retour"
+    document.getElementById('retour').addEventListener('click', function () {
+        document.getElementById('orderStatus').style.visibility = 'hidden';
+    });
+}
 
-                const warehouseName = document.createElement("h3");
-                warehouseName.textContent = warehouse.warehouse;
-                warehouseDiv.appendChild(warehouseName);
+// Fonction pour valider une commande
+function validerCommande(index) {
+    // Modifier le statut de la commande à "Arrivé"
+    const statusCell = document.getElementById(`status${index}`);
+    statusCell.textContent = "Arrivée !";
+    statusCell.style.color = "green";
+}
 
-                const supplyList = document.createElement("ul");
-                for (let supply in warehouse.supplies) {
-                    const supplyItem = document.createElement("li");
-                    supplyItem.textContent = `${supply}: ${warehouse.supplies[supply]}`;
-                    supplyList.appendChild(supplyItem);
+
+
+
+      // Fonction pour mettre à jour l'état des stocks dans stockStatus
+function updateStockStatus() {
+    orders.forEach(order => {
+        const warehouse = stockStatus.find(wh => wh.warehouse === order.warehouse);
+        if (warehouse) {
+            console.log("Warehouse:", warehouse.warehouse);
+            // Initialiser updatedSupplies à un objet vide si ce n'est pas déjà fait
+            if (!warehouse.updatedSupplies) {
+                warehouse.updatedSupplies = {};
+            }
+            order.types.forEach(item => {
+                if (warehouse.supplies[item.type] !== undefined) {
+                    // Remplace la quantité existante par la nouvelle quantité de la commande
+                    warehouse.supplies[item.type] = item.quantity;
+                    console.log("Updated supplies for:", item.type); // Ajout d'un log pour vérifier si les fournitures ont été mises à jour
+                    // Marquer cette fourniture comme mise à jour
+                    warehouse.updatedSupplies[item.type] = true;
                 }
-                warehouseDiv.appendChild(supplyList);
-                warehouseList.appendChild(warehouseDiv);
             });
+            console.log("Updated Supplies:", warehouse.updatedSupplies); // Ajout d'un log pour vérifier les fournitures mises à jour
         }
+    });
+}
+
+
+
+
+               // Fonction pour afficher l'état des stocks par entrepôt
+function displayStockStatus() {
+    warehouseList.innerHTML = "";
+    stockStatus.forEach(warehouse => {
+        console.log("Warehouse:", warehouse.warehouse);
+        console.log("Updated Supplies:", warehouse.updatedSupplies); // Ajout d'un log pour vérifier si updatedSupplies est défini
+        const warehouseDiv = document.createElement("div");
+        warehouseDiv.classList.add("warehouse");
+
+        const warehouseName = document.createElement("h3");
+        warehouseName.textContent = warehouse.warehouse;
+        warehouseDiv.appendChild(warehouseName);
+
+        const supplyList = document.createElement("ul");
+        for (let supply in warehouse.supplies) {
+            const supplyItem = document.createElement("li");
+
+            const quantitySpan = document.createElement("span");
+            quantitySpan.textContent = `${warehouse.supplies[supply]}`;
+
+            // Vérifiez si la quantité a été mise à jour
+            if (warehouse.updatedSupplies && warehouse.updatedSupplies[supply]) {
+                // Si la quantité a été mise à jour, ajoutez la classe "updated-number"
+                console.log("Quantity updated for:", supply); // Ajout d'un log pour vérifier si la quantité a été mise à jour pour cet élément
+                quantitySpan.style.color = "red";
+            }
+
+            supplyItem.textContent = `${supply}: `;
+            supplyItem.appendChild(quantitySpan);
+            supplyList.appendChild(supplyItem);
+        }
+        warehouseDiv.appendChild(supplyList);
+        warehouseList.appendChild(warehouseDiv);
+    });
+}
+
 
 
         // Initialisation de l'application
         populateSuppliers();
+        populateWarehouses();
         displayStockStatus();
     </script>
+
+
+
+
 </body>
 
 </html>
