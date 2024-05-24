@@ -14,112 +14,222 @@
             <a href="index.html">
                 <h1>COUP'ACIER</h1>
             </a>
+            <div>
+                <a href="admin.html">
+                    <h1>ADMINISTRATEURS</h1>
+                </a>
+            </div>
         </div>
     </header>
     <div class="container-block">
         <div class="block-text">
+            <div class="button">
+                <a id="btnCommande"><button class="ajout">Commandes Fournisseur</button></a>
+                <a id="btnCheck"><button class="save">Vérification commandes</button></a>
+                <a id="btnStateOrder"><button class="order">Etat des stocks</button></a>
+            </div>
         </div>
-        <div id="stockStatus">
+        <div id="stockStatusContainer">
             <h2>État des Stocks par Entrepôt</h2>
-            <ul id="warehouseList">
-                <!-- Les entrepôts seront ajoutés ici par JavaScript -->
-            </ul>
+            <div id="stockStatus">
+                <!-- Les détails des stocks seront affichés ici par JavaScript -->
+                <!-- Vous pouvez inclure les données de stockStatus ici -->
+            </div>
+            <button id="retour">Retour</button>
+
+
         </div>
+        <div id="orderCheck">
+            <h2>Vérification des Commandes</h2>
+            <table id="ordersTable">
+                <thead>
+                    <tr>
+                        <th>Commande</th>
+                        <th>Fournisseur</th>
+                        <th>Entrepôt</th>
+                        <th>Matériaux</th>
+                        <th>Quantité</th>
+                        <th>Statut</th>
+                        <th>Mise à jour statut</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>F2EAFP101</td>
+                        <td>Fournisseur 2</td>
+                        <td>Entrepôt A</td>
+                        <td>Fer plats</td>
+                        <td>1</td>
+                        <td id="status${index}" style="color: orange;">En cours</td>
+                        <td>
+                            <button class="valider-btn" onclick="validerCommande(${index})">Arrivée</button>
+                            <button class="annuler-btn" onclick="annulerCommande(${index})">Retardée</button>
+                        </td>
+                    </tr>
+                    <!-- Les lignes de commandes seront ajoutées ici par JavaScript -->
+                </tbody>
+            </table>
+            <button id="retour-mat">Retour</button>
+        </div>
+        <div id="order">
+            <h2>Vérification des Commandes</h2>
+            <table id="ordersTable">
+                <thead>
+                    <tr>
+                        <th>Commande</th>
+                        <th>Fournisseur</th>
+                        <th>Entrepôt</th>
+                        <th>Matériaux</th>
+                        <th>Quantité</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>F2EAFP101</td>
+                        <td>Fournisseur 2</td>
+                        <td>Entrepôt A</td>
+                        <td>Fer plats</td>
+                        <td>1</td>
+                    </tr>
+                    <!-- Les lignes de commandes seront ajoutées ici par JavaScript -->
+                </tbody>
+            </table>
+            <button id="retour-com">Retour</button>
+        </div>
+        
     </div>
     <footer>
         <p>Ceci est le pied de page.</p>
     </footer>
 
     <script>
-        // JavaScript pour afficher les stocks sera ajouté ici
-        // Données sur l'état des stocks par entrepôt
-let stockStatus = [
-    {
-        warehouse: "Entrepôt A",
-        supplies: {
-            "Fer Plats": 100,
-            "Cornières a Ailes Égales": 150,
-            "Cornières a Ailes Inégales": 200,
-            "Fer en T": 120,
-            "Poutrelle IPE Normale": 80,
-            "Poutrelles UPE": 100,
-            "Poutrelles HEA/HEB": 150,
-            "Poutrelles UPN/UAC": 120,
-            "Tubes Ronds": 180,
-            "Tubes Carrés": 100,
-            "Tubes Carrés (100cm)": 150,
-            "Tubes Rectangulaires": 200,
-            "Barres Rondes (Pleine)": 90,
-            "Barres Carrées (Pleine)": 110
+        document.getElementById('btnStateOrder').addEventListener('click', function () {
+            document.getElementById('stockStatusContainer').style.visibility = 'visible';
+        });
+        document.getElementById('btnCheck').addEventListener('click', function () {
+            document.getElementById('orderCheck').style.visibility = 'visible';
+        });
+        document.getElementById('btnCommande').addEventListener('click', function () {
+            document.getElementById('order').style.visibility = 'visible';
+        });
+
+        document.getElementById('retour').addEventListener('click', function () {
+            document.getElementById('stockStatusContainer').style.visibility = 'hidden';
+        });
+        document.getElementById('retour-mat').addEventListener('click', function () {
+            document.getElementById('orderCheck').style.visibility = 'hidden';
+        });
+        document.getElementById('retour-com').addEventListener('click', function () {
+            document.getElementById('order').style.visibility = 'hidden';
+        });
+
+
+        // Fonction pour afficher l'état des stocks par entrepôt
+        function displayStockStatus(stockStatus) {
+            const stockStatusDiv = document.getElementById("stockStatus");
+            stockStatusDiv.innerHTML = "";
+            stockStatus.forEach(warehouse => {
+                const warehouseDiv = document.createElement("div");
+                warehouseDiv.classList.add("warehouse");
+
+                const warehouseName = document.createElement("h3");
+                warehouseName.textContent = warehouse.warehouse;
+                warehouseDiv.appendChild(warehouseName);
+
+                const supplyList = document.createElement("ul");
+                for (let supply in warehouse.supplies) {
+                    const supplyItem = document.createElement("li");
+                    supplyItem.textContent = `${supply}: ${warehouse.supplies[supply]}`;
+                    supplyList.appendChild(supplyItem);
+                }
+                warehouseDiv.appendChild(supplyList);
+                stockStatusDiv.appendChild(warehouseDiv);
+            });
         }
-    },
-    {
-        warehouse: "Entrepôt B",
-        supplies: {
-            "Fer Plats": 120,
-            "Cornières a Ailes Égales": 180,
-            "Cornières a Ailes Inégales": 220,
-            "Fer en T": 100,
-            "Poutrelle IPE Normale": 90,
-            "Poutrelles UPE": 110,
-            "Poutrelles HEA/HEB": 160,
-            "Poutrelles UPN/UAC": 130,
-            "Tubes Ronds": 200,
-            "Tubes Carrés": 120,
-            "Tubes Carrés (100cm)": 160,
-            "Tubes Rectangulaires": 180,
-            "Barres Rondes (Pleine)": 100,
-            "Barres Carrées (Pleine)": 120
+
+        // Données des stocks
+        let stockStatus = [
+            {
+                warehouse: "Entrepôt A",
+                supplies: {
+                    "Fer Plats": 100,
+                    "Cornières a Ailes Égales": 150,
+                    "Cornières a Ailes Inégales": 200,
+                    "Fer en T": 120,
+                    "Poutrelle IPE Normale": 80,
+                    "Poutrelles UPE": 100,
+                    "Poutrelles HEA/HEB": 150,
+                    "Poutrelles UPN/UAC": 120,
+                    "Tubes Ronds": 180,
+                    "Tubes Carrés": 100,
+                    "Tubes Carrés (100cm)": 150,
+                    "Tubes Rectangulaires": 200,
+                    "Barres Rondes (Pleine)": 90,
+                    "Barres Carrées (Pleine)": 110
+                }
+            },
+            {
+                warehouse: "Entrepôt B",
+                supplies: {
+                    "Fer Plats": 120,
+                    "Cornières a Ailes Égales": 180,
+                    "Cornières a Ailes Inégales": 220,
+                    "Fer en T": 100,
+                    "Poutrelle IPE Normale": 90,
+                    "Poutrelles UPE": 110,
+                    "Poutrelles HEA/HEB": 160,
+                    "Poutrelles UPN/UAC": 130,
+                    "Tubes Ronds": 200,
+                    "Tubes Carrés": 120,
+                    "Tubes Carrés (100cm)": 160,
+                    "Tubes Rectangulaires": 180,
+                    "Barres Rondes (Pleine)": 100,
+                    "Barres Carrées (Pleine)": 120
+                }
+            },
+            {
+                warehouse: "Entrepôt C",
+                supplies: {
+                    "Fer Plats": 150,
+                    "Cornières a Ailes Égales": 200,
+                    "Cornières a Ailes Inégales": 250,
+                    "Fer en T": 110,
+                    "Poutrelle IPE Normale": 100,
+                    "Poutrelles UPE": 130,
+                    "Poutrelles HEA/HEB": 180,
+                    "Poutrelles UPN/UAC": 140,
+                    "Tubes Ronds": 220,
+                    "Tubes Carrés": 140,
+                    "Tubes Carrés (100cm)": 180,
+                    "Tubes Rectangulaires": 160,
+                    "Barres Rondes (Pleine)": 120,
+                    "Barres Carrées (Pleine)": 140
+                }
+            }
+        ];
+
+        // Récupérer les données des stocks depuis localStorage
+        const savedStockStatus = JSON.parse(localStorage.getItem('stockStatus'));
+        if (savedStockStatus) {
+            stockStatus = savedStockStatus;
+        } else {
+            // Enregistrer les données par défaut dans le stockage local
+            localStorage.setItem('stockStatus', JSON.stringify(stockStatus));
         }
-    },
-    {
-        warehouse: "Entrepôt C",
-        supplies: {
-            "Fer Plats": 150,
-            "Cornières a Ailes Égales": 200,
-            "Cornières a Ailes Inégales": 250,
-            "Fer en T": 110,
-            "Poutrelle IPE Normale": 100,
-            "Poutrelles UPE": 130,
-            "Poutrelles HEA/HEB": 180,
-            "Poutrelles UPN/UAC": 140,
-            "Tubes Ronds": 220,
-            "Tubes Carrés": 140,
-            "Tubes Carrés (100cm)": 180,
-            "Tubes Rectangulaires": 160,
-            "Barres Rondes (Pleine)": 120,
-            "Barres Carrées (Pleine)": 140
+
+        // Afficher l'état des stocks
+        displayStockStatus(stockStatus);
+
+        // Fonction pour enregistrer les stocks mis à jour dans le stockage local
+        function saveUpdatedStockStatus(stockStatus) {
+            localStorage.setItem('stockStatus', JSON.stringify(stockStatus));
         }
-    }
-];
 
-// Sélection des éléments du DOM
-const warehouseList = document.getElementById("warehouseList");
-
-// Fonction pour afficher l'état des stocks par entrepôt
-function displayStockStatus() {
-    warehouseList.innerHTML = "";
-    stockStatus.forEach(warehouse => {
-        const warehouseDiv = document.createElement("div");
-        warehouseDiv.classList.add("warehouse");
-
-        const warehouseName = document.createElement("h3");
-        warehouseName.textContent = warehouse.warehouse;
-        warehouseDiv.appendChild(warehouseName);
-
-        const supplyList = document.createElement("ul");
-        for (let supply in warehouse.supplies) {
-            const supplyItem = document.createElement("li");
-            supplyItem.textContent = `${supply}: ${warehouse.supplies[supply]}`;
-            supplyList.appendChild(supplyItem);
+        // Fonction pour afficher l'état des stocks après une commande
+        function displayUpdatedStockStatus(stockStatus) {
+            displayStockStatus(stockStatus);
+            saveUpdatedStockStatus(stockStatus);
         }
-        warehouseDiv.appendChild(supplyList);
-        warehouseList.appendChild(warehouseDiv);
-    });
-}
-
-// Initialisation de l'affichage des stocks
-displayStockStatus();
 
     </script>
 </body>

@@ -27,6 +27,12 @@ header {
     padding: 0 20px;
 }
 
+.container .mt-5{
+    display: flex;
+    justify-content: center;
+}
+
+
 footer {
     display: flex;
     bottom: 0;
@@ -40,7 +46,108 @@ footer {
 /* Styles pour l'état des stocks */
 #stockStatus {
     margin-top: 40px;
+    border: 3px solid grey;
+    border-radius: 15px;
+    display: flex;
+    background-color: white;
+    padding: 15px;
+    gap: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
+
+#stockStatusContainer {
+    visibility: hidden;
+}
+
+#orderCheck {
+    position: absolute;
+    top: 400px;
+    visibility: hidden;
+}
+
+table {
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+th, td {
+    padding: 5px;
+}
+th {
+    background-color: #333;
+    color: #fff;
+}
+td {
+    border-bottom: 1px solid #ddd;
+}
+td:last-child {
+    text-align: center;
+}
+tr:hover {
+    background-color: #f1f1f1;
+}
+.valider-btn, .annuler-btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin: 0 5px;
+}
+.valider-btn {
+    background-color: green;
+    color: white;
+}
+.annuler-btn {
+    background-color: red;
+    color: white;
+}
+#retour {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#retour-mat {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#retour-com {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+#order{
+    visibility: visible;
+    position: absolute;
+    top: 400px;
+}
+
+
 
 ul {
     list-style-type: none;
@@ -53,6 +160,11 @@ li {
 
 h2 {
     margin-bottom: 20px;
+    color: white;
+}
+
+a {
+    text-decoration: none;
 }
 
 .container h1 {
@@ -61,8 +173,7 @@ h2 {
 }
 
 .container-block {
-    background-image: linear-gradient(to right, #ab1313, #d45050);
-    border-top-left-radius: 10px;
+    background-image: linear-gradient(to right, #007bff, #0056b3);    border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     min-height: 1900px;
     display: flex;
@@ -86,6 +197,21 @@ h2 {
     align-items: center;
     gap: 20px;
 }
+
+#warehouseList {
+    display: flex;
+    background-color: white;
+    border-radius: 15px;
+    padding: 15px;
+    gap: 30px;
+}
+
+.warehouse {
+    border: 2px solid rgb(65, 121, 218);
+    border-radius: 15px;
+    padding: 10px;
+}
+
 
 
 /* Ajoutez ces styles pour moderniser et rendre le formulaire de connexion plus responsive */

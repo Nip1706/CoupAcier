@@ -26,6 +26,10 @@ header {
     /* Espacement intérieur */
 }
 
+a{
+    text-decoration: none;
+}
+
 .container {
     display: flex;
     justify-content: space-between;
@@ -124,7 +128,7 @@ h2 {
 
 
 .container-block {
-    background-image: linear-gradient(to right, #ab1313, #d45050);
+    background-image: linear-gradient(to right, #007bff, #0056b3);
     /* Dégradé de rouge pour le bouton Config */
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;

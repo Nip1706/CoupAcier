@@ -21,7 +21,7 @@
                 <h1>COUP'ACIER</h1>
             </a>
             <div>
-                <h1>ADMINISTRATEUR</h1>
+                <a href="admin.html"><h1>ADMINISTRATEUR</h1></a>
             </div>
         </div>
     </header>
@@ -78,6 +78,7 @@
     </footer>
 
     <script>
+
         document.getElementById('btnAjout').addEventListener('click', function () {
             document.getElementById('ajoutFournisseur').style.visibility = 'visible';
         });
@@ -312,98 +313,90 @@
                 }
             });
 
+            // Enregistrer la commande dans localStorage
+    localStorage.setItem('lastOrder', JSON.stringify(order));
+
             orders.push(order);
             displayOrders();
             displayStockStatus();
             updateStockStatus();
+            saveStockStatus(); // Enregistrer les stocks dans le stockage local
             orderForm.reset();
         }
 
-
-// Fonction pour afficher l'état des commandes
-function displayOrders() {
-    orderStatus.innerHTML = `
-        <table>
-            <thead>
+        // Fonction pour afficher l'état des commandes
+        function displayOrders() {
+            orderStatus.innerHTML = `
+    <table>
+        <thead>
+            <tr>
+                <th>Commande</th>
+                <th>Fournisseur</th>
+                <th>Entrepôt</th>
+                <th>Matériaux</th>
+                <th>Quantité</th>
+                <th>Statut</th>
+                <th>Mise à jour statut</th>
+            </tr>
+        </thead>
+        <tbody>
+            ${orders.map((order, index) => `
                 <tr>
-                    <th>Commande</th>
-                    <th>Fournisseur</th>
-                    <th>Entrepôt</th>
-                    <th>Matériaux</th>
-                    <th>Quantité</th>
-                    <th>Statut</th>
-                    <th>Mise à jour statut</th>
+                    <td>${index + 1}</td>
+                    <td>${order.supplier}</td>
+                    <td>${order.warehouse}</td>
+                    <td>${order.types.map(item => `${item.type}`).join(", ")}</td>
+                    <td>${order.types.map(item => `${item.quantity}`).join(", ")}</td>
+                    <td id="status${index}" style="color: orange;">En cours</td>
+                    <td>
+                        <button class="valider-btn" onclick="validerCommande(${index})">Arrivée</button>
+                        <button class="annuler-btn" onclick="annulerCommande(${index})">Retardée</button>
+                    </td>
                 </tr>
-            </thead>
-            <tbody>
-                ${orders.map((order, index) => `
-                    <tr>
-                        <td>${index + 1}</td>
-                        <td>${order.supplier}</td>
-                        <td>${order.warehouse}</td>
-                        <td>${order.types.map(item => `${item.type}`).join(", ")}</td>
-                        <td>${order.types.map(item => `${item.quantity}`).join(", ")}</td>
-                        <td id="status${index}" style="color: orange;">En cours</td>
-                        <td>
-                            <button class="valider-btn" onclick="validerCommande(${index})">Arrivée</button>
-                            <button class="annuler-btn" onclick="annulerCommande(${index})">Retardée</button>
-                        </td>
-                    </tr>
-                `).join("")}
-            </tbody>
-        </table>
-        <button id="retour">Retour</button>
-    `;
-    // Ajout de l'écouteur d'événements pour le bouton "Retour"
-    document.getElementById('retour').addEventListener('click', function () {
-        document.getElementById('orderStatus').style.visibility = 'hidden';
-    });
-}
+            `).join("")}
+        </tbody>
+    </table>
+    <button id="retour">Retour</button>
+`;
+            // Ajout de l'écouteur d'événements pour le bouton "Retour"
+            document.getElementById('retour').addEventListener('click', function () {
+                document.getElementById('orderStatus').style.visibility = 'hidden';
+            });
+        }
 
-// Fonction pour valider une commande
-function validerCommande(index) {
-    // Modifier le statut de la commande à "Arrivé"
-    const statusCell = document.getElementById(`status${index}`);
-    statusCell.textContent = "Arrivée !";
-    statusCell.style.color = "green";
-}
+        // Fonction pour valider une commande
+        function validerCommande(index) {
+            // Modifier le statut de la commande à "Arrivé"
+            const statusCell = document.getElementById(`status${index}`);
+            statusCell.textContent = "Arrivée !";
+            statusCell.style.color = "green";
+        }
 
-
-
-
-      // Fonction pour mettre à jour l'état des stocks dans stockStatus
+        // Fonction pour mettre à jour l'état des stocks dans stockStatus
 function updateStockStatus() {
     orders.forEach(order => {
         const warehouse = stockStatus.find(wh => wh.warehouse === order.warehouse);
         if (warehouse) {
-            console.log("Warehouse:", warehouse.warehouse);
-            // Initialiser updatedSupplies à un objet vide si ce n'est pas déjà fait
-            if (!warehouse.updatedSupplies) {
-                warehouse.updatedSupplies = {};
-            }
             order.types.forEach(item => {
                 if (warehouse.supplies[item.type] !== undefined) {
-                    // Remplace la quantité existante par la nouvelle quantité de la commande
                     warehouse.supplies[item.type] = item.quantity;
-                    console.log("Updated supplies for:", item.type); // Ajout d'un log pour vérifier si les fournitures ont été mises à jour
-                    // Marquer cette fourniture comme mise à jour
-                    warehouse.updatedSupplies[item.type] = true;
                 }
             });
-            console.log("Updated Supplies:", warehouse.updatedSupplies); // Ajout d'un log pour vérifier les fournitures mises à jour
         }
     });
+    saveStockStatus();
 }
 
+// Enregistrer les stocks dans le stockage local
+function saveStockStatus() {
+    localStorage.setItem('stockStatus', JSON.stringify(stockStatus));
+    localStorage.setItem('orders', JSON.stringify(orders));
+}
 
-
-
-               // Fonction pour afficher l'état des stocks par entrepôt
+// Fonction pour afficher l'état des stocks par entrepôt
 function displayStockStatus() {
     warehouseList.innerHTML = "";
     stockStatus.forEach(warehouse => {
-        console.log("Warehouse:", warehouse.warehouse);
-        console.log("Updated Supplies:", warehouse.updatedSupplies); // Ajout d'un log pour vérifier si updatedSupplies est défini
         const warehouseDiv = document.createElement("div");
         warehouseDiv.classList.add("warehouse");
 
@@ -414,32 +407,22 @@ function displayStockStatus() {
         const supplyList = document.createElement("ul");
         for (let supply in warehouse.supplies) {
             const supplyItem = document.createElement("li");
-
-            const quantitySpan = document.createElement("span");
-            quantitySpan.textContent = `${warehouse.supplies[supply]}`;
-
-            // Vérifiez si la quantité a été mise à jour
-            if (warehouse.updatedSupplies && warehouse.updatedSupplies[supply]) {
-                // Si la quantité a été mise à jour, ajoutez la classe "updated-number"
-                console.log("Quantity updated for:", supply); // Ajout d'un log pour vérifier si la quantité a été mise à jour pour cet élément
-                quantitySpan.style.color = "red";
-            }
-
-            supplyItem.textContent = `${supply}: `;
-            supplyItem.appendChild(quantitySpan);
+            supplyItem.textContent = `${supply}: ${warehouse.supplies[supply]}`;
             supplyList.appendChild(supplyItem);
         }
         warehouseDiv.appendChild(supplyList);
         warehouseList.appendChild(warehouseDiv);
     });
+    saveStockStatus(); // Enregistrer les stocks à chaque mise à jour
 }
-
 
 
         // Initialisation de l'application
         populateSuppliers();
         populateWarehouses();
         displayStockStatus();
+
+
     </script>
 
 

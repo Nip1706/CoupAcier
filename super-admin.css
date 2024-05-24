@@ -38,7 +38,7 @@ a {
 }
 
 .container-block {
-    background-image: linear-gradient(to right, #ab1313, #d45050);
+    background-image: linear-gradient(to right, #007bff, #0056b3);    border-top-left-radius: 10px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     min-height: 1800px;
