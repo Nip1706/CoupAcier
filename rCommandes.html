@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Réception des Commandes</title>
+    <link rel="stylesheet" href="rCommandes.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html">
+                <h1>COUP'ACIER</h1>
+            </a>
+            <div>
+                <a href="admin.html"><h1>ADMINISTRATEUR</h1></a>
+            </div>
+        </div>
+    </header>
+    <main class="container-block">
+        <div class="block-text">
+            <h2>Réception des Commandes</h2>
+        </div>
+        <section id="commande">
+            <h2>Commande Client</h2>
+            <form id="commandeForm">
+                <div class="form-group">
+                    <label for="clientType">Type de Client</label>
+                    <select id="clientType">
+                        <option value="particulier">Particulier</option>
+                        <option value="professionnel">Professionnel</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="paiement">Paiement</label>
+                    <select id="paiement">
+                        <option value="carte">Carte</option>
+                        <option value="devis">Devis accepté</option>
+                    </select>
+                </div>
+                <button type="submit">Confirmer la Commande</button>
+            </form>
+        </section>
+        <section id="preparation">
+            <h2>Préparation des Commandes</h2>
+            <table id="preparationTable">
+                <thead>
+                    <tr>
+                        <th>Commande</th>
+                        <th>Matériau</th>
+                        <th>Longueur</th>
+                        <th>Quantité</th>
+                        <th>Statut</th>
+                    </tr>
+                </thead>
+                <tbody id="commandeBody">
+                    <tr>
+                        <td>Commande 1</td>
+                        <td>Matériau Exemple</td>
+                        <td>6m</td>
+                        <td>1</td>
+                        <td>En cours</td>
+                    </tr>
+                </tbody>
+                
+            </table>
+        </section>
+        <section id="bordereau">
+            <h2>Bordereau de Livraison</h2>
+            <div id="qrCodeContainer">
+                <!-- Le QR Code sera généré ici par JavaScript -->
+            </div>
+            <button id="printBordereau">Imprimer le Bordereau</button>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Réception des Commandes. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>
