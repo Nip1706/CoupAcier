@@ -170,7 +170,7 @@ nav ul li a:visited {
     padding: 15px;
     border: none;
     border-radius: 8px;
-    background-image: linear-gradient(to right, #4CAF50, #2E8B57); /* Dégradé vert pour le bouton Connexion */
+    background: linear-gradient(to bottom right, #ff7f00, #eebb23);    
     color: #ffffff;
     font-size: 18px;
     cursor: pointer;
@@ -223,7 +223,7 @@ nav ul li a:visited {
 .create-account .button.create {
     cursor: pointer; /* Curseur pointeur au survol */
     padding: 15px 30px; /* Espace intérieur du bouton */
-    background-image: linear-gradient(to right, #28a745, #218838); /* Dégradé vert pour le bouton */
+    background: linear-gradient(to bottom right, #ff7f00, #eebb23);    
     color: #fff; /* Couleur du texte blanc */
     border: none; /* Supprimer la bordure */
     border-radius: 5px; /* Coins arrondis */
