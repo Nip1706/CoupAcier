@@ -4,32 +4,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Inclure Font Awesome via CDN -->
+
     <title>Liste des Produits</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f9f9f9;
-        }
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    overflow-x: hidden; /* Empêcher le défilement horizontal */
+}
 
         header {
             background-color: white;
             color: white;
-            padding: 20px;
             text-align: center;
-           
+
         }
 
         .container {
             display: flex;
             justify-content: space-between;
+            align-items: baseline;
         }
 
-        .block-text {
+        nav{
             display: flex;
-            justify-content: center;
+            align-items: baseline;
+            gap: 30px;
         }
+
+        /* CSS pour les icônes des réseaux sociaux dans le footer */
+.social-media-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.social-media-icons a {
+    margin-right: 10px; /* Espacement entre les icônes */
+}
+
+.social-media-icons a:last-child {
+    margin-right: 0; /* Supprime l'espacement à droite de la dernière icône */
+}
+
+.social-media-icons i {
+    font-size: 24px; /* Taille de l'icône */
+    color: #333; /* Couleur de l'icône */
+    transition: color 0.3s ease; /* Animation de transition de couleur */
+}
+
+.social-media-icons i:hover {
+    color: #007bff; /* Couleur de l'icône au survol */
+}
+
+
+        .icon-container {
+            display: flex;
+            gap: 15px;
+        }
+
+        .cart-link {
+            color: orange;
+            text-decoration: none;
+            /* Supprimer le soulignement du lien */
+            font-size: 20px;
+            /* Ajuster la taille de l'icône */
+        }
+
+        .connect-link {
+            color: green;
+            text-decoration: none;
+            /* Supprimer le soulignement du lien */
+            font-size: 20px;
+            /* Ajuster la taille de l'icône */
+        }
+
+        .fa-shopping-cart:hover {
+            color: #ffd700;
+        }
+
+        .fa-user:hover {
+            color: lightgreen;
+        }
+
+
+
+        .block-text {
+            background-image: url(Bandeau\ Fil\ rouge.jpg);
+            padding: 20px;
+            margin-bottom: 50px;
+            color: white;
+            height: 290px;
+            background-size: cover;
+            border-bottom-left-radius: 35%;
+            border-bottom-right-radius: 35%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
 
         #commande {
             display: flex;
@@ -37,10 +116,12 @@
             align-items: center;
         }
 
-        main {
-            padding: 20px;
-            background: linear-gradient(to bottom right, #ff7f00, #eebb23);    
+        #commande h2 {
+            color: white;
+        }
 
+        main {
+            background: linear-gradient(to bottom right, #ff7f00, #eebb23);
         }
 
         a {
@@ -57,18 +138,18 @@
             width: 50%;
         }
 
-        .nav{
+        .nav {
             display: flex;
             gap: 10px;
         }
 
-        .nav-li{
+        .nav-li {
             border: none;
             box-shadow: none;
             color: orange;
         }
 
-        .nav-li a{
+        .nav-li a {
             border: none;
             box-shadow: none;
             color: orange;
@@ -87,14 +168,12 @@
             width: 100%;
         }
 
-        li:hover {
-            box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
-        }
+
 
         .add-to-cart {
-            display: none;
             position: absolute;
-            right: 15px;
+            right: -100%;
+            /* Déplace l'élément en dehors de la vue */
             top: 50%;
             transform: translateY(-50%);
             background: linear-gradient(to bottom right, #ff7f00, #eebb23);
@@ -104,24 +183,34 @@
             padding: 10px 15px;
             cursor: pointer;
             font-size: 14px;
+            opacity: 0;
+            /* Rend l'élément invisible au départ */
+            transition: right 0.3s ease, opacity 2s ease;
+            /* Ajoute une transition pour une apparence fluide */
         }
 
         li:hover .add-to-cart {
-            display: block;
+            right: 15px;
+            /* Fait apparaître l'élément lors du survol */
+            opacity: 1;
+            /* Rend l'élément visible lorsqu'il est dans le li */
+        }
+
+        nav ul li a:hover {
+            color: #ffd700;
         }
 
         footer {
-    display: flex;
-    bottom: 0; /* Fixer le footer au bas de la fenêtre */
-    width: 100%; /* Pour étendre le footer sur toute la largeur */
-    background-color: #343a40;
-    color: #fff;
-    text-align: center;
-    padding: 20px 0;
-}
-
-
-
+            display: flex;
+            bottom: 0;
+            /* Fixer le footer au bas de la fenêtre */
+            width: 100%;
+            /* Pour étendre le footer sur toute la largeur */
+            background-color: #343a40;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
     </style>
 </head>
 
@@ -133,23 +222,30 @@
             </a>
             <nav>
                 <ul class="nav">
-                  <li class="nav-li"><a href="index.html">Accueil</a></li>
-                  <li class="nav-li"><a href="#">Produits</a></li>
-                  <li class="nav-li"><a href="#">Contact</a></li>
-                  <li class="nav-li"><a href="config.html">Configuration</a></li>
+                    <li class="nav-li"><a href="index.html">Accueil</a></li>
+                    <li class="nav-li"><a href="#">Produits</a></li>
+                    <li class="nav-li"><a href="#">Contact</a></li>
+                    <li class="nav-li"><a href="config.html">Configuration</a></li>
                 </ul>
-              </nav>
-            <div>
-                <a href="admin.html"><h1>ADMINISTRATEUR</h1></a>
+            </nav>
+            <div class="social-media-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-pinterest"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <!-- Ajoutez d'autres liens et logos de réseaux sociaux selon vos besoins -->
+            </div>
+            <div class="icon-container">
+                <a href="#" class="cart-link"><i class="fas fa-shopping-cart"></i></a>
+                <a href="#" class="connect-link"><i class="fas fa-user"></i></a>
             </div>
         </div>
     </header>
     <main class="container-block">
         <div class="block-text">
-            <h2>Réception des Commandes</h2>
+            <h2>Nos Produits</h2>
+            <p>Sur cette page, vous trouverez une sélection variée de produits métalliques de haute qualité pour répondre à vos besoins en matière de construction et de rénovation. Chaque produit est accompagné d'une description détaillée pour vous aider à choisir celui qui convient le mieux à votre projet. Vous avez la possibilité d'ajouter les produits sélectionnés à votre panier en un seul clic, facilitant ainsi le processus d'achat. De plus, notre fonction de configuration vous permet de personnaliser certains produits selon vos spécifications avant de passer votre commande. Explorez notre gamme de produits et profitez d'une expérience de magasinage pratique et personnalisée.</p>
         </div>
         <section id="commande">
-            <h2>Nos Produits</h2>
             <ul>
                 <li>Fer Plats <button class="add-to-cart">Ajouter au panier</button></li>
                 <li>Cornières a Ailes Égales <button class="add-to-cart">Ajouter au panier</button></li>
@@ -169,8 +265,10 @@
         </section>
     </main>
     <footer>
-        <p>&copy; 2024 Réception des Commandes. Tous droits réservés.</p>
+            <p>&copy; 2024 Réception des Commandes. Tous droits réservés.</p>
+        </div>
     </footer>
+    
 </body>
 
 </html>
