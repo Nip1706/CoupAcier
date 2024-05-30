@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>Produit</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            overflow-x: hidden;
+        }
+
+        header {
+            background-color: white;
+            padding: 10px 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .container h1 {
+            color: orange;
+        }
+
+        .container a {
+            text-decoration: none;
+        }
+
+        .nav {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav li a {
+            text-decoration: none;
+            color: orange;
+        }
+
+        .social-media-icons {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .social-media-icons i {
+            font-size: 24px;
+            color: #333;
+            transition: color 0.3s ease;
+        }
+
+        .social-media-icons i:hover {
+            color: #007bff;
+        }
+
+        .icon-container {
+            display: flex;
+            gap: 15px;
+        }
+
+        .cart-link,
+        .connect-link {
+            color: #333;
+            text-decoration: none;
+            font-size: 20px;
+        }
+
+        .cart-link {
+    position: relative;
+}
+
+.cart-badge {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 5px 10px;
+    font-size: 12px;
+    display: none; /* Initialement caché */
+}
+
+.cart-badge.show {
+    display: inline-block;
+}
+
+
+        .fa-shopping-cart:hover {
+            color: #ffd700;
+        }
+
+        .fa-user:hover {
+            color: lightgreen;
+        }
+
+        .product-container {
+            display: flex;
+            padding: 20px;
+            gap: 20px;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 600px;
+        }
+
+        .product-image {
+            flex: 1;
+            max-width: 400px;
+        }
+
+        .product-image img {
+        width: 100%; /* Utilisez toute la largeur disponible */
+        height: 220px; /* Hauteur automatique pour conserver les proportions */
+        max-width: 400px; /* Limite la largeur maximale à 400 pixels */
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+        .additional-info {
+            margin-top: 20px;
+            background: #fff;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .additional-info h3 {
+            margin-top: 0;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .product-details {
+            flex: 2;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-details h1 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .product-details p.price {
+            font-size: 20px;
+            color: #eebb23;
+            margin: 10px 0;
+        }
+
+        .product-details .stars {
+            color: #ffd700;
+            margin: 10px 0;
+        }
+
+        .product-details button {
+            background: linear-gradient(to bottom right, #ff7f00, #eebb23);
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s ease;
+        }
+
+        .product-details button:hover {
+            background: #ff9f00;
+        }
+
+        .product-details .description {
+            margin-top: 20px;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .image-scroll-container {
+            width: 100%;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        .image-scroll-container img {
+            display: inline-block;
+            width: 50px;
+            /* Largeur fixe pour chaque image */
+            height: 50px;
+            margin-right: 10px;
+            /* Espacement entre les images */
+        }
+
+        .button-container {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espacement entre le bouton et l'icône */
+}
+
+.button-container .fa-bookmark {
+    font-size: 35px;
+    cursor: pointer;
+    color: rgb(67, 111, 232); /* Couleur de l'icône */
+    transition: color 0.3s ease;
+}
+
+.button-container .fa-bookmark:hover {
+    color: #ff9f00; /* Couleur de l'icône au survol */
+}
+
+
+
+
+        footer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #343a40;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html">
+                <h1>COUP'ACIER</h1>
+            </a>
+            <nav>
+                <ul class="nav">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="#">Produits</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="config.html">Configuration</a></li>
+                </ul>
+            </nav>
+            <div class="social-media-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-pinterest"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+            <div class="icon-container">
+                <a href="#" class="cart-link">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-badge" id="cart-badge">0</span>
+                </a>                
+                <a href="#" class="connect-link"><i class="fas fa-user"></i></a>
+            </div>
+        </div>
+    </header>
+    <main class="product-container">
+        <div class="product-image" id="product-image2">
+            <img id="product-image" src="" alt="Produit">
+            <div class="additional-info" id="additional-info">
+                <h3>Informations supplémentaires</h3>
+                <p id="additional-text">Cette section peut contenir des détails techniques, des instructions de
+                    maintenance, ou des images supplémentaires du produit.</p>
+                <div class="image-scroll-container">
+                    <img id="image1" src="fer.jpg" alt="Image 1">
+                    <img id="image2" src="corten.webp" alt="Image 2">
+                    <img id="image3" src="alu.jpg" alt="Image 3">
+                    <img id="image4" src="ferPlat.jpg" alt="Image 3">
+                </div>
+            </div>
+        </div>
+        <div class="product-details">
+            <h1 id="product-name">Nom du Produit</h1>
+            <p class="price" id="product-price">€0.00</p>
+            <div class="stars" id="product-stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+            </div>
+            <div class="button-container">
+                <button class="add-to-cart">Ajouter au panier</button>
+                <i class="fas fa-bookmark"></i>
+            </div>
+            <div class="description">
+                <h2>Description du produit</h2>
+                <p id="product-description">Description non disponible.</p>
+                <ul id="product-details">
+                    <!-- Les détails seront ajoutés ici -->
+                </ul>
+            </div>
+        </div>
+        
+    </main>
+    <footer>
+        <p>© 2024 COUP'ACIER. Tous droits réservés.</p>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const queryString = window.location.search;
+            const urlParams = new URLSearchParams(queryString);
+            const productId = urlParams.get('id');
+        
+            fetch('produits.json')
+                .then(response => response.json())
+                .then(data => {
+                    const product = data.produits.find(p => p.id === productId);
+                    if (product) {
+                        document.getElementById('product-name').innerText = product.nom;
+                        document.getElementById('product-price').innerText = `€${product.prix.toFixed(2)}`;
+                        document.getElementById('product-image').src = product.image;
+                        document.getElementById('product-image').alt = product.nom;
+                        document.getElementById('product-description').innerText = product.description;
+        
+                        const detailsList = document.getElementById('product-details');
+                        detailsList.innerHTML = '';
+                        product.details.forEach(detail => {
+                            const li = document.createElement('li');
+                            li.innerText = detail;
+                            detailsList.appendChild(li);
+                        });
+        
+                        // Clear and add images to the scroll container
+                        const imageScrollContainer = document.querySelector('.image-scroll-container');
+                        imageScrollContainer.innerHTML = ''; // Clear existing images
+                        product.images_scroll.forEach(imgSrc => {
+                            const img = document.createElement('img');
+                            img.src = imgSrc;
+                            img.alt = product.nom;
+                            img.style.width = '50px';
+                            img.style.height = '50px';
+                            imageScrollContainer.appendChild(img);
+                        });
+        
+                        // Add event listeners to the images in the scroll container
+                        const images = document.querySelectorAll('.image-scroll-container img');
+                        const productImage = document.getElementById('product-image');
+                        images.forEach(image => {
+                            image.addEventListener('click', () => {
+                                productImage.src = image.src;
+                                productImage.alt = image.alt;
+                            });
+                        });
+        
+                    } else {
+                        document.getElementById('product-name').innerText = "Produit non trouvé";
+                    }
+                })
+                .catch(error => console.error('Erreur lors de la récupération des données:', error));
+        
+            const cartButton = document.querySelector('.add-to-cart');
+            const cartBadge = document.getElementById('cart-badge');
+            let cartCount = 0;
+        
+            cartButton.addEventListener('click', () => {
+                cartCount++;
+                cartBadge.innerText = cartCount;
+                cartBadge.classList.add('show');
+            });
+        });
+        </script>
+        
+        
+    
+</body>
+
+
+
+</html>

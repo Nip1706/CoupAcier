@@ -1,0 +1,270 @@
+{
+    "produits": [
+        {
+            "id": "ferPlats",
+            "nom": "Fer Plats",
+            "prix": 25.00,
+            "image": "ferPlat.jpg",
+            "description": "Nos fers plats sont fabriqués à partir de matériaux de haute qualité, garantissant durabilité et performance. Idéal pour diverses applications de construction et de rénovation.",
+            "details": [
+                "Matériau: Acier de haute qualité",
+                "Dimensions: 20x5 mm",
+                "Poids: 1.2 kg",
+                "Disponibilité: En stock"
+            ],
+            "images_scroll": [
+                "ferPlat.jpg",
+                "fer.jpg",
+                "corten.webp",
+                "alu.jpg"
+            ]
+        },
+        {
+            "id": "corniereAileEgale",
+            "nom": "Cornières à Ailes égales",
+            "prix": 40.00,
+            "image": "corniereAilesEgales.jpeg",
+            "description": "Les tubes rectangulaires sont robustes et résistants, parfaits pour les structures métalliques et les cadres.",
+            "details": [
+                "Matériau: Acier",
+                "Dimensions: 30x30 mm",
+                "Poids: 2.5 kg",
+                "Disponibilité: En stock"
+            ],
+            "images_scroll": [
+                "corniereAilesEgales.jpeg",
+                "fer.jpg",
+                "corten.webp",
+                "alu.jpg"
+            ]
+        },
+        {
+            "id": "corniereAileInegale",
+            "nom": "Cornières à Ailes inégales",
+            "prix": 50.00,
+            "image": "corniereAilesInegales.jpeg",
+            "description": "Les tubes rectangulaires sont robustes et résistants, parfaits pour les structures métalliques et les cadres.",
+            "details": [
+                "Matériau: Acier",
+                "Dimensions: 50x30 mm",
+                "Poids: 3.5 kg",
+                "Disponibilité: En stock"
+            ],
+            "images_scroll": [
+                "corniereAilesInegales.jpeg",
+                "fer.jpg",
+                "corten.webp",
+                "alu.jpg"
+            ]
+        },
+        {
+            "id": "ferEnT",
+            "nom": "Fer en T",
+            "prix": 20.00,
+            "image": "ferEnT.png",
+            "description": "Les tubes rectangulaires sont robustes et résistants, parfaits pour les structures métalliques et les cadres.",
+            "details": [
+                "Matériau: Acier",
+                "Dimensions: 50x30 mm",
+                "Poids: 3.5 kg",
+                "Disponibilité: En stock"
+            ],
+            "images_scroll": [
+                "ferEnT.png",
+                "fer.jpg",
+                "corten.webp",
+                "alu.jpg"
+            ]
+        },
+        {
+            "id": "poutrelleIpeNormale",
+            "nom": "Poutrelle IPE Normale",
+            "prix": 20.00,
+            "image": "poutrelleIpeNormale.jpeg",
+            "description": "Les tubes rectangulaires sont robustes et résistants, parfaits pour les structures métalliques et les cadres.",
+            "details": [
+                "Matériau: Acier",
+                "Dimensions: 50x30 mm",
+                "Poids: 3.5 kg",
+                "Disponibilité: En stock"
+            ],
+            "images_scroll": [
+                "poutrelleIpeNormale.jpeg",
+                "fer.jpg",
+                "corten.webp",
+                "alu.jpg"
+            ]
+        },
+        {
+            "id": "poutrelleUpe",
+            "nom": "Poutrelle UPE",
+            "prix": 20.00,
+            "image": "poutrelleUpe.jpeg",
+            "description": "Les tubes rectangulaires sont robustes et résistants, parfaits pour les structures métalliques et les cadres.",
+            "details": [
+                "Matériau: Acier",
+                "Dimensions: 50x30 mm",
+                "Poids: 3.5 kg",
+                "Disponibilité: En stock"
+            ],
+            "images_scroll": [
+                "poutrelleUpe.jpeg",
+                "fer.jpg",
+                "corten.webp",
+                "alu.jpg"
+            ]
+        },
+        {
+            "id": "poutrelleHeaHeb",
+            "nom": "Poutrelle HEA/HEB",
+            "prix": 20.00,
+            "image": "poutrelleHeaHeb.jpeg",
+            "description": "Les tubes rectangulaires sont robustes et résistants, parfaits pour les structures métalliques et les cadres.",
+            "details": [
+                "Matériau: Acier",
+                "Dimensions: 50x30 mm",
+                "Poids: 3.5 kg",
+                "Disponibilité: En stock"
+            ],
+            "images_scroll": [
+                "poutrelleHeaHeb.jpeg",
+                "fer.jpg",
+                "corten.webp",
+                "alu.jpg"
+            ]
+        },
+        {
+            "id": "poutrelleUpnUac",
+            "nom": "Poutrelle UPN/UAC",
+            "prix": 20.00,
+            "image": "upn.jpg",
+            "description": "Les tubes rectangulaires sont robustes et résistants, parfaits pour les structures métalliques et les cadres.",
+            "details": [
+                "Matériau: Acier",
+                "Dimensions: 50x30 mm",
+                "Poids: 3.5 kg",
+                "Disponibilité: En stock"
+            ],
+            "images_scroll": [
+                "upn.jpg",
+                "fer.jpg",
+                "corten.webp",
+                "alu.jpg"
+            ]
+        },
+        {
+            "id": "tubeRond",
+            "nom": "Tubes ronds",
+            "prix": 20.00,
+            "image": "tubeRond.jpeg",
+            "description": "Les tubes rectangulaires sont robustes et résistants, parfaits pour les structures métalliques et les cadres.",
+            "details": [
+                "Matériau: Acier",
+                "Dimensions: 50x30 mm",
+                "Poids: 3.5 kg",
+                "Disponibilité: En stock"
+            ],
+            "images_scroll": [
+                "tubeRond.jpeg",
+                "fer.jpg",
+                "corten.webp",
+                "alu.jpg"
+            ]
+        },
+        {
+            "id": "tubesCarre",
+            "nom": "Tubes carrés",
+            "prix": 20.00,
+            "image": "tubesCarre.jpeg",
+            "description": "Les tubes rectangulaires sont robustes et résistants, parfaits pour les structures métalliques et les cadres.",
+            "details": [
+                "Matériau: Acier",
+                "Dimensions: 50x30 mm",
+                "Poids: 3.5 kg",
+                "Disponibilité: En stock"
+            ],
+            "images_scroll": [
+                "tubesCarre.jpeg",
+                "fer.jpg",
+                "corten.webp",
+                "alu.jpg"
+            ]
+        },
+        {
+            "id": "tubesCarre100",
+            "nom": "Tubes carrés 100cm",
+            "prix": 20.00,
+            "image": "tubesCarre.jpeg",
+            "description": "Les tubes rectangulaires sont robustes et résistants, parfaits pour les structures métalliques et les cadres.",
+            "details": [
+                "Matériau: Acier",
+                "Dimensions: 50x30 mm",
+                "Poids: 3.5 kg",
+                "Disponibilité: En stock"
+            ],
+            "images_scroll": [
+                "tubesCarre.jpeg",
+                "fer.jpg",
+                "corten.webp",
+                "alu.jpg"
+            ]
+        },
+        {
+            "id": "tubesRectangulaires",
+            "nom": "Tubes rectangulaires",
+            "prix": 20.00,
+            "image": "tubesRectangulaires.jpeg",
+            "description": "Les tubes rectangulaires sont robustes et résistants, parfaits pour les structures métalliques et les cadres.",
+            "details": [
+                "Matériau: Acier",
+                "Dimensions: 50x30 mm",
+                "Poids: 3.5 kg",
+                "Disponibilité: En stock"
+            ],
+            "images_scroll": [
+                "tubesRectangulaires.jpeg",
+                "fer.jpg",
+                "corten.webp",
+                "alu.jpg"
+            ]
+        },
+        {
+            "id": "barreRondPleine",
+            "nom": "Barres Rondes (Pleines)",
+            "prix": 20.00,
+            "image": "barreRondPleine.jpeg",
+            "description": "Les tubes rectangulaires sont robustes et résistants, parfaits pour les structures métalliques et les cadres.",
+            "details": [
+                "Matériau: Acier",
+                "Dimensions: 50x30 mm",
+                "Poids: 3.5 kg",
+                "Disponibilité: En stock"
+            ],
+            "images_scroll": [
+                "barreRondPleine.jpeg",
+                "fer.jpg",
+                "corten.webp",
+                "alu.jpg"
+            ]
+        },
+        {
+            "id": "barreCarrePlein",
+            "nom": "Barres Carrés (Pleines)",
+            "prix": 20.00,
+            "image": "barreCarreplein.jpeg",
+            "description": "Les tubes rectangulaires sont robustes et résistants, parfaits pour les structures métalliques et les cadres.",
+            "details": [
+                "Matériau: Acier",
+                "Dimensions: 50x30 mm",
+                "Poids: 3.5 kg",
+                "Disponibilité: En stock"
+            ],
+            "images_scroll": [
+                "barreCarreplein.jpeg",
+                "fer.jpg",
+                "corten.webp",
+                "alu.jpg"
+            ]
+        }
+    ]
+}

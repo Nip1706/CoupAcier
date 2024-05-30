@@ -10,12 +10,13 @@
     <title>Liste des Produits</title>
     <style>
         body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f9f9f9;
-    overflow-x: hidden; /* Empêcher le défilement horizontal */
-}
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            overflow-x: hidden;
+            /* Empêcher le défilement horizontal */
+        }
 
         header {
             background-color: white;
@@ -30,37 +31,43 @@
             align-items: baseline;
         }
 
-        nav{
+        nav {
             display: flex;
             align-items: baseline;
             gap: 30px;
         }
 
         /* CSS pour les icônes des réseaux sociaux dans le footer */
-.social-media-icons {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 20px;
-}
+        .social-media-icons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
 
-.social-media-icons a {
-    margin-right: 10px; /* Espacement entre les icônes */
-}
+        .social-media-icons a {
+            margin-right: 10px;
+            /* Espacement entre les icônes */
+        }
 
-.social-media-icons a:last-child {
-    margin-right: 0; /* Supprime l'espacement à droite de la dernière icône */
-}
+        .social-media-icons a:last-child {
+            margin-right: 0;
+            /* Supprime l'espacement à droite de la dernière icône */
+        }
 
-.social-media-icons i {
-    font-size: 24px; /* Taille de l'icône */
-    color: #333; /* Couleur de l'icône */
-    transition: color 0.3s ease; /* Animation de transition de couleur */
-}
+        .social-media-icons i {
+            font-size: 24px;
+            /* Taille de l'icône */
+            color: #333;
+            /* Couleur de l'icône */
+            transition: color 0.3s ease;
+            /* Animation de transition de couleur */
+        }
 
-.social-media-icons i:hover {
-    color: #007bff; /* Couleur de l'icône au survol */
-}
+        .social-media-icons i:hover {
+            color: #007bff;
+            /* Couleur de l'icône au survol */
+        }
 
 
         .icon-container {
@@ -82,6 +89,10 @@
             /* Supprimer le soulignement du lien */
             font-size: 20px;
             /* Ajuster la taille de l'icône */
+        }
+
+        .fa-info{
+            width: 15px;
         }
 
         .fa-shopping-cart:hover {
@@ -112,16 +123,23 @@
 
         #commande {
             display: flex;
-            flex-direction: column;
             align-items: center;
         }
+
+        #commande2 {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
 
         #commande h2 {
             color: white;
         }
 
         main {
-            background: linear-gradient(to bottom right, #ff7f00, #eebb23);
+            background-color: white;
         }
 
         a {
@@ -168,34 +186,6 @@
             width: 100%;
         }
 
-
-
-        .add-to-cart {
-            position: absolute;
-            right: -100%;
-            /* Déplace l'élément en dehors de la vue */
-            top: 50%;
-            transform: translateY(-50%);
-            background: linear-gradient(to bottom right, #ff7f00, #eebb23);
-            color: #ffffff;
-            border: none;
-            border-radius: 5px;
-            padding: 10px 15px;
-            cursor: pointer;
-            font-size: 14px;
-            opacity: 0;
-            /* Rend l'élément invisible au départ */
-            transition: right 0.3s ease, opacity 2s ease;
-            /* Ajoute une transition pour une apparence fluide */
-        }
-
-        li:hover .add-to-cart {
-            right: 15px;
-            /* Fait apparaître l'élément lors du survol */
-            opacity: 1;
-            /* Rend l'élément visible lorsqu'il est dans le li */
-        }
-
         nav ul li a:hover {
             color: #ffd700;
         }
@@ -210,6 +200,71 @@
             color: #fff;
             text-align: center;
             padding: 20px 0;
+        }
+
+
+
+
+
+
+        .product-card {
+            background: linear-gradient(to bottom right, #ff7f00, #eebb23);
+            margin: 10px 0;
+            padding: 5px;
+            border: 1px solid #ddd;
+            border-radius: 25px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+            transition: all 0.3s ease;
+            width: calc(50% - 20px);
+            /* Utilisation de calc() pour calculer la largeur */
+            width: 12%;
+            height: 200px;
+            /* Hauteur fixe pour toutes les cartes */
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 40%;
+            object-fit: cover;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+        }
+
+        .product-card h3 {
+            font-size: 14px;
+            color: white;
+            margin: 5px 0;
+        }
+
+        .product-card p.price {
+            font-size: 16px;
+            color: white;
+            margin: 5px 0;
+        }
+
+        .product-card .stars {
+            color: #f1f108;
+            margin: 5px 0;
+        }
+
+        .product-card button {
+            background-color: white;    
+            color: rgb(227, 174, 75);
+            border: none;
+            border-radius: 15px;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background 0.3s ease;
+        }
+
+        .product-card button:hover {
+            background: #ffec7e;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
         }
     </style>
 </head>
@@ -243,32 +298,221 @@
     <main class="container-block">
         <div class="block-text">
             <h2>Nos Produits</h2>
-            <p>Sur cette page, vous trouverez une sélection variée de produits métalliques de haute qualité pour répondre à vos besoins en matière de construction et de rénovation. Chaque produit est accompagné d'une description détaillée pour vous aider à choisir celui qui convient le mieux à votre projet. Vous avez la possibilité d'ajouter les produits sélectionnés à votre panier en un seul clic, facilitant ainsi le processus d'achat. De plus, notre fonction de configuration vous permet de personnaliser certains produits selon vos spécifications avant de passer votre commande. Explorez notre gamme de produits et profitez d'une expérience de magasinage pratique et personnalisée.</p>
+            <p>Sur cette page, vous trouverez une sélection variée de produits métalliques de haute qualité pour
+                répondre à vos besoins en matière de construction et de rénovation. Chaque produit est accompagné d'une
+                description détaillée pour vous aider à choisir celui qui convient le mieux à votre projet. Vous avez la
+                possibilité d'ajouter les produits sélectionnés à votre panier en un seul clic, facilitant ainsi le
+                processus d'achat. De plus, notre fonction de configuration vous permet de personnaliser certains
+                produits selon vos spécifications avant de passer votre commande. Explorez notre gamme de produits et
+                profitez d'une expérience de magasinage pratique et personnalisée.</p>
         </div>
-        <section id="commande">
-            <ul>
-                <li>Fer Plats <button class="add-to-cart">Ajouter au panier</button></li>
-                <li>Cornières a Ailes Égales <button class="add-to-cart">Ajouter au panier</button></li>
-                <li>Cornières a Ailes Inégales <button class="add-to-cart">Ajouter au panier</button></li>
-                <li>Fer en T <button class="add-to-cart">Ajouter au panier</button></li>
-                <li>Poutrelle IPE Normale <button class="add-to-cart">Ajouter au panier</button></li>
-                <li>Poutrelles UPE <button class="add-to-cart">Ajouter au panier</button></li>
-                <li>Poutrelles HEA/HEB <button class="add-to-cart">Ajouter au panier</button></li>
-                <li>Poutrelles UPN/UAC <button class="add-to-cart">Ajouter au panier</button></li>
-                <li>Tubes Ronds <button class="add-to-cart">Ajouter au panier</button></li>
-                <li>Tubes Carrés <button class="add-to-cart">Ajouter au panier</button></li>
-                <li>Tubes Carrés (100cm) <button class="add-to-cart">Ajouter au panier</button></li>
-                <li>Tubes Rectangulaires <button class="add-to-cart">Ajouter au panier</button></li>
-                <li>Barres Rondes (Pleine) <button class="add-to-cart">Ajouter au panier</button></li>
-                <li>Barres Carrées (Pleine) <button class="add-to-cart">Ajouter au panier</button></li>
-            </ul>
+        <section id="commande2">
+            <div class="product-card" data-id="ferPlats">
+                <img src="ferPlat.jpg" alt="Fer Plats">
+                <h3>Fer Plats</h3>
+                <p class="price">€25.00</p>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <a href="#" class="cart-link"><button class="add-to-cart"><i class="fas fa-shopping-cart"></i></button></a>
+                <a href="produitBis.html?id=ferPlats" class="cart-link"><button class="add-to-cart"><i class="fas fa-info"></i></button></a>
+            </div>
+            
+            <div class="product-card" data-id="corniereAileEgale">
+                <img src="corniereAilesEgales.jpeg" alt="Cornières a Ailes Égales">
+                <h3>Cornières a Ailes Égales</h3>
+                <p class="price">€30.00</p>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <a href="#" class="cart-link"></a><button class="add-to-cart"><i class="fas fa-shopping-cart"></i></button></a>
+                <a href="produitBis.html?id=corniereAileEgale" class="cart-link"><button class="add-to-cart"><i class="fas fa-info"></i></button></a>
+            </div>
+            <div class="product-card" data-id="corniereAileInegale">
+                <img src="corniereAilesInegales.jpeg" alt="Cornières a Ailes Inégales">
+                <h3>Cornières a Ailes Inégales</h3>
+                <p class="price">€28.00</p>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <a href="#" class="cart-link"></a><button class="add-to-cart"><i class="fas fa-shopping-cart"></i></button></a>
+                <a href="produitBis.html?id=corniereAileInegale" class="cart-link"><button class="add-to-cart"><i class="fas fa-info"></i></button></a>
+            </div>
+            <div class="product-card" data-id="ferEnT">
+                <img src="ferEnT.png" alt="Fer en T">
+                <h3>Fer en T</h3>
+                <p class="price">€22.00</p>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                </div>
+                <a href="#" class="cart-link"></a><button class="add-to-cart"><i class="fas fa-shopping-cart"></i></button></a>
+                <a href="produitBis.html?id=ferEnT" class="cart-link"><button class="add-to-cart"><i class="fas fa-info"></i></button></a>
+            </div>
+            <div class="product-card" id="poutrelleIpeNormale">
+                <img src="poutrelleIpeNormale.jpeg" alt="Fer en T">
+                <h3>Poutrelle IPE Normale</h3>
+                <p class="price">€22.00</p>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                </div>
+                <a href="#" class="cart-link"></a><button class="add-to-cart"><i class="fas fa-shopping-cart"></i></button></a>
+                <a href="produitBis.html?id=poutrelleIpeNormale" class="cart-link"><button class="add-to-cart"><i class="fas fa-info"></i></button></a>
+            </div>
+            <div class="product-card" id="poutrelleUpe">
+                <img src="poutrelleUpe.jpeg" alt="Fer en T">
+                <h3>Poutrelle UPE</h3>
+                <p class="price">€22.00</p>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                </div>
+                <a href="#" class="cart-link"></a><button class="add-to-cart"><i class="fas fa-shopping-cart"></i></button></a>
+                <a href="produitBis.html?id=poutrelleUpe" class="cart-link"><button class="add-to-cart"><i class="fas fa-info"></i></button></a>
+            </div>
+            <div class="product-card" id="poutrelleHeaHeb">
+                <img src="poutrelleHeaHeb.jpeg" alt="Fer en T">
+                <h3>Poutrelle HEA/HEB</h3>
+                <p class="price">€22.00</p>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                </div>
+                <a href="#" class="cart-link"></a><button class="add-to-cart"><i class="fas fa-shopping-cart"></i></button></a>
+                <a href="produitBis.html?id=poutrelleHeaHeb" class="cart-link"><button class="add-to-cart"><i class="fas fa-info"></i></button></a>
+            </div>
+            <div class="product-card" id="poutrelleUpnUac">
+                <img src="upn.jpg" alt="Fer en T">
+                <h3>Poutrelle UPN/UAC</h3>
+                <p class="price">€22.00</p>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                </div>
+                <a href="#" class="cart-link"></a><button class="add-to-cart"><i class="fas fa-shopping-cart"></i></button></a>
+                <a href="produitBis.html?id=poutrelleUpnUac" class="cart-link"><button class="add-to-cart"><i class="fas fa-info"></i></button></a>
+            </div>
+            <div class="product-card" id="tubeRond">
+                <img src="tubeRond.jpeg" alt="Fer en T">
+                <h3>Tubes Ronds</h3>
+                <p class="price">€22.00</p>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                </div>
+                <a href="#" class="cart-link"></a><button class="add-to-cart"><i class="fas fa-shopping-cart"></i></button></a>
+                <a href="produitBis.html?id=tubeRond" class="cart-link"><button class="add-to-cart"><i class="fas fa-info"></i></button></a>
+            </div>
+            <div class="product-card" id="tubesCarre">
+                <img src="tubesCarre.jpeg" alt="Fer en T">
+                <h3>Tubes Carrés</h3>
+                <p class="price">€22.00</p>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                </div>
+                <a href="#" class="cart-link"></a><button class="add-to-cart"><i class="fas fa-shopping-cart"></i></button></a>
+                <a href="produitBis.html?id=tubesCarre" class="cart-link"><button class="add-to-cart"><i class="fas fa-info"></i></button></a>
+            </div>
+            <div class="product-card" id="tubesCarre100">
+                <img src="tubesCarre.jpeg" alt="Fer en T">
+                <h3>Tubes Carrés (100cm)</h3>
+                <p class="price">€22.00</p>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                </div>
+                <a href="#" class="cart-link"></a><button class="add-to-cart"><i class="fas fa-shopping-cart"></i></button></a>
+                <a href="produitBis.html?id=tubesCarre100" class="cart-link"><button class="add-to-cart"><i class="fas fa-info"></i></button></a>
+            </div>
+            <div class="product-card" id="tubesRectangulaires">
+                <img src="tubesRectangulaires.jpeg" alt="Fer en T">
+                <h3>Tubes Rectangulaires</h3>
+                <p class="price">€22.00</p>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                </div>
+                <a href="#" class="cart-link"></a><button class="add-to-cart"><i class="fas fa-shopping-cart"></i></button></a>
+                <a href="produitBis.html?id=tubesRectangulaires" class="cart-link"><button class="add-to-cart"><i class="fas fa-info"></i></button></a>
+            </div>
+            <div class="product-card" id="barreRondPleine">
+                <img src="barreRondPleine.jpeg" alt="Fer en T">
+                <h3>Barres Rondes (Pleine)</h3>
+                <p class="price">€22.00</p>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                </div>
+                <a href="#" class="cart-link"></a><button class="add-to-cart"><i class="fas fa-shopping-cart"></i></button></a>
+                <a href="produitBis.html?id=barreRondPleine" class="cart-link"><button class="add-to-cart"><i class="fas fa-info"></i></button></a>
+            </div>
+            <div class="product-card" id="barreCarrePlein">
+                <img src="barreCarreplein.jpeg" alt="Fer en T">
+                <h3>Barres Carrées (Pleine)</h3>
+                <p class="price">€22.00</p>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                </div>
+                <a href="#" class="cart-link"></a><button class="add-to-cart"><i class="fas fa-shopping-cart"></i></button></a>
+                <a href="produitBis.html?id=barreCarrePlein" class="cart-link"><button class="add-to-cart"><i class="fas fa-info"></i></button></a>
+            </div>
+
+            <!-- Ajoutez d'autres cartes pour chaque produit -->
         </section>
     </main>
     <footer>
-            <p>&copy; 2024 Réception des Commandes. Tous droits réservés.</p>
+        <p>&copy; 2024 Réception des Commandes. Tous droits réservés.</p>
         </div>
     </footer>
-    
+
 </body>
 
 </html>
