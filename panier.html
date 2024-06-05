@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panier</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        #cart-items {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #cart-items li {
+            display: flex;
+            align-items: center;
+            background-color: #fff;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        #cart-items img {
+            width: 50px;
+            height: 50px;
+            margin-right: 20px;
+            border-radius: 5px;
+        }
+
+        #cart-items div {
+            flex: 1;
+        }
+
+        .remove-button {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .remove-button:hover {
+            background-color: darkred;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Votre Panier</h1>
+    <ul id="cart-items"></ul>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+            const cartItemsContainer = document.getElementById('cart-items');
+            const cartBadge = document.getElementById('cart-badge');
+
+            function updateCartBadge() {
+                const cartCount = cartItems.length;
+                cartBadge.innerText = cartCount;
+                if (cartCount > 0) {
+                    cartBadge.classList.add('show');
+                } else {
+                    cartBadge.classList.remove('show');
+                }
+                const cartBadgeProductBis = document.getElementById('cart-badge-product-bis');
+                cartBadgeProductBis.innerText = cartCount;
+            }
+
+
+            function renderCartItems() {
+                cartItemsContainer.innerHTML = '';
+                cartItems.forEach((item, index) => {
+                    const li = document.createElement('li');
+
+                    const img = document.createElement('img');
+                    img.src = item.image;
+                    img.alt = item.nom;
+
+                    const infoDiv = document.createElement('div');
+                    infoDiv.innerText = `${item.nom} - €${item.prix.toFixed(2)}`;
+
+                    const removeButton = document.createElement('button');
+                    removeButton.classList.add('remove-button');
+                    removeButton.innerText = 'Supprimer';
+                    removeButton.addEventListener('click', () => {
+
+                        cartItems.splice(index, 1);
+                        localStorage.setItem('cartItems', JSON.stringify(cartItems));
+                        const cartCount = cartItems.length;
+                        localStorage.setItem('cartCount', cartCount);
+                        renderCartItems();
+                        updateCartBadge();
+                    });
+
+
+                    li.appendChild(img);
+                    li.appendChild(infoDiv);
+                    li.appendChild(removeButton);
+                    cartItemsContainer.appendChild(li);
+                });
+            }
+
+            renderCartItems();
+            updateCartBadge();
+        });
+
+    </script>
+</body>
+
+</html>

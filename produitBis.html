@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <title>Produit</title>
+    <title>Produits</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -78,25 +78,24 @@
         }
 
         .cart-link {
-    position: relative;
-}
+            position: relative;
+        }
 
-.cart-badge {
-    position: absolute;
-    top: -10px;
-    right: -10px;
-    background-color: red;
-    color: white;
-    border-radius: 50%;
-    padding: 5px 10px;
-    font-size: 12px;
-    display: none; /* Initialement caché */
-}
+        .cart-badge {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background-color: red;
+            color: white;
+            border-radius: 50%;
+            padding: 5px 10px;
+            font-size: 12px;
+            display: none;
+        }
 
-.cart-badge.show {
-    display: inline-block;
-}
-
+        .cart-badge.show {
+            display: inline-block;
+        }
 
         .fa-shopping-cart:hover {
             color: #ffd700;
@@ -121,12 +120,13 @@
         }
 
         .product-image img {
-        width: 100%; /* Utilisez toute la largeur disponible */
-        height: 220px; /* Hauteur automatique pour conserver les proportions */
-        max-width: 400px; /* Limite la largeur maximale à 400 pixels */
-        border-radius: 10px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    }
+            width: 100%;
+            height: 220px;
+            max-width: 400px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
         .additional-info {
             margin-top: 20px;
             background: #fff;
@@ -196,31 +196,26 @@
         .image-scroll-container img {
             display: inline-block;
             width: 50px;
-            /* Largeur fixe pour chaque image */
             height: 50px;
             margin-right: 10px;
-            /* Espacement entre les images */
         }
 
         .button-container {
-    display: flex;
-    align-items: center;
-    gap: 10px; /* Espacement entre le bouton et l'icône */
-}
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
 
-.button-container .fa-bookmark {
-    font-size: 35px;
-    cursor: pointer;
-    color: rgb(67, 111, 232); /* Couleur de l'icône */
-    transition: color 0.3s ease;
-}
+        .button-container .fa-bookmark {
+            font-size: 35px;
+            cursor: pointer;
+            color: rgb(67, 111, 232);
+            transition: color 0.3s ease;
+        }
 
-.button-container .fa-bookmark:hover {
-    color: #ff9f00; /* Couleur de l'icône au survol */
-}
-
-
-
+        .button-container .fa-bookmark:hover {
+            color: #ff9f00;
+        }
 
         footer {
             display: flex;
@@ -254,10 +249,10 @@
                 <a href="#"><i class="fab fa-instagram"></i></a>
             </div>
             <div class="icon-container">
-                <a href="#" class="cart-link">
+                <a href="panier.html" class="cart-link">
                     <i class="fas fa-shopping-cart"></i>
                     <span class="cart-badge" id="cart-badge">0</span>
-                </a>                
+                </a>
                 <a href="#" class="connect-link"><i class="fas fa-user"></i></a>
             </div>
         </div>
@@ -273,7 +268,7 @@
                     <img id="image1" src="fer.jpg" alt="Image 1">
                     <img id="image2" src="corten.webp" alt="Image 2">
                     <img id="image3" src="alu.jpg" alt="Image 3">
-                    <img id="image4" src="ferPlat.jpg" alt="Image 3">
+                    <img id="image4" src="ferPlat.jpg" alt="Image 4">
                 </div>
             </div>
         </div>
@@ -288,91 +283,106 @@
                 <i class="fas fa-star-half-alt"></i>
             </div>
             <div class="button-container">
-                <button class="add-to-cart">Ajouter au panier</button>
+                <button class="add-to-cart" data-id="id_du_produit">Ajouter au panier</button>
+                <input type="number" id="quantity" min="1" value="1">
                 <i class="fas fa-bookmark"></i>
             </div>
-            <div class="description">
-                <h2>Description du produit</h2>
-                <p id="product-description">Description non disponible.</p>
-                <ul id="product-details">
-                    <!-- Les détails seront ajoutés ici -->
-                </ul>
-            </div>
+            <h2>Description du produit</h2>
+            <p id="product-description">Description non disponible.</p>
+            <ul id="product-details"></ul>
         </div>
-        
     </main>
     <footer>
         <p>© 2024 COUP'ACIER. Tous droits réservés.</p>
     </footer>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const queryString = window.location.search;
-            const urlParams = new URLSearchParams(queryString);
-            const productId = urlParams.get('id');
-        
-            fetch('produits.json')
-                .then(response => response.json())
-                .then(data => {
-                    const product = data.produits.find(p => p.id === productId);
-                    if (product) {
-                        document.getElementById('product-name').innerText = product.nom;
-                        document.getElementById('product-price').innerText = `€${product.prix.toFixed(2)}`;
-                        document.getElementById('product-image').src = product.image;
-                        document.getElementById('product-image').alt = product.nom;
-                        document.getElementById('product-description').innerText = product.description;
-        
-                        const detailsList = document.getElementById('product-details');
-                        detailsList.innerHTML = '';
-                        product.details.forEach(detail => {
-                            const li = document.createElement('li');
-                            li.innerText = detail;
-                            detailsList.appendChild(li);
-                        });
-        
-                        // Clear and add images to the scroll container
-                        const imageScrollContainer = document.querySelector('.image-scroll-container');
-                        imageScrollContainer.innerHTML = ''; // Clear existing images
-                        product.images_scroll.forEach(imgSrc => {
-                            const img = document.createElement('img');
-                            img.src = imgSrc;
-                            img.alt = product.nom;
-                            img.style.width = '50px';
-                            img.style.height = '50px';
-                            imageScrollContainer.appendChild(img);
-                        });
-        
-                        // Add event listeners to the images in the scroll container
-                        const images = document.querySelectorAll('.image-scroll-container img');
-                        const productImage = document.getElementById('product-image');
-                        images.forEach(image => {
-                            image.addEventListener('click', () => {
-                                productImage.src = image.src;
-                                productImage.alt = image.alt;
-                            });
-                        });
-        
-                    } else {
-                        document.getElementById('product-name').innerText = "Produit non trouvé";
-                    }
-                })
-                .catch(error => console.error('Erreur lors de la récupération des données:', error));
-        
-            const cartButton = document.querySelector('.add-to-cart');
-            const cartBadge = document.getElementById('cart-badge');
-            let cartCount = 0;
-        
-            cartButton.addEventListener('click', () => {
-                cartCount++;
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const productId = urlParams.get('id');
+
+    fetch('produits.json')
+        .then(response => response.json())
+        .then(data => {
+            const product = data.produits.find(p => p.id === productId);
+            if (product) {
+                document.getElementById('product-name').innerText = product.nom;
+                document.getElementById('product-price').innerText = `€${product.prix.toFixed(2)}`;
+                document.getElementById('product-image').src = product.image;
+                document.getElementById('product-image').alt = product.nom;
+                document.getElementById('product-description').innerText = product.description;
+
+                const detailsList = document.getElementById('product-details');
+                detailsList.innerHTML = '';
+                product.details.forEach(detail => {
+                    const li = document.createElement('li');
+                    li.innerText = detail;
+                    detailsList.appendChild(li);
+                });
+
+                const imageScrollContainer = document.querySelector('.image-scroll-container');
+                imageScrollContainer.innerHTML = '';
+                product.images_scroll.forEach(imgSrc => {
+                    const img = document.createElement('img');
+                    img.src = imgSrc;
+                    img.alt = product.nom;
+                    img.style.width = '50px';
+                    img.style.height = '50px';
+                    imageScrollContainer.appendChild(img);
+                });
+
+                const images = document.querySelectorAll('.image-scroll-container img');
+                const productImage = document.getElementById('product-image');
+                images.forEach(image => {
+                    image.addEventListener('click', () => {
+                        productImage.src = image.src;
+                        productImage.alt = image.alt;
+                    });
+                });
+
+                const cartButton = document.querySelector('.add-to-cart');
+                const cartBadge = document.getElementById('cart-badge');
+                let cartCount = parseInt(localStorage.getItem('cartCount')) || 0;
+
                 cartBadge.innerText = cartCount;
-                cartBadge.classList.add('show');
-            });
-        });
-        </script>
-        
-        
-    
+                if (cartCount > 0) {
+                    cartBadge.classList.add('show');
+                }
+
+                cartButton.addEventListener('click', () => {
+                    const quantityInput = document.getElementById('quantity');
+                    const quantity = parseInt(quantityInput.value);
+                    if (isNaN(quantity) || quantity <= 0) {
+                        alert('Veuillez saisir une quantité valide.');
+                        return;
+                    }
+
+                    cartCount += quantity;
+                    cartBadge.innerText = cartCount;
+                    cartBadge.classList.add('show');
+                    localStorage.setItem('cartCount', cartCount);
+
+                    let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+                    for (let i = 0; i < quantity; i++) {
+                        cartItems.push(product);
+                    }
+                    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+
+                    const cartBadgeProductBis = document.getElementById('cart-badge');
+                    cartBadgeProductBis.innerText = cartCount;
+
+                });
+
+
+            } else {
+                document.getElementById('product-name').innerText = "Produit non trouvé";
+            }
+        })
+        .catch(error => console.error('Erreur lors de la récupération des données:', error));
+});
+
+    </script>
+
 </body>
-
-
 
 </html>
