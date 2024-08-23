@@ -266,6 +266,41 @@
         .product-card:hover {
             transform: translateY(-10px);
         }
+
+        @media screen and (max-width: 1524px) {
+            .product-card {
+                width: 20%
+            }
+        }
+
+        @media screen and (max-width: 1024px) {
+            .product-card {
+                width: calc(45% - 20px); /* Deux cartes par ligne */
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .product-card {
+                width: calc(50% - 20px); /* Deux cartes par ligne */
+            }
+            .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-direction: column;
+            margin-bottom: 10px;
+        }
+
+        }
+
+        @media screen and (max-width: 480px) {
+            .product-card {
+                width: 100%; /* Une carte par ligne sur les petits écrans */
+            }
+            .nav {
+                flex-direction: column;
+            }
+        }
     </style>
 </head>
 

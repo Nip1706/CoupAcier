@@ -4,430 +4,1263 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="appro.css">
+    <style>
+      /* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* General Styles */
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f8f9fa;
+    color: #212529;
+    margin: 0;
+    overflow-y: auto;
+}
+
+header {
+    background-color: white;
+    color: orange;
+    padding: 20px 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+form {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="tel"] /* Ajouté pour l'input numéro de téléphone */,
+select {
+    width: calc(100% - 16px); /* Pour compenser le padding de 8px des côtés */
+    margin-bottom: 10px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+select:focus {
+    border-color: #007bff;
+}
+
+button {
+    padding: 12px 24px; /* Légèrement réduit par rapport à l'original */
+    border-radius: 8px;
+    background-color: #007bff;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    outline: none;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+@media (min-width: 768px) {
+    button {
+        padding: 14px 28px; /* Taille légèrement augmentée pour les grands écrans */
+    }
+}
+
+.container h1 {
+    font-size: 24px;
+    color: red;
+}
+
+.container-block {
+    background-image: linear-gradient(to right, #007bff, #0056b3);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    min-height: 1900px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+}
+
+.block-text {
+    background-image: url('Bandeau Fil rouge.jpg');
+    padding: 20px;
+    width: 100%;
+    margin-bottom: 50px;
+    color: white;
+    height: 290px;
+    background-size: cover;
+    border-bottom-left-radius: 35%;
+    border-bottom-right-radius: 35%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+/* New Flex Container for Form and Table */
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 90%; /* Adjusted width for the container */
+    padding: 20px;
+    gap: 20px;
+    overflow-x: auto; /* Ajouté pour permettre le scroll horizontal si nécessaire */
+}
+
+.flex-item {
+    flex: 1;
+    margin: 0 10px;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 24px; /* Augmentation de la taille de la card */
+    margin-top: 10px; /* Added margin to align with the table's title */
+    overflow: hidden; /* Pour éviter le scroll horizontal */
+    min-width: 100%; /* Assure que la card prend toute la largeur disponible */
+}
+
+#ajoutFournisseur,
+#ajoutEntrepot {
+    padding: 15px;
+    flex: 1;
+}
+
+#tableauFournisseurs,
+#tableauEntrepots {
+    flex: 2;
+    max-height: 400px; /* Adjust this value to your needs */
+    overflow-y: auto;
+    overflow-x: hidden; /* Ajouté pour éviter le scroll horizontal */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #f9f9f9;
+}
+
+tbody tr:hover {
+    background-color: #f5f5f5;
+}
+
+.crud-buttons {
+    margin-top: 20px;
+}
+
+.crud-buttons button {
+    padding: 10px 16px;
+    border-radius: 4px;
+    background-color: #007bff;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    font-size: 14px; /* Taille réduite pour les boutons Modifier et Supprimer */
+}
+
+.crud-buttons button:hover {
+    background-color: #0056b3;
+    color: #fff;
+}
+
+.header-buttons button {
+    padding: 10px 16px;
+    border-radius: 4px;
+    background-color: #007bff;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    outline: none;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.header-buttons button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+    margin: 20px auto;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.search-bar input[type="text"] {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    outline: none;
+    border-radius: 25px;
+}
+
+.search-bar button {
+    padding: 12px 20px;
+    border-radius: 25px;
+    background-color: #007bff;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.search-bar button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+.card h2 {
+    margin-bottom: 20px;
+    font-size: 20px;
+    color: #007bff;
+}
+
+.filters {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.filter-item {
+    display: flex;
+    flex-direction: column;
+    margin-right: 10px;
+}
+
+.filter-item label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.filter-item input,
+.filter-item select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.filters button {
+    padding: 10px 20px;
+    border-radius: 8px;
+    background-color: #007bff;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    margin-left: 10px;
+}
+
+.filters button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+/* Slider Styles */
+.slider {
+    overflow-x: hidden;
+    white-space: nowrap;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.slider::-webkit-scrollbar {
+    display: none;
+}
+
+.slide {
+    display: inline-block;
+    width: 100%;
+    transition: transform 0.3s ease-in-out;
+}
+
+@media (min-width: 768px) {
+    .slide {
+        width: calc(50% - 20px);
+        margin-right: 20px;
+    }
+}
+/* Style pour la barre de recherche */
+#searchName {
+    padding: 10px;
+    width: 100%;
+    max-width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-top: 5px;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+#searchName:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    outline: none;
+}
+
+/* Optionnel: Ajout d'une icône de recherche à l'intérieur du champ */
+#searchName::placeholder {
+    color: #999;
+    font-style: italic;
+}
+
+/* Conteneur pour la barre de recherche */
+.filter-item {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.filter-item label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+/* Style pour les icônes */
+.icons {
+    display: flex;
+    gap: 15px;
+}
+
+.icon {
+    font-size: 24px;
+    color: #333;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+/* Couleur spécifique pour chaque icône */
+.icon i.fa-sign-out-alt {
+    color: red; /* Icône de déconnexion en rouge */
+}
+
+.icon i.fa-user-tie {
+    color: green; /* Icône de service d'approvisionnement en vert (ou autre couleur de votre choix) */
+}
+
+/* Effet au survol */
+.icon:hover {
+    color: #007bff; /* Change la couleur au survol (facultatif) */
+}
+.tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 200px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%; /* Position the tooltip above the text */
+    left: 50%;
+    margin-left: -100px; /* Use half of the width (120/2 = 60), to center the tooltip */
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+.product-card {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+    display: inline-block;
+    margin: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s;
+}
+
+.product-card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.product-card img {
+    display: block;
+    margin: 0 auto 10px;
+}
+
+.product-card p {
+    margin: 0;
+}
+
+.details-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.details-table th, .details-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.details-table th {
+    background-color: #f4f4f4;
+    text-align: left;
+}
+
+    </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <title>Page d'Accueil</title>
 </head>
 
 <body>
     <header>
         <div class="container">
-            <a href="index.html">
-                <h1>COUP'ACIER</h1>
-            </a>
-            <div>
-                <a href="admin.html"><h1>ADMINISTRATEUR</h1></a>
+            <h1>COUP'ACIER</h1>
+            <div class="icons">
+                <span class="icon">
+                    <i class="fas fa-user-tie" title="Service d'approvisionnement"></i>
+                </span>
+                <span class="icon">
+                    <i class="fas fa-sign-out-alt" title="Déconnexion"></i>
+                </span>
             </div>
         </div>
     </header>
+
     <div class="container-block">
         <div class="block-text">
-            <h1>Bienvenue sur la page ADMINISTRATEUR, vous pouvez vous connecter et serez redirigé vers votre plateforme
-                :</h1>
+            <h1>Bienvenue sur la page ADMINISTRATEUR, vous pouvez vous connecter et serez redirigé vers votre plateforme :</h1>
             <div class="button">
-                <a id="btnAjout"><button class="ajout">Ajout Fournisseur</button></a>
-                <a id="btnAjout"><button class="save">Enregistrement</button></a>
-                <a id="btnOrder"><button class="order">Commander</button></a>
-                <a id="btnStateOrder"><button class="state">Etat Commandes</button></a>
+                <button id="btnAjoutFournisseur" class="ajout">Gestion Des Fournisseurs</button>
+                <a id="btnAjoutEntrepot"><button class="ajout">Gestion Des Entrepots</button></a>
+                <a id="btnAjoutProduit"><button class="ajout">Gestion Des Produits</button></a>
             </div>
         </div>
-        <!-- Formulaire pour ajouter un fournisseur -->
-        <div id="ajoutFournisseur">
-            <form id="addSupplierForm">
-                <h2>Ajouter un Fournisseur</h2>
-                <input type="text" id="supplierName" placeholder="Nom du fournisseur" required>
-                <button type="submit">Ajouter Fournisseur</button>
-            </form>
-        </div>
-        <!-- Affichage de l'état des stocks par entrepôt -->
-        <div id="stockStatus">
-            <h2>État des Stocks par Entrepôt</h2>
-            <ul id="warehouseList">
-                <!-- Les entrepôts seront ajoutés ici par JavaScript -->
-            </ul>
-        </div>
-        <!-- Formulaire pour passer une commande -->
-        <form id="orderForm">
-            <h2>Passer une Commande</h2>
-            <select id="supplierSelect" required>
-                <option value="" disabled selected>Choisir un fournisseur</option>
-                <!-- Les fournisseurs seront ajoutés ici par JavaScript -->
-            </select>
-            <select id="warehouseSelect" required>
-                <option value="" disabled selected>Choisir un entrepôt</option>
-                <!-- Les entrepôts seront ajoutés ici par JavaScript -->
-            </select>
-            <div id="supplyTypes">
-                <!-- Les types de fourniture seront ajoutés ici par JavaScript -->
+        <div class="flex-container">
+            <!-- Formulaire pour ajouter un fournisseur -->
+            <div id="ajoutFournisseur" class="flex-item card">
+                <h2 id="formTitle">Ajouter un Fournisseur</h2>
+                <form id="addSupplierForm">
+                    <input type="text" id="supplierName" name="nomFournisseur" placeholder="Nom du fournisseur" required>
+                    <input type="text" id="supplierType" name="typeFourniture" placeholder="Type de fourniture" required>
+                    <input type="number" id="supplierPrice" name="prixHTFournisseur" placeholder="Prix HT" required>
+                    <input type="email" id="supplierEmail" name="email" placeholder="Email du fournisseur" required>
+                    <input type="tel" id="supplierPhone" name="telephone" placeholder="Téléphone du fournisseur" required>
+                    <input type="hidden" id="supplierId" name="supplierId">
+                    <button type="submit" class="button-71" role="button">Ajouter Fournisseur</button>
+                    <button type="button" id="btnAnnuler" style="display: none;">Annuler</button>
+                </form>
             </div>
-            <button class="orderPassed" type="submit">Passer Commande</button>
-        </form>
-        <!-- Affichage de l'état des commandes -->
-        <div id="orderStatus">
-            <h2>État des Commandes</h2>
-            <!-- Les commandes seront affichées ici par JavaScript -->
+
+            <!-- Tableau pour afficher les fournisseurs avec filtres -->
+            <div id="tableauFournisseurs" class="flex-item card">
+                <div class="filters">
+                    <div class="filter-item">
+                        <label for="searchName">Rechercher par nom :</label>
+                        <input type="text" id="searchName" placeholder="Nom du fournisseur">
+                    </div>
+                    <div class="filter-item">
+                        <label for="filterType">Type de fourniture :</label>
+                        <select id="filterType">
+                            <option value="">Tous</option>
+                            <!-- Options de type de fourniture seront ajoutées dynamiquement via JavaScript -->
+                        </select>
+                    </div>
+                    <div class="filter-item">
+                        <label for="filterPriceMin">Prix Min :</label>
+                        <input type="number" id="filterPriceMin" placeholder="0">
+                    </div>
+                    <div class="filter-item">
+                        <label for="filterPriceMax">Prix Max :</label>
+                        <input type="number" id="filterPriceMax" placeholder="0">
+                    </div>
+                    <button id="applyFilters">Appliquer les filtres</button>
+                    <button id="resetFilters">Réinitialiser les filtres</button>
+                </div>
+                <h2>Liste des Fournisseurs</h2>
+                <table id="supplierTable">
+                    <thead>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Type</th>
+                            <th>Prix HT</th>
+                            <th>Email</th>
+                            <th>Téléphone</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="supplierTableBody">
+                        <!-- Les fournisseurs seront ajoutés ici dynamiquement -->
+                    </tbody>
+                </table>
+            </div>
         </div>
-    </div>
-    <footer>
-        <p>Ceci est le pied de page.</p>
-    </footer>
+        <div class="flex-container">
+            <!-- Formulaire pour ajouter/modifier un entrepôt -->
+            <div id="ajoutEntrepot" class="flex-item card">
+                <h2 id="entrepotFormTitle">Ajouter/Modifier un Entrepôt</h2>
+                <form id="addEntrepotForm">
+                    <input type="text" id="entrepotName" name="nom" placeholder="Nom de l'entrepôt" required>
+                    <input type="text" id="entrepotVille" name="ville" placeholder="Ville" required>
+                    <input type="text" id="entrepotCodePostal" name="codePostale" placeholder="Code Postal" required>
+                    <input type="text" id="entrepotRue" name="rue" placeholder="Rue" required>
+                    <input type="hidden" id="entrepotId" name="entrepotId">
+                    <button type="submit" id="btnSaveEntrepot">Enregistrer</button>
+                    <button type="button" id="btnCancelEntrepot">Annuler</button>
+                </form>
+            </div>
+            <!-- Tableau pour afficher les entrepôts -->
+            <div id="tableauEntrepots" class="flex-item card">
+                <h2>Liste des Entrepôts</h2>
+                <table id="entrepotTable">
+                    <thead>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Ville</th>
+                            <th>Code Postal</th>
+                            <th>Rue</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="entrepotTableBody">
+                        <!-- Les entrepôts seront ajoutés ici dynamiquement -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+       
+<h1>Liste des Produits</h1>
+<table id="productsTable">
+    <!-- Rows with product names and images will be added here -->
+</table>
 
-    <script>
+<table id="detailsTable">
+    <!-- Rows with detailed product information will be added here -->
+</table>
 
-        document.getElementById('btnAjout').addEventListener('click', function () {
-            document.getElementById('ajoutFournisseur').style.visibility = 'visible';
-        });
-        document.getElementById('btnOrder').addEventListener('click', function () {
-            document.getElementById('stockStatus').style.visibility = 'visible';
-        });
-        document.getElementById('btnOrder').addEventListener('click', function () {
-            document.getElementById('orderForm').style.visibility = 'visible';
-        });
-        document.getElementById('btnStateOrder').addEventListener('click', function () {
-            document.getElementById('orderStatus').style.visibility = 'visible';
-        });
-        document.getElementById('btnStateOrder').addEventListener('click', function () {
-            document.getElementById('stockStatus').style.visibility = 'hidden';
-            document.getElementById('orderForm').style.visibility = 'hidden';
-        });
-
-        // Données simulées pour les fournisseurs, les types de fourniture et les commandes
-        let suppliers = ["Fournisseur 1", "Fournisseur 2", "Fournisseur 3"];
-        let supplyTypes = {
-            "Fournisseur 1": ["Fer Plats",
-                "Cornières a Ailes Égales",
-                "Cornières a Ailes Inégales",
-                "Fer en T",
-                "Poutrelle IPE Normale",
-                "Poutrelles UPE",
-                "Poutrelles HEA/HEB",
-                "Poutrelles UPN/UAC",
-                "Tubes Ronds",
-                "Tubes Carrés",
-                "Tubes Carrés (100cm)",
-                "Tubes Rectangulaires",
-                "Barres Rondes (Pleine)",
-                "Barres Carrées (Pleine)"],
-            "Fournisseur 2": ["Fer Plats",
-                "Cornières a Ailes Égales",
-                "Cornières a Ailes Inégales",
-                "Fer en T",
-                "Poutrelle IPE Normale",
-                "Poutrelles UPE",
-                "Poutrelles HEA/HEB",
-                "Poutrelles UPN/UAC",
-                "Tubes Ronds",
-                "Tubes Carrés",
-                "Tubes Carrés (100cm)",
-                "Tubes Rectangulaires",
-                "Barres Rondes (Pleine)",
-                "Barres Carrées (Pleine)"],
-            "Fournisseur 3": ["Fer Plats",
-                "Cornières a Ailes Égales",
-                "Cornières a Ailes Inégales",
-                "Fer en T",
-                "Poutrelle IPE Normale",
-                "Poutrelles UPE",
-                "Poutrelles HEA/HEB",
-                "Poutrelles UPN/UAC",
-                "Tubes Ronds",
-                "Tubes Carrés",
-                "Tubes Carrés (100cm)",
-                "Tubes Rectangulaires",
-                "Barres Rondes (Pleine)",
-                "Barres Carrées (Pleine)"],
-        };
-        let orders = [];
-
-        // Données sur l'état des stocks par entrepôt
-        let stockStatus = [
-            {
-                warehouse: "Entrepôt A",
-                supplies: {
-                    "Fer Plats": 100,
-                    "Cornières a Ailes Égales": 150,
-                    "Cornières a Ailes Inégales": 200,
-                    "Fer en T": 120,
-                    "Poutrelle IPE Normale": 80,
-                    "Poutrelles UPE": 100,
-                    "Poutrelles HEA/HEB": 150,
-                    "Poutrelles UPN/UAC": 120,
-                    "Tubes Ronds": 180,
-                    "Tubes Carrés": 100,
-                    "Tubes Carrés (100cm)": 150,
-                    "Tubes Rectangulaires": 200,
-                    "Barres Rondes (Pleine)": 90,
-                    "Barres Carrées (Pleine)": 110
-                }
-            },
-            {
-                warehouse: "Entrepôt B",
-                supplies: {
-                    "Fer Plats": 120,
-                    "Cornières a Ailes Égales": 180,
-                    "Cornières a Ailes Inégales": 220,
-                    "Fer en T": 100,
-                    "Poutrelle IPE Normale": 90,
-                    "Poutrelles UPE": 110,
-                    "Poutrelles HEA/HEB": 160,
-                    "Poutrelles UPN/UAC": 130,
-                    "Tubes Ronds": 200,
-                    "Tubes Carrés": 120,
-                    "Tubes Carrés (100cm)": 160,
-                    "Tubes Rectangulaires": 180,
-                    "Barres Rondes (Pleine)": 100,
-                    "Barres Carrées (Pleine)": 120
-                }
-            },
-            {
-                warehouse: "Entrepôt C",
-                supplies: {
-                    "Fer Plats": 150,
-                    "Cornières a Ailes Égales": 200,
-                    "Cornières a Ailes Inégales": 250,
-                    "Fer en T": 110,
-                    "Poutrelle IPE Normale": 100,
-                    "Poutrelles UPE": 130,
-                    "Poutrelles HEA/HEB": 180,
-                    "Poutrelles UPN/UAC": 140,
-                    "Tubes Ronds": 220,
-                    "Tubes Carrés": 140,
-                    "Tubes Carrés (100cm)": 180,
-                    "Tubes Rectangulaires": 160,
-                    "Barres Rondes (Pleine)": 120,
-                    "Barres Carrées (Pleine)": 140
-                }
-            }
-        ];
-
-        // Sélection des éléments du DOM
-        const addSupplierForm = document.getElementById("addSupplierForm");
-        const orderForm = document.getElementById("orderForm");
-        const warehouseList = document.getElementById("warehouseList");
-        const supplierSelect = document.getElementById("supplierSelect");
-        const warehouseSelect = document.getElementById("warehouseSelect");
-        const supplyTypesDiv = document.getElementById("supplyTypes");
-        const orderStatus = document.getElementById("orderStatus");
-
-        // Écouteurs d'événements
-        addSupplierForm.addEventListener("submit", addSupplier);
-        orderForm.addEventListener("submit", placeOrder);
-
-        // Fonction pour ajouter un fournisseur
-        function addSupplier(event) {
-            event.preventDefault();
-            const supplierName = document.getElementById("supplierName").value;
-            suppliers.push(supplierName);
-            populateSuppliers();
-            addSupplierForm.reset();
-        }
-
-        // Fonction pour remplir la liste des fournisseurs
-        function populateSuppliers() {
-            supplierSelect.innerHTML = "<option value='' disabled selected>Choisir un fournisseur</option>";
-            suppliers.forEach(supplier => {
-                const option = document.createElement("option");
-                option.textContent = supplier;
-                option.value = supplier;
-                supplierSelect.appendChild(option);
-            });
-            populateWarehouses();
-        }
-
-        // Fonction pour remplir la liste des entrepôts
-        function populateWarehouses() {
-            warehouseSelect.innerHTML = "<option value='' disabled selected>Choisir un entrepôt</option>";
-            stockStatus.forEach(warehouse => {
-                const option = document.createElement("option");
-                option.textContent = warehouse.warehouse;
-                option.value = warehouse.warehouse;
-                warehouseSelect.appendChild(option);
-            });
-        }
-
-        // Fonction pour remplir la liste des types de fourniture en fonction du fournisseur sélectionné
-        supplierSelect.addEventListener("change", populateSupplyTypes);
-        function populateSupplyTypes() {
-            const selectedSupplier = supplierSelect.value;
-            supplyTypesDiv.innerHTML = "";
-            if (selectedSupplier) {
-                supplyTypes[selectedSupplier].forEach(supplyType => {
-                    const checkbox = document.createElement("input");
-                    checkbox.type = "checkbox";
-                    checkbox.name = "supplyType";
-                    checkbox.value = supplyType;
-
-                    const quantityInput = document.createElement("input");
-                    quantityInput.type = "number";
-                    quantityInput.name = "quantity";
-                    quantityInput.min = "1";
-                    quantityInput.placeholder = "Quantité";
-
-                    const label = document.createElement("label");
-                    label.textContent = supplyType;
-
-                    supplyTypesDiv.appendChild(checkbox);
-                    supplyTypesDiv.appendChild(label);
-                    supplyTypesDiv.appendChild(quantityInput);
-                    supplyTypesDiv.appendChild(document.createElement("br"));
-                });
-            }
-        }
-
-        function placeOrder(event) {
-            event.preventDefault();
-            const selectedSupplier = supplierSelect.value;
-            const selectedWarehouse = warehouseSelect.value;
-            const selectedTypes = Array.from(document.querySelectorAll('input[name="supplyType"]:checked'));
-            const order = {
-                supplier: selectedSupplier,
-                warehouse: selectedWarehouse,
-                types: []
-            };
-
-            // Mise à jour des stocks et enregistrement de la commande
-            selectedTypes.forEach(checkbox => {
-                const type = checkbox.value;
-                const quantityInput = checkbox.nextElementSibling.nextElementSibling;
-                const quantity = parseInt(quantityInput.value, 10);
-
-                if (quantity && quantity > 0) {
-                    order.types.push({ type, quantity });
-
-                    // Recherche du type de fourniture dans l'entrepôt
-                    const warehouse = stockStatus.find(wh => wh.warehouse === selectedWarehouse);
-                    if (warehouse && warehouse.supplies[type] !== undefined) {
-                        // Le type de fourniture existe déjà, donc nous ajoutons simplement la quantité
-                        warehouse.supplies[type] += quantity;
-                    } else {
-                        // Le type de fourniture n'existe pas encore, nous créons une nouvelle entrée
-                        if (warehouse) {
-                            warehouse.supplies[type] = quantity;
-                        }
-                    }
-                }
-            });
-
-            // Enregistrer la commande dans localStorage
-    localStorage.setItem('lastOrder', JSON.stringify(order));
-
-            orders.push(order);
-            displayOrders();
-            displayStockStatus();
-            updateStockStatus();
-            saveStockStatus(); // Enregistrer les stocks dans le stockage local
-            orderForm.reset();
-        }
-
-        // Fonction pour afficher l'état des commandes
-        function displayOrders() {
-            orderStatus.innerHTML = `
+    <h1>Ajouter une commande fournisseur</h1>
+    <form id="productForm">
+        <select id="fournisseurId"></select>
+        <div id="productsList"></div>
+        <button type="submit">Envoyer la commande</button>
+    </form>
     <table>
         <thead>
             <tr>
-                <th>Commande</th>
+                <th>ID</th>
+                <th>Produit</th>
                 <th>Fournisseur</th>
-                <th>Entrepôt</th>
-                <th>Matériaux</th>
-                <th>Quantité</th>
-                <th>Statut</th>
-                <th>Mise à jour statut</th>
+                <th>Quantité Commandée</th>
+                <th>Date Commande</th>
+                <th>État Commande</th>
+                <th>État Livraison</th>
+                <th>Date Livraison</th>
+                <th>Action</th>
             </tr>
         </thead>
-        <tbody>
-            ${orders.map((order, index) => `
-                <tr>
-                    <td>${index + 1}</td>
-                    <td>${order.supplier}</td>
-                    <td>${order.warehouse}</td>
-                    <td>${order.types.map(item => `${item.type}`).join(", ")}</td>
-                    <td>${order.types.map(item => `${item.quantity}`).join(", ")}</td>
-                    <td id="status${index}" style="color: orange;">En cours</td>
-                    <td>
-                        <button class="valider-btn" onclick="validerCommande(${index})">Arrivée</button>
-                        <button class="annuler-btn" onclick="annulerCommande(${index})">Retardée</button>
-                    </td>
-                </tr>
-            `).join("")}
-        </tbody>
+        <tbody id="produits-body"></tbody>
     </table>
-    <button id="retour">Retour</button>
-`;
-            // Ajout de l'écouteur d'événements pour le bouton "Retour"
-            document.getElementById('retour').addEventListener('click', function () {
-                document.getElementById('orderStatus').style.visibility = 'hidden';
-            });
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+    const formAjoutFournisseur = document.getElementById('addSupplierForm');
+    const btnAjoutFournisseur = document.getElementById('btnAjoutFournisseur');
+    const btnAnnuler = document.getElementById('btnAnnuler');
+    const tableFournisseurs = document.getElementById('supplierTableBody');
+    const tableauFournisseurs = document.getElementById('tableauFournisseurs');
+    const ajoutFournisseur = document.getElementById('ajoutFournisseur');
+    const filterType = document.getElementById('filterType');
+    const filterPriceMin = document.getElementById('filterPriceMin');
+    const filterPriceMax = document.getElementById('filterPriceMax');
+    const applyFilters = document.getElementById('applyFilters');
+    const resetFilters = document.getElementById('resetFilters');
+    const searchName = document.getElementById('searchName'); // Nouvelle barre de recherche
+
+    const fournisseursData = [
+        { id: 1, nomFournisseur: 'Fournisseur A', typeFourniture: 'Type 1', prixHTFournisseur: 100, email: 'a@example.com', telephone: '0102030405' },
+        { id: 2, nomFournisseur: 'Fournisseur B', typeFourniture: 'Type 2', prixHTFournisseur: 150, email: 'b@example.com', telephone: '0203040506' },
+        { id: 3, nomFournisseur: 'Fournisseur C', typeFourniture: 'Type 1', prixHTFournisseur: 200, email: 'c@example.com', telephone: '0304050607' }
+    ];
+
+    if (!tableFournisseurs) {
+        console.error('Erreur : élément avec ID supplierTableBody non trouvé');
+        return;
+    }
+
+    // Fonction pour récupérer et afficher les fournisseurs
+    function fetchAndDisplaySuppliers() {
+        // Effacer le contenu actuel du tableau
+        tableFournisseurs.innerHTML = '';
+
+        // Appliquer les filtres aux données
+        const filteredData = fournisseursData.filter(fournisseur => {
+            const priceMin = parseFloat(filterPriceMin.value) || 0;
+            const priceMax = parseFloat(filterPriceMax.value) || Number.MAX_VALUE;
+            const type = filterType.value;
+            const price = parseFloat(fournisseur.prixHTFournisseur);
+            const searchQuery = searchName.value.toLowerCase(); // Obtenir la valeur de la barre de recherche
+
+            return (type === "" || fournisseur.typeFourniture === type) &&
+                   (price >= priceMin) &&
+                   (price <= priceMax) &&
+                   fournisseur.nomFournisseur.toLowerCase().includes(searchQuery); // Filtrer par nom de fournisseur
+        });
+
+        // Boucler à travers les données filtrées des fournisseurs et les afficher dans le tableau
+        filteredData.forEach(fournisseur => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td>${fournisseur.nomFournisseur}</td>
+                <td>${fournisseur.typeFourniture}</td>
+                <td>${fournisseur.prixHTFournisseur}</td>
+                <td>${fournisseur.email}</td>
+                <td>${fournisseur.telephone}</td>
+                <td>
+                    <button class="btnModifier" data-id="${fournisseur.id}">Modifier</button>
+                    <button class="btnSupprimer" data-id="${fournisseur.id}">Supprimer</button>
+                </td>
+            `;
+            tableFournisseurs.appendChild(tr);
+        });
+
+        // Mettre à jour les options du filtre de type de fourniture
+        updateTypeFilterOptions(fournisseursData);
+    }
+
+    // Fonction pour mettre à jour les options du filtre de type de fourniture
+    function updateTypeFilterOptions(data) {
+        const uniqueTypes = getUniqueTypes(data);
+        const currentType = filterType.value; // Conserver la valeur actuelle du filtre
+
+        filterType.innerHTML = '<option value="">Tous</option>'; // Réinitialiser les options
+
+        uniqueTypes.forEach(type => {
+            const option = document.createElement('option');
+            option.textContent = type;
+            option.value = type;
+            filterType.appendChild(option);
+        });
+
+        filterType.value = currentType; // Rétablir la sélection précédente
+    }
+
+    // Fonction pour récupérer les types de fourniture uniques à partir des données des fournisseurs
+    function getUniqueTypes(data) {
+        const types = data.map(fournisseur => fournisseur.typeFourniture);
+        return Array.from(new Set(types)); // Retourner un tableau avec des valeurs uniques
+    }
+
+    // Écouteur d'événement pour soumettre le formulaire d'ajout/modification de fournisseur
+    formAjoutFournisseur.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const formData = {
+            nomFournisseur: document.getElementById('supplierName').value,
+            typeFourniture: document.getElementById('supplierType').value,
+            prixHTFournisseur: parseFloat(document.getElementById('supplierPrice').value),
+            email: document.getElementById('supplierEmail').value,
+            telephone: document.getElementById('supplierPhone').value
+        };
+
+        const supplierId = document.getElementById('supplierId').value;
+        if (supplierId) {
+            // Modification d'un fournisseur existant
+            const index = fournisseursData.findIndex(f => f.id == supplierId);
+            if (index !== -1) {
+                fournisseursData[index] = { ...formData, id: supplierId };
+                alert('Fournisseur modifié avec succès');
+            }
+        } else {
+            // Ajout d'un nouveau fournisseur
+            const newId = fournisseursData.length ? Math.max(fournisseursData.map(f => f.id)) + 1 : 1;
+            fournisseursData.push({ ...formData, id: newId });
+            alert('Fournisseur ajouté avec succès');
         }
 
-        // Fonction pour valider une commande
-        function validerCommande(index) {
-            // Modifier le statut de la commande à "Arrivé"
-            const statusCell = document.getElementById(`status${index}`);
-            statusCell.textContent = "Arrivée !";
-            statusCell.style.color = "green";
-        }
+        formAjoutFournisseur.reset();
+        document.getElementById('supplierId').value = '';
+        fetchAndDisplaySuppliers();
+        tableauFournisseurs.scrollIntoView({ behavior: 'smooth', block: 'start' }); // Faire défiler vers le tableau
+    });
 
-        // Fonction pour mettre à jour l'état des stocks dans stockStatus
-function updateStockStatus() {
-    orders.forEach(order => {
-        const warehouse = stockStatus.find(wh => wh.warehouse === order.warehouse);
-        if (warehouse) {
-            order.types.forEach(item => {
-                if (warehouse.supplies[item.type] !== undefined) {
-                    warehouse.supplies[item.type] = item.quantity;
+    // Fonction pour afficher ou masquer le formulaire et le tableau
+    function toggleFormAndTable(show) {
+        if (show) {
+            ajoutFournisseur.style.display = 'block';
+            tableauFournisseurs.style.display = 'block';
+        } else {
+            ajoutFournisseur.style.display = 'none';
+            tableauFournisseurs.style.display = 'none';
+        }
+    }
+
+    // Écouteur d'événement pour le clic sur le bouton Ajout Fournisseur
+    btnAjoutFournisseur.addEventListener('click', function() {
+        const isCurrentlyVisible = ajoutFournisseur.style.display === 'block';
+        toggleFormAndTable(!isCurrentlyVisible);
+    });
+
+    // Écouteur d'événement pour le clic sur le bouton Annuler
+    btnAnnuler.addEventListener('click', function() {
+        toggleFormAndTable(false); // Masquer le formulaire et le tableau
+    });
+
+    // Écouteurs d'événement pour les boutons Modifier et Supprimer dans le tableau
+    tableFournisseurs.addEventListener('click', function(event) {
+        if (event.target.classList.contains('btnModifier')) {
+            const fournisseurId = event.target.getAttribute('data-id');
+            const fournisseur = fournisseursData.find(f => f.id == fournisseurId);
+            if (fournisseur) {
+                document.getElementById('supplierName').value = fournisseur.nomFournisseur;
+                document.getElementById('supplierType').value = fournisseur.typeFourniture;
+                document.getElementById('supplierPrice').value = fournisseur.prixHTFournisseur;
+                document.getElementById('supplierEmail').value = fournisseur.email;
+                document.getElementById('supplierPhone').value = fournisseur.telephone;
+                document.getElementById('supplierId').value = fournisseur.id;
+
+                toggleFormAndTable(true); // Afficher le formulaire et le tableau
+            }
+        } else if (event.target.classList.contains('btnSupprimer')) {
+            const fournisseurId = event.target.getAttribute('data-id');
+            if (confirm('Êtes-vous sûr de vouloir supprimer ce fournisseur ?')) {
+                const index = fournisseursData.findIndex(f => f.id == fournisseurId);
+                if (index !== -1) {
+                    fournisseursData.splice(index, 1);
+                    alert('Fournisseur supprimé avec succès');
+                    fetchAndDisplaySuppliers(); // Rafraîchir la liste des fournisseurs après la suppression
                 }
+            }
+        }
+    });
+
+    // Écouteur d'événement pour appliquer les filtres
+    applyFilters.addEventListener('click', function() {
+        fetchAndDisplaySuppliers();
+    });
+
+    // Écouteur d'événement pour réinitialiser les filtres
+    resetFilters.addEventListener('click', function() {
+        filterType.value = '';
+        filterPriceMin.value = '';
+        filterPriceMax.value = '';
+        searchName.value = ''; // Réinitialiser la barre de recherche
+        fetchAndDisplaySuppliers();
+    });
+
+    // Écouteur d'événement pour la barre de recherche
+    searchName.addEventListener('input', function() {
+        fetchAndDisplaySuppliers();
+    });
+
+    // Charger et afficher les fournisseurs au chargement de la page
+    fetchAndDisplaySuppliers();
+});
+document.addEventListener('DOMContentLoaded', function() {
+    const cardEntrepots = document.getElementById('tableauEntrepots'); // La card qui contient tout
+    const btnGestionEntrepots = document.getElementById('btnAjoutEntrepot');
+    const ajoutEntrepot = document.getElementById('ajoutEntrepot');
+    const addEntrepotForm = document.getElementById('addEntrepotForm');
+    const tableEntrepots = document.getElementById('entrepotTableBody');
+
+    let isHidden = true; // Variable pour suivre l'état actuel d'affichage
+    let entrepotsData = [
+        { id: 1, nom: 'Entrepôt A', ville: 'Paris', codePostale: '75001', rue: 'Rue A' },
+        { id: 2, nom: 'Entrepôt B', ville: 'Lyon', codePostale: '69001', rue: 'Rue B' },
+        { id: 3, nom: 'Entrepôt C', ville: 'Marseille', codePostale: '13001', rue: 'Rue C' }
+    ];
+
+    // Écouteur d'événement pour le clic sur le bouton Gestion Des Entrepots
+    btnGestionEntrepots.addEventListener('click', function() {
+        isHidden = !isHidden; // Inverser l'état actuel d'affichage
+
+        if (isHidden) {
+            cardEntrepots.style.display = 'none'; // Masquer la card
+            ajoutEntrepot.style.display = 'none'; // Masquer le formulaire
+        } else {
+            cardEntrepots.style.display = 'block'; // Afficher la card
+            ajoutEntrepot.style.display = 'block'; // Afficher le formulaire
+
+            // Scroller jusqu'au formulaire d'ajout/modification
+            ajoutEntrepot.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        addEntrepotForm.reset(); // Réinitialiser le formulaire
+        document.getElementById('entrepotId').value = ''; // Réinitialiser l'ID caché
+    });
+
+    // Fonction pour afficher les entrepôts
+    function fetchAndDisplayEntrepots() {
+        tableEntrepots.innerHTML = '';
+
+        entrepotsData.forEach(entrepot => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td>${entrepot.nom}</td>
+                <td>${entrepot.ville}</td>
+                <td>${entrepot.codePostale}</td>
+                <td>${entrepot.rue}</td>
+                <td>
+                    <button class="btnModifierEntrepot" data-id="${entrepot.id}">Modifier</button>
+                    <button class="btnSupprimerEntrepot" data-id="${entrepot.id}">Supprimer</button>
+                </td>
+            `;
+            tableEntrepots.appendChild(tr);
+        });
+    }
+
+    // Écouteur d'événement pour soumettre le formulaire d'ajout/modification
+    addEntrepotForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const formData = {
+            nom: document.getElementById('entrepotName').value,
+            ville: document.getElementById('entrepotVille').value,
+            codePostale: document.getElementById('entrepotCodePostal').value,
+            rue: document.getElementById('entrepotRue').value
+        };
+
+        const entrepotId = document.getElementById('entrepotId').value;
+        if (entrepotId) {
+            // Modification d'un entrepôt existant
+            const index = entrepotsData.findIndex(e => e.id == entrepotId);
+            if (index !== -1) {
+                entrepotsData[index] = { ...formData, id: entrepotId };
+                alert('Entrepôt modifié avec succès');
+            }
+        } else {
+            // Ajout d'un nouveau entrepôt
+            const newId = entrepotsData.length ? Math.max(entrepotsData.map(e => e.id)) + 1 : 1;
+            entrepotsData.push({ ...formData, id: newId });
+            alert('Entrepôt ajouté avec succès');
+        }
+
+        addEntrepotForm.reset(); // Réinitialiser le formulaire
+        document.getElementById('entrepotId').value = ''; // Réinitialiser l'ID caché
+        fetchAndDisplayEntrepots(); // Rafraîchir la liste des entrepôts
+
+        // Scroller jusqu'au tableau des entrepôts
+        cardEntrepots.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+
+    // Écouteur d'événement pour les boutons Modifier et Supprimer dans le tableau
+    tableEntrepots.addEventListener('click', function(event) {
+        if (event.target.classList.contains('btnModifierEntrepot')) {
+            const entrepotId = event.target.getAttribute('data-id');
+            const entrepot = entrepotsData.find(e => e.id == entrepotId);
+            if (entrepot) {
+                // Pré-remplir le formulaire avec les données de l'entrepôt sélectionné
+                document.getElementById('entrepotName').value = entrepot.nom;
+                document.getElementById('entrepotVille').value = entrepot.ville;
+                document.getElementById('entrepotCodePostal').value = entrepot.codePostale;
+                document.getElementById('entrepotRue').value = entrepot.rue;
+                document.getElementById('entrepotId').value = entrepot.id;
+
+                // Afficher la card et le formulaire
+                cardEntrepots.style.display = 'block';
+                ajoutEntrepot.style.display = 'block';
+
+                // Scroller jusqu'au formulaire d'ajout/modification
+                ajoutEntrepot.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        } else if (event.target.classList.contains('btnSupprimerEntrepot')) {
+            const entrepotId = event.target.getAttribute('data-id');
+            if (confirm('Êtes-vous sûr de vouloir supprimer cet entrepôt ?')) {
+                const index = entrepotsData.findIndex(e => e.id == entrepotId);
+                if (index !== -1) {
+                    entrepotsData.splice(index, 1);
+                    alert('Entrepôt supprimé avec succès');
+                    fetchAndDisplayEntrepots(); // Rafraîchir la liste des entrepôts après la suppression
+                }
+            }
+        }
+    });
+
+    // Charger et afficher les entrepôts au chargement de la page
+    fetchAndDisplayEntrepots();
+});
+document.addEventListener('DOMContentLoaded', function() {
+    // Données JSON statiques des produits
+    const productsData = [
+        { id: 1, nomProduit: 'Produit A', image: 'produitA.jpg', largeurProduit: '20 cm', epaisseurProduit: '5 cm', masseProduit: '1 kg', formeProduit: 'Rectangulaire', hauteurProduit: '10 cm', sectionProduit: '20x5 cm', marge: '10%', prixML: '15.00 €' },
+        { id: 2, nomProduit: 'Produit A', image: 'produitA.jpg', largeurProduit: '20 cm', epaisseurProduit: '5 cm', masseProduit: '1 kg', formeProduit: 'Rectangulaire', hauteurProduit: '10 cm', sectionProduit: '20x5 cm', marge: '10%', prixML: '15.00 €' },
+        { id: 3, nomProduit: 'Produit B', image: 'produitB.jpg', largeurProduit: '25 cm', epaisseurProduit: '6 cm', masseProduit: '1.5 kg', formeProduit: 'Carré', hauteurProduit: '12 cm', sectionProduit: '25x6 cm', marge: '12%', prixML: '20.00 €' }
+    ];
+
+    const productsByName = groupProductsByName(productsData);
+    const productsTable = document.getElementById('productsTable');
+
+    for (const [productName, products] of Object.entries(productsByName)) {
+        const row = createProductRow(productName, products);
+        productsTable.appendChild(row);
+    }
+});
+
+function groupProductsByName(products) {
+    return products.reduce((acc, product) => {
+        if (!acc[product.nomProduit]) {
+            acc[product.nomProduit] = [];
+        }
+        acc[product.nomProduit].push(product);
+        return acc;
+    }, {});
+}
+
+function createProductRow(productName, products) {
+    const row = document.createElement('tr');
+
+    const nomProduitCell = document.createElement('td');
+    const card = document.createElement('div');
+    card.classList.add('product-card');
+
+    const image = document.createElement('img');
+    image.src = `http://localhost:8080/pictures/${products[0].image}`;
+    image.alt = productName;
+    image.style.maxWidth = '100px';
+
+    const productNameText = document.createElement('p');
+    productNameText.textContent = productName;
+    productNameText.style.fontWeight = 'bold';
+    card.appendChild(image);
+    card.appendChild(productNameText);
+
+    nomProduitCell.appendChild(card);
+    row.appendChild(nomProduitCell);
+
+    // Add product details directly
+    const detailsCell = document.createElement('td');
+    detailsCell.colSpan = 1; // Adjust as needed
+
+    const detailsTable = document.createElement('table');
+    detailsTable.classList.add('details-table');
+    const headerRow = document.createElement('tr');
+    
+    const headers = [
+        'Largeur', 'Épaisseur', 'Masse', 'Forme', 'Hauteur', 'Section', 'Marge', 'Prix ML'
+    ];
+    
+    headers.forEach(headerText => {
+        const th = document.createElement('th');
+        th.textContent = headerText;
+        headerRow.appendChild(th);
+    });
+    detailsTable.appendChild(headerRow);
+
+    products.forEach(product => {
+        const detailRow = document.createElement('tr');
+
+        const largeurCell = document.createElement('td');
+        largeurCell.textContent = product.largeurProduit;
+        detailRow.appendChild(largeurCell);
+
+        const epaisseurCell = document.createElement('td');
+        epaisseurCell.textContent = product.epaisseurProduit;
+        detailRow.appendChild(epaisseurCell);
+
+        const masseCell = document.createElement('td');
+        masseCell.textContent = product.masseProduit;
+        detailRow.appendChild(masseCell);
+
+        const formeCell = document.createElement('td');
+        formeCell.textContent = product.formeProduit;
+        detailRow.appendChild(formeCell);
+
+        const hauteurCell = document.createElement('td');
+        hauteurCell.textContent = product.hauteurProduit || 'N/A';
+        detailRow.appendChild(hauteurCell);
+
+        const sectionCell = document.createElement('td');
+        sectionCell.textContent = product.sectionProduit || 'N/A';
+        detailRow.appendChild(sectionCell);
+
+        const margeCell = document.createElement('td');
+        margeCell.textContent = product.marge;
+        detailRow.appendChild(margeCell);
+
+        const prixMLCell = document.createElement('td');
+        prixMLCell.textContent = product.prixML;
+        detailRow.appendChild(prixMLCell);
+
+        detailsTable.appendChild(detailRow);
+    });
+
+    detailsCell.appendChild(detailsTable);
+    row.appendChild(detailsCell);
+
+    return row;
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Données JSON statiques pour les fournisseurs
+    const fournisseursData = [
+        { id: 1, nomFournisseur: 'Fournisseur A' },
+        { id: 2, nomFournisseur: 'Fournisseur B' },
+        { id: 3, nomFournisseur: 'Fournisseur C' }
+    ];
+
+    // Données JSON statiques pour les produits
+    const produitsData = [
+        { id: 1, nomProduit: 'Produit A', image: 'produitA.jpg' },
+        { id: 2, nomProduit: 'Produit B', image: 'produitB.jpg' }
+    ];
+
+    // Données JSON statiques pour les commandes de produits
+    const produitFournisseurData = [
+        { id: 1, produit: { id: 1, nom: 'Produit A' }, fournisseur: { nom: 'Fournisseur A' }, quantiteCommande: 100, dateCommande: '2024-08-01T10:00:00Z', etatCommande: 'En cours', etatLivraison: 'En attente', dateLivraison: null },
+        { id: 2, produit: { id: 2, nom: 'Produit B' }, fournisseur: { nom: 'Fournisseur B' }, quantiteCommande: 200, dateCommande: '2024-08-05T10:00:00Z', etatCommande: 'En cours', etatLivraison: 'En attente', dateLivraison: null }
+    ];
+
+    async function fetchSuppliers() {
+        try {
+            // Utilisation des données JSON statiques
+            const fournisseurSelect = document.getElementById('fournisseurId');
+            fournisseursData.forEach(fournisseur => {
+                const option = document.createElement('option');
+                option.value = fournisseur.id;
+                option.textContent = fournisseur.nomFournisseur;
+                fournisseurSelect.appendChild(option);
             });
+        } catch (error) {
+            console.error('Erreur lors de la récupération des fournisseurs:', error);
+            alert('Erreur lors de la récupération des fournisseurs. Veuillez réessayer.');
+        }
+    }
+
+    async function fetchProducts() {
+        try {
+            // Utilisation des données JSON statiques
+            const productsList = document.getElementById('productsList');
+
+            produitsData.forEach(produit => {
+                const productDiv = document.createElement('div');
+
+                const checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.name = 'product';
+                checkbox.value = produit.id;
+
+                const label = document.createElement('label');
+                label.innerHTML = `<i class="fas fa-info-circle" onclick="showProductDetails(${produit.id})"></i> ${produit.nomProduit} (ID: ${produit.id})`;
+
+                const quantityInput = document.createElement('input');
+                quantityInput.type = 'number';
+                quantityInput.name = `quantiteCommande[${produit.id}]`;
+                quantityInput.placeholder = 'Quantité';
+                quantityInput.required = true;
+
+                productDiv.appendChild(checkbox);
+                productDiv.appendChild(label);
+                productDiv.appendChild(quantityInput);
+
+                productsList.appendChild(productDiv);
+            });
+        } catch (error) {
+            console.error('Erreur lors de la récupération des produits:', error);
+            alert('Erreur lors de la récupération des produits. Veuillez réessayer.');
+        }
+    }
+
+    document.getElementById('productForm').addEventListener('submit', async function(event) {
+        event.preventDefault();
+
+        const fournisseurId = document.getElementById('fournisseurId').value;
+        const produits = [];
+
+        document.querySelectorAll('input[name="product"]:checked').forEach(checkbox => {
+            const productId = checkbox.value;
+            const quantiteCommande = document.querySelector(`input[name="quantiteCommande[${productId}]"]`).value;
+            produits.push({ id: productId, quantiteCommande: quantiteCommande });
+        });
+
+        try {
+            // Simuler l'ajout de la commande fournisseur avec des données locales
+            const response = { message: 'Commande ajoutée avec succès !' }; // Simulé
+            alert(response.message);
+            loadProduits(); // Recharger les produits après l'ajout
+        } catch (error) {
+            console.error('Erreur lors de l\'ajout de la commande fournisseur:', error);
+            alert('Erreur lors de l\'ajout de la commande fournisseur. Veuillez réessayer.');
         }
     });
-    saveStockStatus();
-}
 
-// Enregistrer les stocks dans le stockage local
-function saveStockStatus() {
-    localStorage.setItem('stockStatus', JSON.stringify(stockStatus));
-    localStorage.setItem('orders', JSON.stringify(orders));
-}
+    async function loadProduits() {
+        try {
+            // Utilisation des données JSON statiques pour les commandes
+            const produitsBody = document.getElementById('produits-body');
+            produitsBody.innerHTML = '';
 
-// Fonction pour afficher l'état des stocks par entrepôt
-function displayStockStatus() {
-    warehouseList.innerHTML = "";
-    stockStatus.forEach(warehouse => {
-        const warehouseDiv = document.createElement("div");
-        warehouseDiv.classList.add("warehouse");
-
-        const warehouseName = document.createElement("h3");
-        warehouseName.textContent = warehouse.warehouse;
-        warehouseDiv.appendChild(warehouseName);
-
-        const supplyList = document.createElement("ul");
-        for (let supply in warehouse.supplies) {
-            const supplyItem = document.createElement("li");
-            supplyItem.textContent = `${supply}: ${warehouse.supplies[supply]}`;
-            supplyList.appendChild(supplyItem);
+            produitFournisseurData.forEach(produit => {
+                const row = document.createElement('tr');
+                row.id = `row_${produit.id}`;
+                row.innerHTML = `
+                    <td>${produit.id}</td>
+                    <td>${produit.produit.nom}</td>
+                    <td>${produit.fournisseur.nom}</td>
+                    <td>${produit.quantiteCommande}</td>
+                    <td>${new Date(produit.dateCommande).toLocaleDateString()}</td>
+                    <td>${produit.etatCommande}</td>
+                    <td>${produit.etatLivraison}</td>
+                    <td>${produit.dateLivraison ? new Date(produit.dateLivraison).toLocaleDateString() : ''}</td>
+                    <td>
+                        <button onclick="updateProduit(${produit.id}, 'arrivé')">Arrivé</button>
+                        <button onclick="updateProduit(${produit.id}, 'retardé')">Retardé</button>
+                        <button onclick="showProductDetailsInTable(${produit.id})">Détails</button>
+                    </td>
+                `;
+                produitsBody.appendChild(row);
+            });
+        } catch (error) {
+            console.error('Erreur lors du chargement des produits :', error);
+            alert('Une erreur est survenue lors du chargement des produits.');
         }
-        warehouseDiv.appendChild(supplyList);
-        warehouseList.appendChild(warehouseDiv);
-    });
-    saveStockStatus(); // Enregistrer les stocks à chaque mise à jour
-}
+    }
 
+    window.updateProduit = async function(id, etatLivraison) {
+        const confirmation = confirm(`Êtes-vous sûr de vouloir marquer ce produit comme "${etatLivraison}" ?`);
+        if (!confirmation) return;
 
-        // Initialisation de l'application
-        populateSuppliers();
-        populateWarehouses();
-        displayStockStatus();
+        const updateData = {
+            etatLivraison: etatLivraison,
+            dateLivraison: new Date().toISOString()
+        };
 
+        try {
+            // Simuler la mise à jour du produit avec des données locales
+            const response = { message: 'Produit mis à jour avec succès !', quantite: 10 }; // Simulé
+
+            alert(response.message);
+
+            if (etatLivraison === 'arrivé') {
+                // Simuler la mise à jour du stock avec des données locales
+                const stockResponse = { message: 'Stock mis à jour avec succès !' }; // Simulé
+                alert(stockResponse.message); // Afficher un message de succès pour la mise à jour du stock
+            }
+
+            loadProduits(); // Recharger les produits après l'ajout
+        } catch (error) {
+            console.error('Erreur lors de la mise à jour du produit :', error);
+            alert('Une erreur est survenue lors de la mise à jour du produit.');
+        }
+    }
+
+    window.showProductDetails = function(productId) {
+        const produit = produitsData.find(p => p.id === productId);
+        if (produit) {
+            alert(`
+                Nom: ${produit.nomProduit}
+                Largeur: N/A
+                Masse: N/A
+                Épaisseur: N/A
+                Forme: N/A
+                Hauteur: N/A
+                Section: N/A
+            `);
+        } else {
+            alert('Détails du produit non trouvés.');
+        }
+    }
+
+    window.showProductDetailsInTable = function(productId) {
+        const produit = produitFournisseurData.find(p => p.id === productId);
+        if (produit) {
+            const detailsRow = document.createElement('tr');
+            detailsRow.id = `detailsRow_${productId}`;
+            detailsRow.innerHTML = `
+                <td colspan="9">
+                    <strong>ID:</strong> ${produit.produit.id}<br>
+                    <strong>Nom:</strong> ${produit.produit.nom}<br>
+                    <strong>Largeur:</strong> N/A<br>
+                    <strong>Masse:</strong> N/A<br>
+                    <strong>Épaisseur:</strong> N/A<br>
+                    <strong>Forme:</strong> N/A<br>
+                    <strong>Hauteur:</strong> N/A<br>
+                    <strong>Section:</strong> N/A<br>
+                    <button onclick="hideProductDetails(${productId})">Masquer</button>
+                </td>
+            `;
+
+            const existingRow = document.getElementById(`detailsRow_${productId}`);
+            if (existingRow) {
+                existingRow.parentNode.removeChild(existingRow);
+            } else {
+                document.getElementById(`row_${productId}`).insertAdjacentElement('afterend', detailsRow);
+            }
+        } else {
+            alert('Détails du produit non trouvés.');
+        }
+    }
+
+    window.hideProductDetails = function(productId) {
+        const detailsRow = document.getElementById(`detailsRow_${productId}`);
+        if (detailsRow) {
+            detailsRow.parentNode.removeChild(detailsRow);
+        }
+    }
+
+    fetchSuppliers();
+    fetchProducts();
+    loadProduits();
+});
 
     </script>
-
-
-
-
 </body>
 
 </html>
