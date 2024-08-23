@@ -14,13 +14,17 @@
     <title>Page d'Accueil</title>
     <style>
         /* Style général pour la section de présentation */
+
+        body{
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
         .presentation-section {
             display: flex;
             align-items: center;
             justify-content: space-between;
             margin: 20px 0;
             padding: 40px;
-            background-color: #ff6600;
+            background: linear-gradient(to bottom right, #ff7f00, #eebb23);
             border-radius: 12px;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
             color: #fff;
@@ -109,7 +113,7 @@
         /* Style pour la section des produits */
         .products-section {
             padding: 40px;
-            background-color: #ff6600;
+            background: linear-gradient(to bottom right, #ff7f00, #eebb23);
             border-radius: 12px;
             color: #fff;
             margin-bottom: 40px;
@@ -245,6 +249,7 @@
 .image-block img {
     width: 100%;
     border-radius: 8px;
+    height: 150px;
 }
 
 /* Style pour les boutons du carrousel */
@@ -702,8 +707,6 @@
 </head>
 <body>
 
-{% include 'menu.html.twig' %}
-
 <div class="container-block">
     <div class="overlay blue-overlay"></div>
     <div class="overlay red-overlay"></div>
@@ -744,7 +747,7 @@
             </ul>
         </div>
         <div class="presentation-image" data-aos="fade-left">
-            <img src="{{ asset('pictures/entreprise.jpg') }}" alt="Photo de l'entreprise">
+            <img src="Bandeau Fil rouge.jpg" alt="Photo de l'entreprise">
         </div>
         
     </div>
@@ -756,23 +759,23 @@
         <div class="carousel-wrapper">
             <div class="carousel-track">
                 <div class="image-block">
-                    <img src="{{ asset('pictures/ferEnT.png') }}" alt="Image 1">
+                    <img src="ferEnT.png" alt="Image 1">
                     <div class="overlay-text">FerEnT </div>
                 </div>
                 <div class="image-block">
-                    <img src="{{ asset('pictures/poutrelleIpeNormale.jpeg') }}" alt="Image 2">
+                    <img src="poutrelleIpeNormale.jpeg" alt="Image 2">
                     <div class="overlay-text">poutrelle Ipe Normale</div>
                 </div>
                 <div class="image-block">
-                    <img src="{{ asset('pictures/poutrelleUpe.jpeg') }}" alt="Image 3">
+                    <img src="poutrelleUpe.jpeg" alt="Image 3">
                     <div class="overlay-text">poutrelle Upe</div>
                 </div>
                 <div class="image-block">
-                    <img src="{{ asset('pictures/barreCarreplein.jpeg') }}" alt="Image 4">
+                    <img src="barreCarreplein.jpeg" alt="Image 4">
                     <div class="overlay-text">barre Carre plein</div>
                 </div>
                 <div class="image-block">
-                    <img src="{{ asset('pictures/tubeRond.jpeg') }}" alt="Image 5">
+                    <img src="tubeRond.jpeg" alt="Image 5">
                     <div class="overlay-text">tube Rond</div>
                 </div>
             </div>
